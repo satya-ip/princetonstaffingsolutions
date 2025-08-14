@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import {
   Box,
   Container,
@@ -60,7 +62,7 @@ const CounterAnimation: React.FC<{ end: number; duration?: number }> = ({
 };
 
 const ServicesSection: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2 });
 
@@ -434,7 +436,7 @@ const ServicesSection: React.FC = () => {
                   transition: 'all 0.3s ease',
                 }}
                 onClick={() => {
-                  navigate('/contact');
+                  router.push('/contact');
                 }}
                 onMouseEnter={(e) => {
                   (e.target as HTMLElement).style.background = 'rgba(255, 255, 255, 0.3)';

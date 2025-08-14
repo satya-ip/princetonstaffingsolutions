@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import {
   Box,
@@ -17,10 +19,7 @@ import {
   Timeline,
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
-
 import { useInView } from 'react-intersection-observer';
-// Temporarily comment out ScrollDrivenApproach to isolate the issue
-// import ScrollDrivenApproach from './ScrollDrivenApproach';
 
 const CounterAnimation: React.FC<{ end: number; duration?: number }> = ({ 
   end, 
@@ -387,12 +386,8 @@ const AboutSection: React.FC = () => {
               ))}
             </Grid>
           </motion.div>
-
         </motion.div>
       </Container>
-      
-      {/* Temporarily comment out ScrollDrivenApproach to isolate the issue */}
-      {/* <ScrollDrivenApproach /> */}
     </Box>
   );
 };
