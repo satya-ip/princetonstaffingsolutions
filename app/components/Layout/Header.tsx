@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, usePathname } from 'next/navigation';
 import {
   AppBar,
   Toolbar,
@@ -16,8 +18,8 @@ import { toggleTheme } from '../../store/slices/themeSlice';
 const Header: React.FC = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
   const { isDark } = useAppSelector((state) => state.theme);
 
   const handleThemeToggle = () => {
@@ -25,7 +27,7 @@ const Header: React.FC = () => {
   };
 
   const handleNavigation = (path: string) => {
-    navigate(path);
+    router.push(path);
   };
 
   const navItems = [
@@ -78,7 +80,7 @@ const Header: React.FC = () => {
               onClick={() => handleNavigation(item.path)}
               sx={{
                 color: theme.palette.text.primary,
-                fontWeight: location.pathname === item.path ? 600 : 400,
+                fontWeight: pathname === item.path ? 600 : 400,
                 fontSize: '0.95rem',
                 px: 2,
                 py: 1,
@@ -89,7 +91,7 @@ const Header: React.FC = () => {
                   backgroundColor: theme.palette.action.hover,
                   transform: 'translateY(-1px)',
                 },
-                '&::after': location.pathname === item.path ? {
+                '&::after': pathname === item.path ? {
                   content: '""',
                   position: 'absolute',
                   bottom: 0,
