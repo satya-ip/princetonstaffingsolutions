@@ -145,7 +145,7 @@ const ServicesSection: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -418,7 +418,7 @@ const ServicesSection: React.FC = () => {
                 Ready to Transform Your Business?
               </Typography>
               <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
-                Let's discuss how our services can help you achieve your goals.
+                Let&apos;s discuss how our services can help you achieve your goals.
               </Typography>
               <motion.button
                 whileHover={{ scale: 1.05 }}

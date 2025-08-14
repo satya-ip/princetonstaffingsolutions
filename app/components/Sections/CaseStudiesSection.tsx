@@ -36,6 +36,7 @@ import {
   setSelectedStudy,
   clearSelectedStudy,
 } from '../../store/slices/caseStudiesSlice';
+import Image from 'next/image';
 
 const CaseStudiesSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -85,7 +86,7 @@ const CaseStudiesSection: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -131,7 +132,7 @@ const CaseStudiesSection: React.FC = () => {
                 color="text.secondary"
                 sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
               >
-                Discover how we've helped businesses transform their digital
+                Discover how we&apos;ve helped businesses transform their digital
                 landscape and achieve remarkable results.
               </Typography>
             </Box>
@@ -306,16 +307,13 @@ const CaseStudiesSection: React.FC = () => {
             </DialogTitle>
             
             <DialogContent>
-              <Box sx={{ mb: 3 }}>
-                <img
+              <Box sx={{ mb: 3, position: 'relative', width: '100%', height: 300 }}>
+                <Image
                   src={selectedStudy.image}
                   alt={selectedStudy.title}
-                  style={{
-                    width: '100%',
-                    height: '300px',
-                    objectFit: 'cover',
-                    borderRadius: '12px',
-                  }}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  style={{ objectFit: 'cover', borderRadius: 12 }}
                 />
               </Box>
 
