@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import {
   Box,
   Container,
@@ -60,7 +62,7 @@ const CounterAnimation: React.FC<{ end: number; duration?: number }> = ({
 };
 
 const ServicesSection: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2 });
 
@@ -143,7 +145,7 @@ const ServicesSection: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -416,7 +418,7 @@ const ServicesSection: React.FC = () => {
                 Ready to Transform Your Business?
               </Typography>
               <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
-                Let's discuss how our services can help you achieve your goals.
+                Let&apos;s discuss how our services can help you achieve your goals.
               </Typography>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -434,7 +436,7 @@ const ServicesSection: React.FC = () => {
                   transition: 'all 0.3s ease',
                 }}
                 onClick={() => {
-                  navigate('/contact');
+                  router.push('/contact');
                 }}
                 onMouseEnter={(e) => {
                   (e.target as HTMLElement).style.background = 'rgba(255, 255, 255, 0.3)';

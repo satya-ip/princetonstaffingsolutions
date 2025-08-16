@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import {
   Box,
@@ -137,7 +139,7 @@ const ContactSection: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -183,7 +185,7 @@ const ContactSection: React.FC = () => {
                 color="text.secondary"
                 sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
               >
-                Ready to transform your business? Let's discuss how we can help
+                Ready to transform your business? Let&apos;s discuss how we can help
                 you achieve your goals.
               </Typography>
             </Box>
@@ -533,7 +535,7 @@ const ContactSection: React.FC = () => {
           variant="filled"
           sx={{ borderRadius: 2 }}
         >
-          Thank you for your message! We'll get back to you within 24 hours.
+          Thank you for your message! We&apos;ll get back to you within 24 hours.
         </Alert>
       </Snackbar>
     </Box>

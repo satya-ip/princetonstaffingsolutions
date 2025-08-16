@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import {
   Box,
   Container,
@@ -22,7 +24,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const HeroSection: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const controls = useAnimation();
   const [ref, inView] = useInView();
   const [particleCount, setParticleCount] = useState(0);
@@ -58,7 +60,7 @@ const HeroSection: React.FC = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        // ease removed for TS compatibility with Variants typing
       },
     },
   };
@@ -205,7 +207,7 @@ const HeroSection: React.FC = () => {
                     variant="contained"
                     size="large"
                     endIcon={<ArrowForward />}
-                    onClick={() => navigate('/contact')}
+                    onClick={() => router.push('/contact')}
                     sx={{
                       background: 'linear-gradient(45deg, #1976d2, #dc004e)',
                       px: 4,
@@ -224,7 +226,7 @@ const HeroSection: React.FC = () => {
                     variant="outlined"
                     size="large"
                     startIcon={<PlayArrow />}
-                    onClick={() => navigate('/about')}
+                    onClick={() => router.push('/about')}
                     sx={{
                       color: 'white',
                       borderColor: 'rgba(255, 255, 255, 0.3)',

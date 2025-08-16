@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import {
   Box,
@@ -17,10 +19,7 @@ import {
   Timeline,
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
-
 import { useInView } from 'react-intersection-observer';
-// Temporarily comment out ScrollDrivenApproach to isolate the issue
-// import ScrollDrivenApproach from './ScrollDrivenApproach';
 
 const CounterAnimation: React.FC<{ end: number; duration?: number }> = ({ 
   end, 
@@ -130,7 +129,7 @@ const AboutSection: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -248,7 +247,7 @@ const AboutSection: React.FC = () => {
                   color="text.secondary"
                   sx={{ mb: 4, lineHeight: 1.7 }}
                 >
-                  With over 15 years of experience in the technology industry, we've
+                  With over 15 years of experience in the technology industry, we&apos;ve
                   mastered a comprehensive range of cutting-edge technologies and
                   methodologies. Our expertise spans across cloud computing,
                   cybersecurity, artificial intelligence, and modern software
@@ -387,12 +386,8 @@ const AboutSection: React.FC = () => {
               ))}
             </Grid>
           </motion.div>
-
         </motion.div>
       </Container>
-      
-      {/* Temporarily comment out ScrollDrivenApproach to isolate the issue */}
-      {/* <ScrollDrivenApproach /> */}
     </Box>
   );
 };
