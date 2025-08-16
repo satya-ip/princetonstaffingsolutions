@@ -10,8 +10,13 @@ import {
   Box,
   IconButton,
   useTheme as useMuiTheme,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
 } from '@mui/material';
-import { Code, Brightness4, Brightness7 } from '@mui/icons-material';
+import { Code, Brightness4, Brightness7, Menu } from '@mui/icons-material';
 import { useTheme } from '../../contexts/ThemeContext';
 
 const Header: React.FC = () => {
@@ -19,6 +24,7 @@ const Header: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleThemeToggle = () => {
     toggleTheme();
@@ -26,6 +32,11 @@ const Header: React.FC = () => {
 
   const handleNavigation = (path: string) => {
     router.push(path);
+    setMobileOpen(false); // Close mobile menu after navigation
+  };
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   const navItems = [
@@ -37,7 +48,8 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <AppBar 
+    <>
+      <AppBar 
       position="fixed" 
       sx={{ 
         backgroundColor: muiTheme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(255, 255, 255, 0.95)',
@@ -123,8 +135,107 @@ const Header: React.FC = () => {
         >
           {isDark ? <Brightness7 /> : <Brightness4 />}
         </IconButton>
+
+        {/* Hamburger Menu Button - Mobile Only */}
+        <IconButton
+          onClick={handleDrawerToggle}
+          sx={{
+            ml: 2,
+            display: { xs: 'flex', md: 'none' },
+            color: muiTheme.palette.text.primary,
+            backgroundColor: muiTheme.palette.action.hover,
+            '&:hover': {
+              backgroundColor: muiTheme.palette.action.selected,
+              transform: 'scale(1.1)',
+            },
+            transition: 'all 0.3s ease',
+          }}
+        >
+          <Menu />
+        </IconButton>
       </Toolbar>
     </AppBar>
+
+    {/* Mobile Navigation Drawer */}
+    <Drawer
+      variant="temporary"
+      open={mobileOpen}
+      onClose={handleDrawerToggle}
+      ModalProps={{
+        keepMounted: true, // Better open performance on mobile.
+      }}
+      sx={{
+        display: { xs: 'block', md: 'none' },
+        '& .MuiDrawer-paper': {
+          boxSizing: 'border-box',
+          width: 280,
+          background: muiTheme.palette.mode === 'dark' 
+            ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)'
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          border: 'none',
+          backdropFilter: 'blur(20px)',
+        },
+      }}
+    >
+      <Box sx={{ p: 3 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+          <Code sx={{ 
+            mr: 1, 
+            fontSize: 28,
+            color: '#64b5f6',
+          }} />
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: 700,
+              background: 'linear-gradient(45deg, #64b5f6, #f48fb1)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontSize: '1.5rem',
+            }}
+          >
+            TechCorp
+          </Typography>
+        </Box>
+        
+        <List>
+          {navItems.map((item) => (
+            <ListItem key={item.path} disablePadding sx={{ mb: 1 }}>
+              <ListItemButton
+                onClick={() => handleNavigation(item.path)}
+                sx={{
+                  borderRadius: 2,
+                  backgroundColor: pathname === item.path 
+                    ? 'rgba(255, 255, 255, 0.1)' 
+                    : 'transparent',
+                  border: pathname === item.path 
+                    ? '1px solid rgba(255, 255, 255, 0.2)' 
+                    : '1px solid transparent',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transform: 'translateX(5px)',
+                  },
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                <ListItemText
+                  primary={item.label}
+                  sx={{
+                    '& .MuiListItemText-primary': {
+                      color: 'white',
+                      fontWeight: pathname === item.path ? 600 : 400,
+                      fontSize: '1rem',
+                    },
+                  }}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+    </Drawer>
+    </>
   );
 };
 

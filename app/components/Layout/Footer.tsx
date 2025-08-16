@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
         {/* Main Footer Content */}
         <Grid container spacing={4} sx={{ mb: 6 }}>
           {/* Company Info */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} lg={4} md={12}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -155,9 +155,11 @@ const Footer: React.FC = () => {
             </motion.div>
           </Grid>
 
-          {/* Footer Links */}
-          {footerSections.map((section, index) => (
-            <Grid item xs={12} sm={6} md={2.67} key={section.title}>
+          {/* Footer Links Container */}
+          <Grid item xs={12} lg={8} md={12}>
+            <Grid container spacing={4}>
+              {footerSections.map((section, index) => (
+                <Grid item xs={12} sm={6} md={4} key={section.title}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -191,8 +193,10 @@ const Footer: React.FC = () => {
                   ))}
                 </Box>
               </motion.div>
+                </Grid>
+              ))}
             </Grid>
-          ))}
+          </Grid>
         </Grid>
 
         <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.1)', mb: 4 }} />
