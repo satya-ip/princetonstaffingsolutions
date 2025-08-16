@@ -9,21 +9,19 @@ import {
   Button,
   Box,
   IconButton,
-  useTheme,
+  useTheme as useMuiTheme,
 } from '@mui/material';
 import { Code, Brightness4, Brightness7 } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { toggleTheme } from '../../store/slices/themeSlice';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Header: React.FC = () => {
-  const theme = useTheme();
-  const dispatch = useAppDispatch();
+  const muiTheme = useMuiTheme();
+  const { isDark, toggleTheme } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
-  const { isDark } = useAppSelector((state) => state.theme);
 
   const handleThemeToggle = () => {
-    dispatch(toggleTheme());
+    toggleTheme();
   };
 
   const handleNavigation = (path: string) => {
@@ -42,10 +40,10 @@ const Header: React.FC = () => {
     <AppBar 
       position="fixed" 
       sx={{ 
-        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+        backgroundColor: muiTheme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(10px)',
-        borderBottom: `1px solid ${theme.palette.divider}`,
-        boxShadow: theme.palette.mode === 'dark' 
+        borderBottom: `1px solid ${muiTheme.palette.divider}`,
+        boxShadow: muiTheme.palette.mode === 'dark' 
           ? '0 4px 20px rgba(0, 0, 0, 0.3)' 
           : '0 4px 20px rgba(0, 0, 0, 0.1)',
       }}
@@ -55,14 +53,14 @@ const Header: React.FC = () => {
           <Code sx={{ 
             mr: 1, 
             fontSize: 28,
-            color: theme.palette.primary.main,
+            color: muiTheme.palette.primary.main,
           }} />
           <Typography
             variant="h5"
             component="div"
             sx={{
               fontWeight: 700,
-              background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+              background: `linear-gradient(45deg, ${muiTheme.palette.primary.main}, ${muiTheme.palette.secondary.main})`,
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -79,7 +77,7 @@ const Header: React.FC = () => {
               key={item.path}
               onClick={() => handleNavigation(item.path)}
               sx={{
-                color: theme.palette.text.primary,
+                color: muiTheme.palette.text.primary,
                 fontWeight: pathname === item.path ? 600 : 400,
                 fontSize: '0.95rem',
                 px: 2,
@@ -88,7 +86,7 @@ const Header: React.FC = () => {
                 textTransform: 'none',
                 position: 'relative',
                 '&:hover': {
-                  backgroundColor: theme.palette.action.hover,
+                  backgroundColor: muiTheme.palette.action.hover,
                   transform: 'translateY(-1px)',
                 },
                 '&::after': pathname === item.path ? {
@@ -99,7 +97,7 @@ const Header: React.FC = () => {
                   transform: 'translateX(-50%)',
                   width: '60%',
                   height: '2px',
-                  background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  background: `linear-gradient(45deg, ${muiTheme.palette.primary.main}, ${muiTheme.palette.secondary.main})`,
                   borderRadius: '1px',
                 } : {},
                 transition: 'all 0.3s ease',
@@ -114,10 +112,10 @@ const Header: React.FC = () => {
           onClick={handleThemeToggle}
           sx={{
             ml: 2,
-            color: theme.palette.text.primary,
-            backgroundColor: theme.palette.action.hover,
+            color: muiTheme.palette.text.primary,
+            backgroundColor: muiTheme.palette.action.hover,
             '&:hover': {
-              backgroundColor: theme.palette.action.selected,
+              backgroundColor: muiTheme.palette.action.selected,
               transform: 'rotate(180deg)',
             },
             transition: 'all 0.3s ease',

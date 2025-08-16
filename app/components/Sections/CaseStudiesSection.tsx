@@ -30,19 +30,19 @@ import {
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import {
-  loadMoreCaseStudies,
-  setSelectedStudy,
-  clearSelectedStudy,
-} from '../../store/slices/caseStudiesSlice';
+import { useCaseStudies } from '../../contexts/CaseStudiesContext';
 import Image from 'next/image';
 
 const CaseStudiesSection: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { studies, loading, selectedStudy, hasMore, page } = useAppSelector(
-    (state) => state.caseStudies
-  );
+  const { 
+    studies, 
+    loading, 
+    selectedStudy, 
+    hasMore, 
+    loadMoreCaseStudies, 
+    setSelectedStudy, 
+    clearSelectedStudy 
+  } = useCaseStudies();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2 });
 
@@ -52,22 +52,16 @@ const CaseStudiesSection: React.FC = () => {
     }
   }, [controls, inView]);
 
-  useEffect(() => {
-    if (studies.length === 0) {
-      dispatch(loadMoreCaseStudies(1));
-    }
-  }, [dispatch, studies.length]);
-
   const handleLoadMore = () => {
-    dispatch(loadMoreCaseStudies(page));
+    loadMoreCaseStudies();
   };
 
   const handleStudyClick = (study: any) => {
-    dispatch(setSelectedStudy(study));
+    setSelectedStudy(study);
   };
 
   const handleCloseModal = () => {
-    dispatch(clearSelectedStudy());
+    clearSelectedStudy();
   };
 
   const containerVariants = {

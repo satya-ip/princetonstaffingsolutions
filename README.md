@@ -7,7 +7,7 @@ A modern, responsive website for TechCorp, a leading IT services company. Built 
 ### Core Features
 - **Modern Design**: Beautiful, responsive design with dark/light theme support
 - **Interactive Animations**: Smooth animations powered by Framer Motion
-- **Dynamic Content**: Redux state management for dynamic content updates
+- **Dynamic Content**: React Context-based state management for dynamic content updates
 - **Form Handling**: Contact form with validation using React Hook Form and Yup
 - **Performance Optimized**: Next.js Image optimization and code splitting
 
@@ -23,7 +23,7 @@ A modern, responsive website for TechCorp, a leading IT services company. Built 
 - **TypeScript**: Full TypeScript support for type safety
 - **Material-UI**: Professional UI components with custom theming
 - **Tailwind CSS**: Utility-first CSS framework for styling
-- **Redux Toolkit**: State management for application data
+- **React Context**: Lightweight state management using React Context API
 - **Form Validation**: Client-side validation with Yup schemas
 - **Responsive Design**: Mobile-first responsive design
 - **SEO Optimized**: Meta tags and structured data
@@ -39,8 +39,7 @@ A modern, responsive website for TechCorp, a leading IT services company. Built 
 - **Framer Motion 12.23.12** - Animation library
 
 ### State Management & Forms
-- **Redux Toolkit 2.8.2** - State management
-- **React Redux 9.2.0** - React bindings for Redux
+- **React Context API** - Lightweight state management
 - **React Hook Form 7.61.1** - Form handling
 - **Yup 1.6.1** - Schema validation
 
@@ -59,16 +58,16 @@ project/
 │   ├── components/               # Reusable components
 │   │   ├── Layout/              # Header, Footer
 │   │   └── Sections/            # Page sections
+│   ├── contexts/                 # React Context providers
+│   │   ├── ThemeContext.tsx     # Theme state management
+│   │   └── CaseStudiesContext.tsx # Case studies state management
 │   ├── contact/                  # Contact page
-│   ├── hooks/                    # Custom React hooks
 │   ├── services/                 # Services page
-│   ├── store/                    # Redux store
-│   │   └── slices/              # Redux slices
 │   ├── theme/                    # MUI theme configuration
 │   ├── globals.css              # Global styles
 │   ├── layout.tsx               # Root layout
 │   ├── page.tsx                 # Home page
-│   └── providers.tsx            # Redux & MUI providers
+│   └── providers.tsx            # Context & MUI providers
 ├── public/                       # Static assets
 ├── .gitignore                   # Git ignore rules
 ├── next.config.js               # Next.js configuration
@@ -137,9 +136,10 @@ export const lightTheme = createTheme({
 - **Global Styles**: Modify `app/globals.css` for global styles
 
 ### Content Updates
-- **Case Studies**: Update mock data in `app/store/slices/caseStudiesSlice.ts`
+- **Case Studies**: Update mock data in `app/contexts/CaseStudiesContext.tsx`
 - **Services**: Modify service data in `app/components/Sections/ServicesSection.tsx`
 - **Team**: Update team information in `app/components/Sections/AboutSection.tsx`
+- **Theme**: Customize theme settings in `app/contexts/ThemeContext.tsx`
 
 ## 📱 Responsive Design
 
@@ -162,6 +162,35 @@ Customize `tailwind.config.js` for:
 - Font families
 - Spacing scales
 - Component styles
+
+## 🏗️ State Management Architecture
+
+### React Context Implementation
+The application uses React Context API for lightweight state management:
+
+#### **Theme Context (`app/contexts/ThemeContext.tsx`)**
+- **Purpose**: Manages light/dark theme state
+- **Features**: 
+  - localStorage persistence
+  - System preference detection
+  - TypeScript support
+- **Usage**: `const { isDark, toggleTheme } = useTheme();`
+
+#### **Case Studies Context (`app/contexts/CaseStudiesContext.tsx`)**
+- **Purpose**: Manages case studies data and UI state
+- **Features**:
+  - Async data loading with loading states
+  - Pagination support
+  - Error handling
+  - Modal state management
+- **Usage**: `const { studies, loading, loadMoreCaseStudies } = useCaseStudies();`
+
+### Benefits of Context API
+- **Simplified Architecture**: No complex Redux setup required
+- **Better Performance**: Reduced bundle size and faster state updates
+- **Easier Maintenance**: More straightforward than Redux
+- **TypeScript Support**: Full type safety with custom hooks
+- **Same Functionality**: All features work exactly as before
 
 ## 🚀 Deployment
 
@@ -197,4 +226,4 @@ For support and questions:
 
 ---
 
-**Built with ❤️ using Next.js, TypeScript, and Material-UI**
+**Built with ❤️ using Next.js, TypeScript, Material-UI, and React Context**
