@@ -1,0 +1,250 @@
+# Princeton Staffing Solutions - Cursor Rules
+
+## Project Overview
+This is a Next.js 14 application for Princeton Staffing Solutions, a professional staffing and recruitment company. The project uses TypeScript, Tailwind CSS v4, Redux Toolkit, and follows modern React patterns.
+
+## Technology Stack
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript 5.9.2
+- **Styling**: Tailwind CSS v4 with PostCSS
+- **State Management**: Redux Toolkit with React Redux
+- **UI Components**: Material-UI (MUI) + Custom components
+- **Forms**: React Hook Form with Yup/Zod validation
+- **Animations**: Framer Motion
+- **Testing**: Vitest + Playwright
+- **Linting**: ESLint + Prettier
+
+## Project Structure
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── (marketing)/        # Marketing pages group
+│   ├── globals.css         # Global styles with Tailwind
+│   ├── layout.tsx          # Root layout
+│   └── providers.tsx       # Redux and other providers
+├── components/             # Reusable UI components
+│   ├── Layout/            # Layout components (Header, Footer)
+│   └── Sections/          # Page sections (Hero, About, etc.)
+├── hooks/                 # Custom React hooks
+├── store/                 # Redux store configuration
+│   └── slices/            # Redux Toolkit slices
+└── theme/                 # Theme configuration
+```
+
+## Coding Standards
+
+### TypeScript
+- Use strict TypeScript configuration
+- Prefer interfaces over types for object shapes
+- Use proper type annotations for all functions and variables
+- Avoid `any` type - use `unknown` or proper typing instead
+- Use generic types where appropriate
+
+### React & Next.js
+- Use functional components with hooks
+- Prefer `const` over `let` for component declarations
+- Use proper TypeScript interfaces for props
+- Implement proper error boundaries
+- Use Next.js App Router patterns
+- Prefer server components when possible, client components when needed
+
+### Component Structure
+```typescript
+// Component template
+interface ComponentNameProps {
+  // Define props with proper types
+}
+
+export default function ComponentName({ prop1, prop2 }: ComponentNameProps) {
+  // Component logic
+  return (
+    // JSX with proper accessibility
+  );
+}
+```
+
+### Styling Guidelines
+- Use Tailwind CSS classes for styling
+- Follow mobile-first responsive design
+- Use semantic HTML elements
+- Implement proper accessibility (ARIA labels, keyboard navigation)
+- Use CSS custom properties for theme values
+- Prefer utility classes over custom CSS
+
+### State Management
+- Use Redux Toolkit for global state
+- Use React hooks (useState, useEffect) for local state
+- Implement proper loading and error states
+- Use RTK Query for API calls when needed
+
+### File Naming Conventions
+- Components: PascalCase (e.g., `Header.tsx`, `AboutSection.tsx`)
+- Pages: lowercase with hyphens (e.g., `about/page.tsx`)
+- Hooks: camelCase with `use` prefix (e.g., `useAppDispatch.ts`)
+- Utilities: camelCase (e.g., `utils.ts`)
+- Types: PascalCase with descriptive names
+
+### Import/Export Patterns
+- Use named exports for components
+- Use default exports for pages
+- Group imports: React, third-party, local
+- Use absolute imports from `src/` when possible
+
+## Architecture Patterns
+
+### Component Architecture
+- Keep components small and focused
+- Use composition over inheritance
+- Implement proper prop drilling alternatives
+- Use React.memo for performance optimization when needed
+
+### Data Flow
+- Use Redux for global state
+- Use React Context for theme/auth when appropriate
+- Implement proper error handling
+- Use loading states for async operations
+
+### API Integration
+- Use React Hook Form for form handling
+- Implement proper validation with Yup or Zod
+- Use proper error handling and user feedback
+- Implement optimistic updates where appropriate
+
+## Development Guidelines
+
+### Code Quality
+- Write self-documenting code with clear variable names
+- Add JSDoc comments for complex functions
+- Keep functions small and focused
+- Use early returns to reduce nesting
+- Implement proper error boundaries
+
+### Performance
+- Use Next.js Image component for images
+- Implement proper lazy loading
+- Use React.memo for expensive components
+- Optimize bundle size with dynamic imports
+- Use proper caching strategies
+
+### Accessibility
+- Use semantic HTML elements
+- Implement proper ARIA labels
+- Ensure keyboard navigation works
+- Use proper color contrast ratios
+- Test with screen readers
+
+### Testing
+- Write unit tests for components
+- Write integration tests for user flows
+- Use Playwright for E2E testing
+- Test accessibility features
+- Maintain good test coverage
+
+## Common Patterns
+
+### Form Handling
+```typescript
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object({
+  // validation schema
+});
+
+export default function ContactForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
+  
+  // form implementation
+}
+```
+
+### Redux Slice Pattern
+```typescript
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface StateType {
+  // state interface
+}
+
+const initialState: StateType = {
+  // initial state
+};
+
+const slice = createSlice({
+  name: 'sliceName',
+  initialState,
+  reducers: {
+    // reducers
+  }
+});
+```
+
+### Custom Hook Pattern
+```typescript
+import { useState, useEffect } from 'react';
+
+export function useCustomHook() {
+  const [state, setState] = useState();
+  
+  useEffect(() => {
+    // effect logic
+  }, []);
+  
+  return { state, setState };
+}
+```
+
+## Business Context
+- This is a professional staffing/recruitment website
+- Target audience: HR professionals, hiring managers, job seekers
+- Focus on trust, professionalism, and expertise
+- Emphasize local market knowledge and personalized service
+- Include case studies and testimonials
+- Clear call-to-actions for contact and consultation
+
+## Content Guidelines
+- Use professional, trustworthy tone
+- Highlight local expertise and market knowledge
+- Include specific industry examples
+- Emphasize personalized service approach
+- Use clear, benefit-focused messaging
+- Include social proof (testimonials, case studies)
+
+## SEO Considerations
+- Use proper meta tags and descriptions
+- Implement structured data where appropriate
+- Use semantic HTML for better crawling
+- Optimize for local search terms
+- Include relevant keywords naturally
+- Ensure fast loading times
+
+## Security Guidelines
+- Validate all user inputs
+- Sanitize data before rendering
+- Use proper authentication patterns
+- Implement CSRF protection
+- Follow OWASP guidelines
+- Regular security audits
+
+## Deployment & DevOps
+- Use environment variables for configuration
+- Implement proper CI/CD pipelines
+- Use staging environments for testing
+- Monitor performance and errors
+- Implement proper logging
+- Regular backups and disaster recovery
+
+## Maintenance
+- Keep dependencies updated
+- Regular code reviews
+- Performance monitoring
+- Security updates
+- Documentation updates
+- User feedback integration
+
+Remember: Always prioritize user experience, performance, and maintainability. Write code that is easy to understand, test, and modify.
+
+
