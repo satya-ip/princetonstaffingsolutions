@@ -267,12 +267,6 @@ const HeroSection: React.FC = () => {
                               background: 'rgba(255, 255, 255, 0.15)',
                               boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
                               transform: 'translateY(-8px)',
-                              '& .service-image': {
-                                transform: 'scale(1.1)',
-                              },
-                              '& .service-overlay': {
-                                background: 'linear-gradient(135deg, rgba(100, 181, 246, 0.9), rgba(244, 143, 177, 0.9))',
-                              },
                             },
                           }}
                         >
@@ -291,18 +285,16 @@ const HeroSection: React.FC = () => {
                               src={service.image}
                               alt={service.title}
                               fill
-                              sizes="(max-width: 768px) 100vw, 300px"
+                              sizes="(max-width: 768px) 100vw, 400px"
                               style={{ 
                                 objectFit: 'cover',
-                                transition: 'transform 0.3s ease',
                               }}
-                              className="service-image"
+                              priority={index < 2}
                             />
                           </Box>
                           
                           {/* Gradient Overlay */}
                           <Box
-                            className="service-overlay"
                             sx={{
                               position: 'absolute',
                               top: 0,
@@ -311,7 +303,6 @@ const HeroSection: React.FC = () => {
                               bottom: 0,
                               background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
                               zIndex: 2,
-                              transition: 'background 0.3s ease',
                             }}
                           />
                           
