@@ -243,36 +243,56 @@ const ServicesSection: React.FC = () => {
                     }}
                   >
                     <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                      <Box sx={{ mb: 3 }}>{service.icon}</Box>
+                      <Box sx={{ mb: { xs: 2, md: 3 } }}>{service.icon}</Box>
                       
-                      <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
+                      <Typography 
+                        variant="h5" 
+                        sx={{ 
+                          mb: { xs: 1.5, md: 2 }, 
+                          fontWeight: 600,
+                          fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.5rem' }
+                        }}
+                      >
                         {service.title}
                       </Typography>
                       
                       <Typography
                         variant="body1"
                         color="text.secondary"
-                        sx={{ mb: 3, lineHeight: 1.7, flexGrow: 1, fontSize: '0.95rem' }}
+                        sx={{ 
+                          mb: { xs: 2, md: 3 }, 
+                          lineHeight: 1.7, 
+                          flexGrow: 1, 
+                          fontSize: { xs: '0.875rem', sm: '0.95rem' }
+                        }}
                       >
                         {service.description}
                       </Typography>
 
-                      <Box sx={{ mb: 3 }}>
-                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600, color: 'primary.main' }}>
+                      <Box sx={{ mb: { xs: 2, md: 3 } }}>
+                        <Typography 
+                          variant="subtitle2" 
+                          sx={{ 
+                            mb: 1, 
+                            fontWeight: 600, 
+                            color: 'primary.main',
+                            fontSize: { xs: '0.8rem', sm: '0.875rem' }
+                          }}
+                        >
                           Key Features:
                         </Typography>
                         <List sx={{ p: 0 }}>
                           {service.features.map((feature, idx) => (
-                            <ListItem key={idx} sx={{ px: 0, py: 0.25 }}>
-                              <ListItemIcon sx={{ minWidth: 20 }}>
-                                <CheckCircle sx={{ fontSize: 14, color: 'primary.main' }} />
+                            <ListItem key={idx} sx={{ px: 0, py: { xs: 0.125, sm: 0.25 } }}>
+                              <ListItemIcon sx={{ minWidth: { xs: 16, sm: 20 } }}>
+                                <CheckCircle sx={{ fontSize: { xs: 12, sm: 14 }, color: 'primary.main' }} />
                               </ListItemIcon>
                               <ListItemText
                                 primary={feature}
                                 primaryTypographyProps={{
                                   variant: 'body2',
                                   color: 'text.secondary',
-                                  fontSize: '0.85rem',
+                                  fontSize: { xs: '0.75rem', sm: '0.85rem' },
                                 }}
                               />
                             </ListItem>
@@ -280,22 +300,30 @@ const ServicesSection: React.FC = () => {
                         </List>
                       </Box>
 
-                      <Box sx={{ mb: 3 }}>
-                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600, color: 'secondary.main' }}>
+                      <Box sx={{ mb: { xs: 2, md: 3 } }}>
+                        <Typography 
+                          variant="subtitle2" 
+                          sx={{ 
+                            mb: 1, 
+                            fontWeight: 600, 
+                            color: 'secondary.main',
+                            fontSize: { xs: '0.8rem', sm: '0.875rem' }
+                          }}
+                        >
                           Benefits:
                         </Typography>
                         <List sx={{ p: 0 }}>
                           {service.benefits.map((benefit, idx) => (
-                            <ListItem key={idx} sx={{ px: 0, py: 0.25 }}>
-                              <ListItemIcon sx={{ minWidth: 20 }}>
-                                <CheckCircle sx={{ fontSize: 14, color: 'secondary.main' }} />
+                            <ListItem key={idx} sx={{ px: 0, py: { xs: 0.125, sm: 0.25 } }}>
+                              <ListItemIcon sx={{ minWidth: { xs: 16, sm: 20 } }}>
+                                <CheckCircle sx={{ fontSize: { xs: 12, sm: 14 }, color: 'secondary.main' }} />
                               </ListItemIcon>
                               <ListItemText
                                 primary={benefit}
                                 primaryTypographyProps={{
                                   variant: 'body2',
                                   color: 'text.secondary',
-                                  fontSize: '0.85rem',
+                                  fontSize: { xs: '0.75rem', sm: '0.85rem' },
                                 }}
                               />
                             </ListItem>
@@ -310,8 +338,8 @@ const ServicesSection: React.FC = () => {
                           color: 'white',
                           fontWeight: 600,
                           alignSelf: 'flex-start',
-                          fontSize: '0.8rem',
-                          height: 28,
+                          fontSize: { xs: '0.75rem', sm: '0.8rem' },
+                          height: { xs: 24, sm: 28 },
                         }}
                       />
                     </CardContent>
@@ -323,43 +351,100 @@ const ServicesSection: React.FC = () => {
 
           {/* Additional Services Info */}
           <motion.div variants={itemVariants}>
-            <Box sx={{ mt: 6, mb: 4 }}>
+            <Box sx={{ mt: { xs: 4, md: 6 }, mb: { xs: 3, md: 4 } }}>
               <Grid container spacing={4}>
                 <Grid item xs={12} md={4}>
-                  <Box textAlign="center" sx={{ p: 3 }}>
-                    <Typography variant="h4" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
+                  <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
+                    <Typography 
+                      variant="h4" 
+                      sx={{ 
+                        fontWeight: 700, 
+                        color: 'primary.main', 
+                        mb: 1,
+                        fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' }
+                      }}
+                    >
                       <CounterAnimation end={500} duration={2.5} />+
                     </Typography>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        fontWeight: 600, 
+                        mb: 1,
+                        fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
+                      }}
+                    >
                       Projects Completed
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}
+                    >
                       Successfully delivered across various industries
                     </Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                  <Box textAlign="center" sx={{ p: 3 }}>
-                    <Typography variant="h4" sx={{ fontWeight: 700, color: 'secondary.main', mb: 1 }}>
+                  <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
+                    <Typography 
+                      variant="h4" 
+                      sx={{ 
+                        fontWeight: 700, 
+                        color: 'secondary.main', 
+                        mb: 1,
+                        fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' }
+                      }}
+                    >
                       <CounterAnimation end={99.9} duration={2.5} />%
                     </Typography>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        fontWeight: 600, 
+                        mb: 1,
+                        fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
+                      }}
+                    >
                       Uptime Guarantee
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}
+                    >
                       Reliable infrastructure and monitoring
                     </Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                  <Box textAlign="center" sx={{ p: 3 }}>
-                    <Typography variant="h4" sx={{ fontWeight: 700, color: 'success.main', mb: 1 }}>
+                  <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
+                    <Typography 
+                      variant="h4" 
+                      sx={{ 
+                        fontWeight: 700, 
+                        color: 'success.main', 
+                        mb: 1,
+                        fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' }
+                      }}
+                    >
                       24/7
                     </Typography>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        fontWeight: 600, 
+                        mb: 1,
+                        fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
+                      }}
+                    >
                       Expert Support
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}
+                    >
                       Always available when you need us
                     </Typography>
                   </Box>
@@ -370,8 +455,16 @@ const ServicesSection: React.FC = () => {
 
           {/* Service Process */}
           <motion.div variants={itemVariants}>
-            <Box sx={{ mt: 8, mb: 6 }}>
-              <Typography variant="h4" textAlign="center" sx={{ mb: 6, fontWeight: 600 }}>
+            <Box sx={{ mt: { xs: 6, md: 8 }, mb: { xs: 4, md: 6 } }}>
+              <Typography 
+                variant="h4" 
+                textAlign="center" 
+                sx={{ 
+                  mb: { xs: 4, md: 6 }, 
+                  fontWeight: 600,
+                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.125rem' }
+                }}
+              >
                 Our Service Process
               </Typography>
               <Grid container spacing={4}>
@@ -382,14 +475,37 @@ const ServicesSection: React.FC = () => {
                   { step: '04', title: 'Monitoring & Support', description: 'Ongoing monitoring and support to ensure optimal performance' },
                 ].map((process, idx) => (
                   <Grid item xs={12} sm={6} md={3} key={idx}>
-                    <Box textAlign="center" sx={{ p: 2 }}>
-                      <Typography variant="h3" sx={{ fontWeight: 700, color: 'primary.main', mb: 2, opacity: 0.7 }}>
+                    <Box textAlign="center" sx={{ p: { xs: 1.5, md: 2 } }}>
+                      <Typography 
+                        variant="h3" 
+                        sx={{ 
+                          fontWeight: 700, 
+                          color: 'primary.main', 
+                          mb: 2, 
+                          opacity: 0.7,
+                          fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
+                        }}
+                      >
                         {process.step}
                       </Typography>
-                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
+                      <Typography 
+                        variant="h6" 
+                        sx={{ 
+                          fontWeight: 600, 
+                          mb: 1,
+                          fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
+                        }}
+                      >
                         {process.title}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography 
+                        variant="body2" 
+                        color="text.secondary"
+                        sx={{ 
+                          fontSize: { xs: '0.8rem', sm: '0.875rem' },
+                          lineHeight: { xs: 1.4, sm: 1.5 }
+                        }}
+                      >
                         {process.description}
                       </Typography>
                     </Box>
@@ -403,8 +519,8 @@ const ServicesSection: React.FC = () => {
           <motion.div variants={itemVariants}>
             <Box
               sx={{
-                mt: 8,
-                p: 6,
+                mt: { xs: 6, md: 8 },
+                p: { xs: 4, sm: 5, md: 6 },
                 borderRadius: 4,
                 background: (theme) =>
                   theme.palette.mode === 'dark'
@@ -414,10 +530,24 @@ const ServicesSection: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <Typography variant="h4" sx={{ mb: 2, fontWeight: 600 }}>
+              <Typography 
+                variant="h4" 
+                sx={{ 
+                  mb: 2, 
+                  fontWeight: 600,
+                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.125rem' }
+                }}
+              >
                 Ready to Transform Your Business?
               </Typography>
-              <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  mb: { xs: 3, md: 4 }, 
+                  opacity: 0.9,
+                  fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
+                }}
+              >
                 Let&apos;s discuss how our services can help you achieve your goals.
               </Typography>
               <motion.button
@@ -427,9 +557,9 @@ const ServicesSection: React.FC = () => {
                   background: 'rgba(255, 255, 255, 0.2)',
                   border: '2px solid rgba(255, 255, 255, 0.3)',
                   color: 'white',
-                  padding: '12px 32px',
+                  padding: window.innerWidth < 600 ? '10px 24px' : '12px 32px',
                   borderRadius: '12px',
-                  fontSize: '1.1rem',
+                  fontSize: window.innerWidth < 600 ? '1rem' : '1.1rem',
                   fontWeight: 600,
                   cursor: 'pointer',
                   backdropFilter: 'blur(10px)',
