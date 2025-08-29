@@ -584,20 +584,25 @@ const HeroSection: React.FC = () => {
                 {/* Insights Section */}
                 {homeLabels.expandedContent.insights && (
                   <Box sx={{ mt: 6 }}>
-                   {/* Image Block */}
+                   {/* Main Analytics Image Block */}
                    <Box
                      sx={{
                        position: 'relative',
                        width: '100%',
-                       height: 300,
+                       height: 350,
                        mb: 4,
                        borderRadius: 3,
                        overflow: 'hidden',
-                       boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
+                       boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)',
+                       transition: 'all 0.3s ease',
+                       '&:hover': {
+                         transform: 'translateY(-5px)',
+                         boxShadow: '0 35px 70px rgba(0, 0, 0, 0.3)',
+                       },
                      }}
                    >
                      <Image
-                       src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600"
+                       src={homeLabels.expandedContent.insights.image}
                        alt="Data Analytics Dashboard"
                        fill
                        sizes="(max-width: 768px) 100vw, 1200px"
@@ -614,41 +619,130 @@ const HeroSection: React.FC = () => {
                          bottom: 0,
                          background: (theme) =>
                            theme.palette.mode === 'dark'
-                             ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))'
-                             : 'linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1))',
+                             ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3))'
+                             : 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))',
                          zIndex: 2,
                        }}
                      />
+                     {/* Content Overlay */}
+                     <Box
+                       sx={{
+                         position: 'absolute',
+                         bottom: 0,
+                         left: 0,
+                         right: 0,
+                         p: 4,
+                         zIndex: 3,
+                         background: 'linear-gradient(transparent, rgba(0, 0, 0, 0.8))',
+                       }}
+                     >
+                       <Typography
+                         variant="h6"
+                         sx={{
+                           color: 'white',
+                           fontWeight: 600,
+                           mb: 1,
+                           textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                         }}
+                       >
+                         Advanced Analytics Platform
+                       </Typography>
+                       <Typography
+                         variant="body2"
+                         sx={{
+                           color: 'rgba(255, 255, 255, 0.9)',
+                           textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                         }}
+                       >
+                         Real-time data visualization and business intelligence
+                       </Typography>
+                     </Box>
                    </Box>
 
                     <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
                       {homeLabels.expandedContent.insights.title}
                     </Typography>
+                   
+                   {homeLabels.expandedContent.insights.subtitle && (
+                     <Typography variant="h6" sx={{ mb: 3, opacity: 0.8, fontWeight: 400 }}>
+                       {homeLabels.expandedContent.insights.subtitle}
+                     </Typography>
+                   )}
+                   
                     <Typography variant="body1" sx={{ mb: 4, opacity: 0.9 }}>
                       {homeLabels.expandedContent.insights.description}
                     </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+                   
+                   {/* Enhanced Feature Chips */}
+                   <Grid container spacing={2} sx={{ mb: 4 }}>
                       {homeLabels.expandedContent.insights.features.map((feature, index) => (
-                        <Chip
-                          key={index}
-                          label={feature.label}
-                          sx={{
-                            background: (theme) =>
-                              theme.palette.mode === 'dark'
-                                ? `${feature.color}CC` // Add transparency in dark mode
-                                : feature.color,
-                            color: 'white',
-                            fontWeight: 600,
-                            px: 2,
-                            py: 1,
-                            border: (theme) =>
-                              theme.palette.mode === 'dark'
-                                ? `1px solid ${feature.color}66`
-                                : 'none',
-                          }}
-                        />
+                       <Grid item xs={12} sm={6} md={3} key={index}>
+                         <motion.div
+                           whileHover={{ y: -5, scale: 1.02 }}
+                           transition={{ duration: 0.3 }}
+                         >
+                           <Box
+                             sx={{
+                               p: 3,
+                               borderRadius: 3,
+                               background: (theme) =>
+                                 theme.palette.mode === 'dark'
+                                   ? 'rgba(255, 255, 255, 0.05)'
+                                   : 'rgba(255, 255, 255, 0.1)',
+                               backdropFilter: 'blur(10px)',
+                               border: (theme) =>
+                                 theme.palette.mode === 'dark'
+                                   ? `1px solid ${feature.color}40`
+                                   : `1px solid ${feature.color}30`,
+                               textAlign: 'center',
+                               transition: 'all 0.3s ease',
+                               '&:hover': {
+                                 background: (theme) =>
+                                   theme.palette.mode === 'dark'
+                                     ? `${feature.color}15`
+                                     : `${feature.color}20`,
+                                 borderColor: feature.color,
+                                 boxShadow: `0 10px 30px ${feature.color}30`,
+                               },
+                             }}
+                           >
+                             <Box
+                               sx={{
+                                 width: 12,
+                                 height: 12,
+                                 borderRadius: '50%',
+                                 background: feature.color,
+                                 mx: 'auto',
+                                 mb: 2,
+                                 boxShadow: `0 0 20px ${feature.color}60`,
+                               }}
+                             />
+                             <Typography
+                               variant="subtitle1"
+                               sx={{
+                                 fontWeight: 600,
+                                 mb: 1,
+                                 color: feature.color,
+                               }}
+                             >
+                               {feature.label}
+                             </Typography>
+                             {feature.description && (
+                               <Typography
+                                 variant="body2"
+                                 sx={{
+                                   opacity: 0.8,
+                                   fontSize: '0.85rem',
+                                 }}
+                               >
+                                 {feature.description}
+                               </Typography>
+                             )}
+                           </Box>
+                         </motion.div>
+                       </Grid>
                       ))}
-                    </Box>
+                   </Grid>
                   </Box>
                 )}
               </Box>
