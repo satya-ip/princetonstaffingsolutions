@@ -66,14 +66,11 @@
     ],
     "insights": {
       "title": "Data-Driven Insights & Growth",
-      "description": "Transform raw data into actionable business intelligence with our comprehensive analytics platform. Get real-time visibility into performance metrics, predictive insights, and automated reporting that drives strategic decision-making.",
-      "subtitle": "Unlock the power of your data with AI-driven analytics and intelligent monitoring systems that provide 360-degree visibility into your business operations.",
-      "image": "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600",
+      "description": "Our advanced analytics and monitoring systems provide real-time insights into your infrastructure performance, security posture, and business metrics.",
       "features": [
-        { "label": "Real-time Monitoring", "color": "#4caf50", "description": "24/7 system monitoring with instant alerts" },
-        { "label": "Predictive Analytics", "color": "#2196f3", "description": "AI-powered forecasting and trend analysis" },
-        { "label": "Performance Metrics", "color": "#ff9800", "description": "Comprehensive KPI tracking and reporting" },
-        { "label": "Business Intelligence", "color": "#9c27b0", "description": "Strategic insights for data-driven decisions" }
+        { "label": "Real-time Monitoring", "color": "#4caf50" },
+        { "label": "Predictive Analytics", "color": "#2196f3" },
+        { "label": "Performance Metrics", "color": "#ff9800" }
       ]
     }
   }
