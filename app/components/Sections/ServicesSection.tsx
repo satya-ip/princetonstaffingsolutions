@@ -72,6 +72,11 @@ const ServicesSection: React.FC = () => {
     }
   }, [controls, inView]);
 
+  // Initialize animation on mount for immediate visibility
+  useEffect(() => {
+    controls.start('visible');
+  }, [controls]);
+
   const services = [
     {
       icon: <Cloud sx={{ fontSize: 50, color: 'primary.main' }} />,
@@ -152,7 +157,6 @@ const ServicesSection: React.FC = () => {
   return (
     <Box
       id="services"
-      ref={ref}
       sx={{
         py: 10,
         background: (theme) =>
@@ -164,8 +168,9 @@ const ServicesSection: React.FC = () => {
       <Container maxWidth="lg">
         <motion.div
           initial="hidden"
-          animate={controls}
+          animate="visible"
           variants={containerVariants}
+          ref={ref}
         >
           {/* Section Header */}
           <motion.div variants={itemVariants}>
@@ -223,6 +228,7 @@ const ServicesSection: React.FC = () => {
                       transition: 'all 0.3s ease',
                       position: 'relative',
                       overflow: 'hidden',
+                      minHeight: { xs: 'auto', sm: '500px', md: '550px' },
                       '&:hover': {
                         boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)',
                         '&::before': {
@@ -242,7 +248,12 @@ const ServicesSection: React.FC = () => {
                       },
                     }}
                   >
-                    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    <CardContent sx={{ 
+                      p: { xs: 2, sm: 3, md: 4 }, 
+                      height: '100%', 
+                      display: 'flex', 
+                      flexDirection: 'column' 
+                    }}>
                       <Box sx={{ mb: { xs: 2, md: 3 } }}>{service.icon}</Box>
                       
                       <Typography 
@@ -351,7 +362,23 @@ const ServicesSection: React.FC = () => {
 
           {/* Additional Services Info */}
           <motion.div variants={itemVariants}>
-            <Box sx={{ mt: { xs: 4, md: 6 }, mb: { xs: 3, md: 4 } }}>
+            <Box sx={{ 
+              mt: { xs: 6, md: 8 }, 
+              mb: { xs: 4, md: 6 },
+              background: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.02)'
+                  : 'rgba(255, 255, 255, 0.5)',
+              borderRadius: 3,
+              p: { xs: 3, md: 4 },
+              backdropFilter: 'blur(10px)',
+              border: (theme) =>
+                `1px solid ${
+                  theme.palette.mode === 'dark'
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)'
+                }`,
+            }}>
               <Grid container spacing={4}>
                 <Grid item xs={12} md={4}>
                   <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
@@ -455,7 +482,23 @@ const ServicesSection: React.FC = () => {
 
           {/* Service Process */}
           <motion.div variants={itemVariants}>
-            <Box sx={{ mt: { xs: 6, md: 8 }, mb: { xs: 4, md: 6 } }}>
+            <Box sx={{ 
+              mt: { xs: 8, md: 10 }, 
+              mb: { xs: 6, md: 8 },
+              background: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.02)'
+                  : 'rgba(255, 255, 255, 0.5)',
+              borderRadius: 3,
+              p: { xs: 3, md: 5 },
+              backdropFilter: 'blur(10px)',
+              border: (theme) =>
+                `1px solid ${
+                  theme.palette.mode === 'dark'
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)'
+                }`,
+            }}>
               <Typography 
                 variant="h4" 
                 textAlign="center" 
@@ -475,7 +518,12 @@ const ServicesSection: React.FC = () => {
                   { step: '04', title: 'Monitoring & Support', description: 'Ongoing monitoring and support to ensure optimal performance' },
                 ].map((process, idx) => (
                   <Grid item xs={12} sm={6} md={3} key={idx}>
-                    <Box textAlign="center" sx={{ p: { xs: 1.5, md: 2 } }}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: idx * 0.1 }}
+                    >
+                      <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
                       <Typography 
                         variant="h3" 
                         sx={{ 
@@ -508,7 +556,8 @@ const ServicesSection: React.FC = () => {
                       >
                         {process.description}
                       </Typography>
-                    </Box>
+                      </Box>
+                    </motion.div>
                   </Grid>
                 ))}
               </Grid>
@@ -519,7 +568,7 @@ const ServicesSection: React.FC = () => {
           <motion.div variants={itemVariants}>
             <Box
               sx={{
-                mt: { xs: 6, md: 8 },
+                mt: { xs: 8, md: 10 },
                 p: { xs: 4, sm: 5, md: 6 },
                 borderRadius: 4,
                 background: (theme) =>
@@ -550,35 +599,38 @@ const ServicesSection: React.FC = () => {
               >
                 Let&apos;s discuss how our services can help you achieve your goals.
               </Typography>
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  border: '2px solid rgba(255, 255, 255, 0.3)',
-                  color: 'white',
-                  padding: window.innerWidth < 600 ? '10px 24px' : '12px 32px',
-                  borderRadius: '12px',
-                  fontSize: window.innerWidth < 600 ? '1rem' : '1.1rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  backdropFilter: 'blur(10px)',
-                  transition: 'all 0.3s ease',
-                }}
-                onClick={() => {
-                  router.push('/contact');
-                }}
-                onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.background = 'rgba(255, 255, 255, 0.3)';
-                  (e.target as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.5)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.background = 'rgba(255, 255, 255, 0.2)';
-                  (e.target as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                }}
               >
-                Get Free Consultation
-              </motion.button>
+                <button
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.2)',
+                    border: '2px solid rgba(255, 255, 255, 0.3)',
+                    color: 'white',
+                    padding: '12px 32px',
+                    borderRadius: '12px',
+                    fontSize: '1.1rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    backdropFilter: 'blur(10px)',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onClick={() => {
+                    router.push('/contact');
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.target as HTMLElement).style.background = 'rgba(255, 255, 255, 0.3)';
+                    (e.target as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.target as HTMLElement).style.background = 'rgba(255, 255, 255, 0.2)';
+                    (e.target as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  }}
+                >
+                  Get Free Consultation
+                </button>
+              </motion.div>
             </Box>
           </motion.div>
         </motion.div>
