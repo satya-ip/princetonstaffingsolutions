@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import NextImage from 'next/image';
 import {
   Box,
   Container,
@@ -301,7 +302,7 @@ const CaseStudiesSection: React.FC = () => {
             
             <DialogContent>
               <Box sx={{ mb: 3, position: 'relative', width: '100%', height: 300 }}>
-                <Image
+                <NextImage
                   src={selectedStudy.image}
                   alt={selectedStudy.title}
                   fill
