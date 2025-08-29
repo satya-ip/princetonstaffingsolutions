@@ -501,6 +501,7 @@ const HeroSection: React.FC = () => {
                 </Box>
               </motion.div>
             </Box>
+          </motion.div>
 
           {/* Expanded Content Section */}
           {homeLabels.expandedContent && (
