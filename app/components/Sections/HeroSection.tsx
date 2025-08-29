@@ -22,7 +22,7 @@ import {
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { homeLabels } from '../../labels';
+import { homeLabels } from '../../labels/index';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
 
 const HeroSection: React.FC = () => {

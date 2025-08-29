@@ -12,7 +12,7 @@ export {
   servicesLabels,
   caseStudiesLabels,
   contactLabels,
-  commonLabels
+  commonLabels,
 };
 
 // Type definitions for better TypeScript support

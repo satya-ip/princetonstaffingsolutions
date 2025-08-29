@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { caseStudiesLabels } from '../labels/index';
 
 interface CaseStudy {
   id: string;
@@ -36,42 +37,10 @@ export const useCaseStudies = () => {
   return context;
 };
 
-// Mock data for demonstration
-const mockCaseStudies: CaseStudy[] = [
-  {
-    id: '1',
-    title: 'Enterprise Cloud Migration',
-    description: 'Seamlessly migrated a Fortune 500 company to cloud infrastructure, reducing costs by 40% and improving performance.',
-    image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800',
-    technologies: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-    category: 'Cloud Infrastructure',
-    client: 'Global Manufacturing Corp',
-    duration: '8 months',
-    results: ['40% cost reduction', '99.9% uptime achieved', '3x faster deployment cycles'],
-  },
-  {
-    id: '2',
-    title: 'AI-Powered Analytics Platform',
-    description: 'Developed a cutting-edge analytics platform using machine learning to provide real-time business insights.',
-    image: 'https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?auto=compress&cs=tinysrgb&w=800',
-    technologies: ['Python', 'TensorFlow', 'React', 'PostgreSQL'],
-    category: 'Artificial Intelligence',
-    client: 'Tech Startup Inc',
-    duration: '6 months',
-    results: ['250% increase in data processing speed', 'Real-time insights', 'Predictive accuracy of 94%'],
-  },
-  {
-    id: '3',
-    title: 'Digital Transformation Suite',
-    description: 'Complete digital overhaul including mobile app, web platform, and backend systems integration.',
-    image: 'https://images.pexels.com/photos/3182774/pexels-photo-3182774.jpeg?auto=compress&cs=tinysrgb&w=800',
-    technologies: ['React Native', 'Node.js', 'MongoDB', 'GraphQL'],
-    category: 'Digital Transformation',
-    client: 'Retail Chain Ltd',
-    duration: '12 months',
-    results: ['300% increase in mobile engagement', '50% faster checkout process', '99.5% customer satisfaction'],
-  },
-];
+// Use data from labels instead of hardcoded mock data
+const mockCaseStudies: CaseStudy[] = caseStudiesLabels.studies.map(study => ({
+  ...study,
+}));
 
 interface CaseStudiesProviderProps {
   children: React.ReactNode;

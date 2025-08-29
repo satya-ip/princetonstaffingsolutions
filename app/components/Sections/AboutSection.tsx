@@ -20,7 +20,7 @@ import {
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { aboutLabels } from '../../labels';
+import { aboutLabels } from '../../labels/index';
 
 const CounterAnimation: React.FC<{ end: number; duration: number }> = ({ end, duration }) => {
   const [count, setCount] = React.useState(0);

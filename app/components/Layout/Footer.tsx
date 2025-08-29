@@ -20,7 +20,7 @@ import {
   GitHub,
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
-import { commonLabels } from '../../labels';
+import { commonLabels } from '../../labels/index';
 
 const Footer: React.FC = () => {
   const socialLinks = [

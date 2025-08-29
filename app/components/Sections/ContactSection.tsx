@@ -32,7 +32,7 @@ import { useInView } from 'react-intersection-observer';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { contactLabels } from '../../labels';
+import { contactLabels } from '../../labels/index';
 
 const schema = yup.object({
   firstName: yup.string().required(contactLabels.form.fields.firstName.required),
