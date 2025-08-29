@@ -32,6 +32,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useCaseStudies } from '../../contexts/CaseStudiesContext';
 import { caseStudiesLabels } from '../../labels';
+import { caseStudiesLabels } from '../../labels';
 
 const CaseStudiesSection: React.FC = () => {
   const { 
