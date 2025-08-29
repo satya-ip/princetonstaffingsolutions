@@ -215,15 +215,9 @@ const HeroSection: React.FC = () => {
                           py: 1.5,
                           fontSize: '1.1rem',
                           fontWeight: 600,
-                          background: (theme) =>
-                            theme.palette.mode === 'dark'
-                              ? 'linear-gradient(45deg, #64b5f6, #42a5f5)'
-                              : 'linear-gradient(45deg, #ff6b6b, #ee5a24)',
+                          background: 'linear-gradient(45deg, #1976d2, #42a5f5)',
                           '&:hover': {
-                            background: (theme) =>
-                              theme.palette.mode === 'dark'
-                                ? 'linear-gradient(45deg, #42a5f5, #1e88e5)'
-                                : 'linear-gradient(45deg, #ff5252, #d63031)',
+                            background: 'linear-gradient(45deg, #1565c0, #1e88e5)',
                             transform: 'translateY(-2px)',
                             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
                           },
@@ -404,13 +398,12 @@ const HeroSection: React.FC = () => {
                                 label={service.metrics}
                                 size="small"
                                 sx={{
-                                  background: 'linear-gradient(45deg, rgba(100, 181, 246, 0.9), rgba(244, 143, 177, 0.9))',
+                                  background: 'transparent',
                                   color: 'white',
                                   fontWeight: 700,
                                   fontSize: '0.85rem',
                                   mt: 'auto',
-                                  backdropFilter: 'blur(10px)',
-                                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                                  border: '2px solid rgba(255, 255, 255, 0.8)',
                                   boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
                                 }}
                               />
