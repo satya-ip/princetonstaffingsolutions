@@ -44,25 +44,25 @@
       {
         "name": "Sarah Johnson",
         "role": "Chief Technology Officer",
-        "image": "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=300",
+        "image": "/images/sarah-johnson.jpg",
         "skills": ["Cloud Architecture", "DevOps", "AI/ML"]
       },
       {
         "name": "Michael Chen",
         "role": "Lead Security Engineer",
-        "image": "https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300",
+        "image": "/images/michael-chen.jpg",
         "skills": ["Cybersecurity", "Penetration Testing", "Compliance"]
       },
       {
         "name": "Emma Rodriguez",
         "role": "Senior Full Stack Developer",
-        "image": "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=300",
+        "image": "/images/emma-rodriguez.jpg",
         "skills": ["React", "Node.js", "Mobile Development"]
       },
       {
         "name": "David Kim",
         "role": "Data Science Director",
-        "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300",
+        "image": "/images/david-kim.jpg",
         "skills": ["Big Data", "Analytics", "Machine Learning"]
       }
     ]
