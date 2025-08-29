@@ -44,25 +44,25 @@
       {
         "name": "Sarah Johnson",
         "role": "Chief Technology Officer",
-        "image": "/images/sarah-johnson.jpg",
+        "image": "/images/about/sarah-johnson.jpg",
         "skills": ["Cloud Architecture", "DevOps", "AI/ML"]
       },
       {
         "name": "Michael Chen",
         "role": "Lead Security Engineer",
-        "image": "/images/michael-chen.jpg",
+        "image": "/images/about/michael-chen.jpg",
         "skills": ["Cybersecurity", "Penetration Testing", "Compliance"]
       },
       {
         "name": "Emma Rodriguez",
         "role": "Senior Full Stack Developer",
-        "image": "/images/emma-rodriguez.jpg",
+        "image": "/images/about/emma-rodriguez.jpg",
         "skills": ["React", "Node.js", "Mobile Development"]
       },
       {
         "name": "David Kim",
         "role": "Data Science Director",
-        "image": "/images/david-kim.jpg",
+        "image": "/images/about/david-kim.jpg",
         "skills": ["Big Data", "Analytics", "Machine Learning"]
       }
     ]
