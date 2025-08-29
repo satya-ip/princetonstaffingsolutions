@@ -41,21 +41,25 @@
     "sections": [
       {
         "title": "AI-Powered Innovation",
+        "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400",
         "description": "We integrate artificial intelligence and automation to boost efficiency and productivity. Gartner reports AI automation can cut operational costs by up to 30% by 2025, and organizations using AI-driven solutions often see up to 40% higher productivity.",
         "note": "TechCorp's AI agents handle routine tasks and data analysis, enabling your team to focus on strategic initiatives and innovation."
       },
       {
         "title": "Scalable Cloud Architecture",
+        "image": "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400",
         "description": "Our cloud solutions provide on-demand computing resources that grow with your business. Cloud platforms offer unprecedented scalability, flexibility and cost-effectiveness, eliminating the need for expensive hardware management.",
         "note": "TechCorp builds multi-cloud and hybrid architectures so you pay only for what you use and can adapt instantly to changing needs."
       },
       {
         "title": "24/7 Proactive Support",
+        "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
         "description": "We offer round-the-clock monitoring and managed services to maximize uptime. Continuous oversight and automated alerts ensure potential issues are detected early, minimizing downtime and disruptions.",
         "note": "Whether it's a security alert or a network hiccup, our team is ready at any hour to resolve issues quickly, protecting your revenue and reputation."
       },
       {
         "title": "Comprehensive Security & Compliance",
+        "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=400",
         "description": "TechCorp embeds security into every solution. We use advanced threat detection and regular security updates to protect against cyberattacks and data breaches.",
         "note": "With TechCorp, you gain standard industry-compliant cybersecurity and constant vigilance so your business stays safe and trusted."
       }

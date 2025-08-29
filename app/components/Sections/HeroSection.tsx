@@ -430,34 +430,110 @@ const HeroSection: React.FC = () => {
                 <Grid container spacing={4}>
                   {homeLabels.expandedContent.sections.map((section, index) => (
                     <Grid item xs={12} md={6} key={index}>
-                      <Card
-                        sx={{
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          backdropFilter: 'blur(20px)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          color: 'white',
-                          height: '100%',
-                          p: 3,
+                      <motion.div
+                        whileHover={{ 
+                          y: -8, 
+                          scale: 1.02,
+                          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)' 
                         }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
-                          {section.title}
-                        </Typography>
-                        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.7 }}>
-                          {section.description}
-                        </Typography>
-                        <Typography
-                          variant="body2"
+                        <Card
                           sx={{
-                            opacity: 0.8,
-                            fontStyle: 'italic',
-                            pl: 2,
-                            borderLeft: '3px solid rgba(255, 255, 255, 0.3)',
+                            background: 'rgba(255, 255, 255, 0.1)',
+                            backdropFilter: 'blur(20px)',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            color: 'white',
+                            height: '100%',
+                            p: 0,
+                            overflow: 'hidden',
+                            position: 'relative',
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                              '& .section-image': {
+                                transform: 'scale(1.1)',
+                              },
+                              '& .section-overlay': {
+                                background: 'linear-gradient(135deg, rgba(100, 181, 246, 0.9), rgba(244, 143, 177, 0.9))',
+                              },
+                            },
                           }}
                         >
-                          {section.note}
-                        </Typography>
-                      </Card>
+                          {/* Background Image */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              height: '200px',
+                              zIndex: 1,
+                            }}
+                          >
+                            <Image
+                              src={section.image}
+                              alt={section.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 400px"
+                              style={{ 
+                                objectFit: 'cover',
+                                transition: 'transform 0.3s ease',
+                              }}
+                              className="section-image"
+                            />
+                          </Box>
+                          
+                          {/* Gradient Overlay */}
+                          <Box
+                            className="section-overlay"
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              height: '200px',
+                              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                              zIndex: 2,
+                              transition: 'background 0.3s ease',
+                            }}
+                          />
+                          
+                          <CardContent sx={{ 
+                            p: 3,
+                            position: 'relative',
+                            zIndex: 3,
+                            pt: '220px', // Space for image
+                            minHeight: '500px',
+                          }}>
+                            <Typography variant="h5" sx={{ 
+                              mb: 2, 
+                              fontWeight: 600,
+                              textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                            }}>
+                              {section.title}
+                            </Typography>
+                            <Typography variant="body1" sx={{ 
+                              mb: 2, 
+                              lineHeight: 1.7,
+                              textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                            }}>
+                              {section.description}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                        sx={{
+                                opacity: 0.9,
+                                fontStyle: 'italic',
+                                pl: 2,
+                                borderLeft: '3px solid rgba(255, 255, 255, 0.3)',
+                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                        }}
+                            >
+                              {section.note}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
                     </Grid>
                   ))}
                 </Grid>
