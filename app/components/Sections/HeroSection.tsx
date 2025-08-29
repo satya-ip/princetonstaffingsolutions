@@ -451,7 +451,7 @@ const HeroSection: React.FC = () => {
                             transition: 'all 0.3s ease',
                             '&:hover': {
                               '& .section-image': {
-                                transform: 'scale(1.1)',
+                               transform: 'scale(1)',
                               },
                             },
                           }}
@@ -474,7 +474,6 @@ const HeroSection: React.FC = () => {
                               sizes="(max-width: 768px) 100vw, 400px"
                               style={{ 
                                 objectFit: 'cover',
-                                transition: 'transform 0.3s ease',
                               }}
                               className="section-image"
                             />
