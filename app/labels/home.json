@@ -13,22 +13,26 @@
     {
       "title": "Cloud Infrastructure",
       "description": "Scalable cloud solutions for modern enterprises",
-      "metrics": "99.9% Uptime"
+      "metrics": "99.9% Uptime",
+      "image": "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
       "title": "Cybersecurity",
       "description": "Advanced security protocols and monitoring",
-      "metrics": "Zero Breaches"
+      "metrics": "Zero Breaches",
+      "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
       "title": "Performance Optimization",
       "description": "Lightning-fast applications and systems",
-      "metrics": "3x Faster"
+      "metrics": "3x Faster",
+      "image": "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
       "title": "Digital Growth",
       "description": "Strategic technology consulting",
-      "metrics": "250% ROI"
+      "metrics": "250% ROI",
+      "image": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400"
     }
   ],
   "expandedContent": {

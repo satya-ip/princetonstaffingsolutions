@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
   Box,
   Container,
@@ -246,51 +247,138 @@ const HeroSection: React.FC = () => {
                       <motion.div
                         whileHover={{ y: -10, scale: 1.02 }}
                         transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                       >
                         <Card
                           sx={{
-                            height: 240,
+                            height: 280,
                             background: 'rgba(255, 255, 255, 0.1)',
                             backdropFilter: 'blur(20px)',
                             border: '1px solid rgba(255, 255, 255, 0.2)',
                             color: 'white',
                             cursor: 'pointer',
                             transition: 'all 0.3s ease',
+                            position: 'relative',
+                            overflow: 'hidden',
                             '&:hover': {
                               background: 'rgba(255, 255, 255, 0.15)',
-                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
+                              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
+                              transform: 'translateY(-8px)',
+                              '& .service-image': {
+                                transform: 'scale(1.1)',
+                              },
+                              '& .service-overlay': {
+                                background: 'linear-gradient(135deg, rgba(100, 181, 246, 0.9), rgba(244, 143, 177, 0.9))',
+                              },
                             },
                           }}
                         >
+                          {/* Background Image */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              zIndex: 1,
+                            }}
+                          >
+                            <Image
+                              src={service.image}
+                              alt={service.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 300px"
+                              style={{ 
+                                objectFit: 'cover',
+                                transition: 'transform 0.3s ease',
+                              }}
+                              className="service-image"
+                            />
+                          </Box>
+                          
+                          {/* Gradient Overlay */}
+                          <Box
+                            className="service-overlay"
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                              zIndex: 2,
+                              transition: 'background 0.3s ease',
+                            }}
+                          />
+                          
                           <CardContent sx={{ 
-                            p: 3, 
+                            p: 3,
+                            position: 'relative',
+                            zIndex: 3,
                             textAlign: 'center', 
                             height: '100%', 
                             display: 'flex', 
                             flexDirection: 'column', 
                             justifyContent: 'space-between',
-                            minHeight: 240
+                            minHeight: 280
                           }}>
                             <Box>
-                              <Box sx={{ mb: 2 }}>{serviceIcons[index]}</Box>
-                              <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, fontSize: '1.1rem', minHeight: '1.5em' }}>
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                              >
+                                <Box sx={{ 
+                                  mb: 2,
+                                  '& svg': {
+                                    filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
+                                  }
+                                }}>{serviceIcons[index]}</Box>
+                              </motion.div>
+                              <Typography variant="h6" sx={{ 
+                                mb: 1, 
+                                fontWeight: 700, 
+                                fontSize: '1.2rem', 
+                                minHeight: '1.5em',
+                                textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                              }}>
                                 {service.title}
                               </Typography>
-                              <Typography variant="body2" sx={{ mb: 2, opacity: 0.8, fontSize: '0.9rem', minHeight: '3em', lineHeight: 1.4 }}>
+                              <Typography variant="body2" sx={{ 
+                                mb: 2, 
+                                opacity: 0.95, 
+                                fontSize: '0.9rem', 
+                                minHeight: '3em', 
+                                lineHeight: 1.5,
+                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                                fontWeight: 500,
+                              }}>
                                 {service.description}
                               </Typography>
                             </Box>
-                            <Chip
-                              label={service.metrics}
-                              size="small"
-                              sx={{
-                                background: 'rgba(100, 181, 246, 0.3)',
-                                color: '#64b5f6',
-                                fontWeight: 600,
-                                fontSize: '0.8rem',
-                                mt: 'auto'
-                              }}
-                            />
+                            <motion.div
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <Chip
+                                label={service.metrics}
+                                size="small"
+                                sx={{
+                                  background: 'linear-gradient(45deg, rgba(100, 181, 246, 0.9), rgba(244, 143, 177, 0.9))',
+                                  color: 'white',
+                                  fontWeight: 700,
+                                  fontSize: '0.85rem',
+                                  mt: 'auto',
+                                  backdropFilter: 'blur(10px)',
+                                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                                }}
+                              />
+                            </motion.div>
                           </CardContent>
                         </Card>
                       </motion.div>
