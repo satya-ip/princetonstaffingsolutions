@@ -11,7 +11,6 @@ import {
   Card,
   CardContent,
   Chip,
-  LinearProgress,
 } from '@mui/material';
 import {
   PlayArrow,
@@ -24,41 +23,10 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { homeLabels } from '../../labels';
 
-const CounterAnimation: React.FC<{ end: number; duration: number }> = ({ end, duration }) => {
-  const [count, setCount] = React.useState(0);
-  const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: true });
-
-  React.useEffect(() => {
-    if (inView) {
-      let startTime: number;
-      const animate = (currentTime: number) => {
-        if (!startTime) startTime = currentTime;
-        const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
-        
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const currentCount = Math.floor(easeOutQuart * end);
-        
-        setCount(currentCount);
-        
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          setCount(end);
-        }
-      };
-      
-      requestAnimationFrame(animate);
-    }
-  }, [inView, end, duration]);
-
-  return <span ref={ref}>{count}</span>;
-};
-
 const HeroSection: React.FC = () => {
   const router = useRouter();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2 });
-  const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
   useEffect(() => {
     if (inView) {
@@ -71,10 +39,10 @@ const HeroSection: React.FC = () => {
   }, [controls]);
 
   const serviceIcons = [
-    <Cloud sx={{ fontSize: 40, color: 'primary.main' }} />,
-    <Security sx={{ fontSize: 40, color: 'secondary.main' }} />,
-    <Speed sx={{ fontSize: 40, color: 'success.main' }} />,
-    <TrendingUp sx={{ fontSize: 40, color: 'warning.main' }} />,
+    <Cloud sx={{ fontSize: 40, color: '#64b5f6' }} />,
+    <Security sx={{ fontSize: 40, color: '#f48fb1' }} />,
+    <Speed sx={{ fontSize: 40, color: '#81c784' }} />,
+    <TrendingUp sx={{ fontSize: 40, color: '#ffb74d' }} />,
   ];
 
   const containerVariants = {
@@ -102,7 +70,6 @@ const HeroSection: React.FC = () => {
   };
 
   const handleWatchDemo = () => {
-    // Scroll to services section or implement demo functionality
     const servicesSection = document.getElementById('services-preview');
     if (servicesSection) {
       servicesSection.scrollIntoView({ behavior: 'smooth' });
@@ -114,10 +81,7 @@ const HeroSection: React.FC = () => {
       ref={ref}
       sx={{
         minHeight: '100vh',
-        background: (theme) =>
-          theme.palette.mode === 'dark'
-            ? 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)'
-            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
         pt: 10,
         pb: 8,
@@ -144,7 +108,7 @@ const HeroSection: React.FC = () => {
           animate={controls}
           variants={containerVariants}
         >
-          {/* Hero Content */}
+          {/* Main Hero Section - Two Column Layout */}
           <Grid container spacing={6} alignItems="center" sx={{ mb: 8 }}>
             {/* Left Column - Hero Text */}
             <Grid item xs={12} lg={6}>
@@ -181,7 +145,7 @@ const HeroSection: React.FC = () => {
                       sx={{
                         mb: 2,
                         fontWeight: 700,
-                        fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
+                        fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
                         lineHeight: 1.1,
                       }}
                     >
@@ -235,11 +199,9 @@ const HeroSection: React.FC = () => {
                           py: 1.5,
                           fontSize: '1.1rem',
                           fontWeight: 600,
-                          background: 'rgba(255, 255, 255, 0.2)',
-                          backdropFilter: 'blur(10px)',
-                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          background: 'linear-gradient(45deg, #ff6b6b, #ee5a24)',
                           '&:hover': {
-                            background: 'rgba(255, 255, 255, 0.3)',
+                            background: 'linear-gradient(45deg, #ff5252, #d63031)',
                             transform: 'translateY(-2px)',
                             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
                           },
@@ -259,9 +221,10 @@ const HeroSection: React.FC = () => {
                           fontWeight: 600,
                           color: 'white',
                           borderColor: 'rgba(255, 255, 255, 0.3)',
+                          background: 'rgba(255, 255, 255, 0.1)',
                           '&:hover': {
                             borderColor: 'rgba(255, 255, 255, 0.5)',
-                            background: 'rgba(255, 255, 255, 0.1)',
+                            background: 'rgba(255, 255, 255, 0.2)',
                             transform: 'translateY(-2px)',
                           },
                         }}
@@ -274,9 +237,9 @@ const HeroSection: React.FC = () => {
               </motion.div>
             </Grid>
 
-            {/* Right Column - Services Preview */}
+            {/* Right Column - Services Preview (2x2 Grid) */}
             <Grid item xs={12} lg={6}>
-              <motion.div variants={itemVariants} id="services-preview">
+              <motion.div variants={itemVariants}>
                 <Grid container spacing={3}>
                   {homeLabels.services.map((service, index) => (
                     <Grid item xs={12} sm={6} key={index}>
@@ -293,28 +256,31 @@ const HeroSection: React.FC = () => {
                             color: 'white',
                             cursor: 'pointer',
                             transition: 'all 0.3s ease',
+                            minHeight: 200,
                             '&:hover': {
                               background: 'rgba(255, 255, 255, 0.15)',
                               boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
                             },
                           }}
-                          onClick={() => setExpandedSection(expandedSection === index ? null : index)}
                         >
-                          <CardContent sx={{ p: 3, textAlign: 'center' }}>
-                            <Box sx={{ mb: 2 }}>{serviceIcons[index]}</Box>
-                            <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                              {service.title}
-                            </Typography>
-                            <Typography variant="body2" sx={{ mb: 2, opacity: 0.8 }}>
-                              {service.description}
-                            </Typography>
+                          <CardContent sx={{ p: 3, textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <Box>
+                              <Box sx={{ mb: 2 }}>{serviceIcons[index]}</Box>
+                              <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, fontSize: '1.1rem' }}>
+                                {service.title}
+                              </Typography>
+                              <Typography variant="body2" sx={{ mb: 2, opacity: 0.8, fontSize: '0.9rem' }}>
+                                {service.description}
+                              </Typography>
+                            </Box>
                             <Chip
                               label={service.metrics}
                               size="small"
                               sx={{
-                                background: 'rgba(255, 255, 255, 0.2)',
-                                color: 'white',
+                                background: 'rgba(100, 181, 246, 0.3)',
+                                color: '#64b5f6',
                                 fontWeight: 600,
+                                fontSize: '0.8rem',
                               }}
                             />
                           </CardContent>
@@ -327,182 +293,6 @@ const HeroSection: React.FC = () => {
             </Grid>
           </Grid>
 
-          {/* Services Preview - Mobile Only (Hidden on Desktop) */}
-          <motion.div variants={itemVariants} sx={{ display: { xs: 'block', lg: 'none' }, mb: 8 }}>
-            <Grid container spacing={3}>
-              {homeLabels.services.map((service, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <motion.div
-                    whileHover={{ y: -10, scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Card
-                      sx={{
-                        height: '100%',
-                        background: 'rgba(255, 255, 255, 0.1)',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                        color: 'white',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          background: 'rgba(255, 255, 255, 0.15)',
-                          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                        },
-                      }}
-                      onClick={() => setExpandedSection(expandedSection === index ? null : index)}
-                    >
-                      <CardContent sx={{ p: 3, textAlign: 'center' }}>
-                        <Box sx={{ mb: 2 }}>{serviceIcons[index]}</Box>
-                        <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                          {service.title}
-                        </Typography>
-                        <Typography variant="body2" sx={{ mb: 2, opacity: 0.8 }}>
-                          {service.description}
-                        </Typography>
-                        <Chip
-                          label={service.metrics}
-                          size="small"
-                          sx={{
-                            background: 'rgba(255, 255, 255, 0.2)',
-                            color: 'white',
-                            fontWeight: 600,
-                          }}
-                        />
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </motion.div>
-
-          {/* Remove the old services preview section */}
-          <motion.div variants={itemVariants} sx={{ display: 'none' }}>
-            <Box textAlign="center" sx={{ mb: 8 }}>
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Chip
-                  label={homeLabels.hero.badge}
-                  sx={{
-                    mb: 3,
-                    px: 2,
-                    py: 1,
-                    fontSize: '1rem',
-                    fontWeight: 600,
-                    background: 'rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    backdropFilter: 'blur(10px)',
-                  }}
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <Typography
-                  variant="h1"
-                  sx={{
-                    mb: 2,
-                    fontWeight: 700,
-                    fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
-                    lineHeight: 1.1,
-                  }}
-                >
-                  {homeLabels.hero.title}{' '}
-                  <Box
-                    component="span"
-                    sx={{
-                      background: 'linear-gradient(45deg, #64b5f6, #f48fb1)',
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    {homeLabels.hero.titleHighlight}
-                  </Box>
-                </Typography>
-              </motion.div>
-
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <Typography
-                  variant="h5"
-                  sx={{
-                    mb: 4,
-                    opacity: 0.9,
-                    maxWidth: 800,
-                    mx: 'auto',
-                    lineHeight: 1.6,
-                    fontSize: { xs: '1.1rem', sm: '1.25rem' },
-                  }}
-                >
-                  {homeLabels.hero.subtitle}
-                </Typography>
-              </motion.div>
-
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    onClick={handleGetStarted}
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      fontWeight: 600,
-                      background: 'rgba(255, 255, 255, 0.2)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)',
-                      '&:hover': {
-                        background: 'rgba(255, 255, 255, 0.3)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
-                      },
-                    }}
-                  >
-                    {homeLabels.hero.buttons.primary}
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    startIcon={<PlayArrow />}
-                    onClick={handleWatchDemo}
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      fontWeight: 600,
-                      color: 'white',
-                      borderColor: 'rgba(255, 255, 255, 0.3)',
-                      '&:hover': {
-                        borderColor: 'rgba(255, 255, 255, 0.5)',
-                        background: 'rgba(255, 255, 255, 0.1)',
-                        transform: 'translateY(-2px)',
-                      },
-                    }}
-                  >
-                    {homeLabels.hero.buttons.secondary}
-                  </Button>
-                </Box>
-              </motion.div>
-            </Box>
-          </motion.div>
-
           {/* Expanded Content Section */}
           {homeLabels.expandedContent && (
             <motion.div variants={itemVariants}>
@@ -514,6 +304,7 @@ const HeroSection: React.FC = () => {
                   background: 'rgba(255, 255, 255, 0.1)',
                   backdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
+                  textAlign: 'center',
                 }}
               >
                 <Typography
@@ -521,7 +312,6 @@ const HeroSection: React.FC = () => {
                   sx={{
                     mb: 3,
                     fontWeight: 600,
-                    textAlign: 'center',
                     fontSize: { xs: '1.75rem', sm: '2.125rem' },
                   }}
                 >
@@ -533,7 +323,6 @@ const HeroSection: React.FC = () => {
                   sx={{
                     mb: 4,
                     opacity: 0.9,
-                    textAlign: 'center',
                     maxWidth: 800,
                     mx: 'auto',
                     lineHeight: 1.6,
@@ -545,7 +334,16 @@ const HeroSection: React.FC = () => {
                 <Grid container spacing={4}>
                   {homeLabels.expandedContent.sections.map((section, index) => (
                     <Grid item xs={12} md={6} key={index}>
-                      <Box sx={{ mb: 4 }}>
+                      <Card
+                        sx={{
+                          background: 'rgba(255, 255, 255, 0.1)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.2)',
+                          color: 'white',
+                          height: '100%',
+                          p: 3,
+                        }}
+                      >
                         <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
                           {section.title}
                         </Typography>
@@ -563,14 +361,14 @@ const HeroSection: React.FC = () => {
                         >
                           {section.note}
                         </Typography>
-                      </Box>
+                      </Card>
                     </Grid>
                   ))}
                 </Grid>
 
                 {/* Insights Section */}
                 {homeLabels.expandedContent.insights && (
-                  <Box sx={{ mt: 6, textAlign: 'center' }}>
+                  <Box sx={{ mt: 6 }}>
                     <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
                       {homeLabels.expandedContent.insights.title}
                     </Typography>
