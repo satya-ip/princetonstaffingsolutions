@@ -19,7 +19,6 @@ import {
 import { Code, Brightness4, Brightness7, Menu } from '@mui/icons-material';
 import { useTheme } from '../../contexts/ThemeContext';
 import { commonLabels } from '../../labels';
-import { commonLabels } from '../../labels';
 
 const Header: React.FC = () => {
   const muiTheme = useMuiTheme();
