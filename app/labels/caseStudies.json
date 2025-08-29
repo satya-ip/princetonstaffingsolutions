@@ -29,7 +29,7 @@
     {
       "id": "3",
       "title": "Digital Transformation Suite",
-      "description": "Complete digital overhaul including mobile app, web platform, and backend systems integration.",
+      "description": "Complete digital overhaul including mobile app, web platform, and Full backend systems integration.",
       "image": "https://images.pexels.com/photos/3182774/pexels-photo-3182774.jpeg?auto=compress&cs=tinysrgb&w=800",
       "technologies": ["React Native", "Node.js", "MongoDB", "GraphQL"],
       "category": "Digital Transformation",
