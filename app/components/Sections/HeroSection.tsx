@@ -26,7 +26,7 @@ import {
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
+import { homeLabels } from '../../labels';
 
 const HeroSection: React.FC = () => {
   const router = useRouter();
@@ -70,31 +70,11 @@ const HeroSection: React.FC = () => {
     },
   };
 
-  const services = [
-    {
-      icon: <Cloud sx={{ fontSize: 40, color: 'primary.main' }} />,
-      title: 'Cloud Infrastructure',
-      description: 'Scalable cloud solutions for modern enterprises',
-      metrics: '99.9% Uptime',
-    },
-    {
-      icon: <Security sx={{ fontSize: 40, color: 'secondary.main' }} />,
-      title: 'Cybersecurity',
-      description: 'Advanced security protocols and monitoring',
-      metrics: 'Zero Breaches',
-    },
-    {
-      icon: <Speed sx={{ fontSize: 40, color: 'success.main' }} />,
-      title: 'Performance Optimization',
-      description: 'Lightning-fast applications and systems',
-      metrics: '3x Faster',
-    },
-    {
-      icon: <TrendingUp sx={{ fontSize: 40, color: 'warning.main' }} />,
-      title: 'Digital Growth',
-      description: 'Strategic technology consulting',
-      metrics: '250% ROI',
-    },
+  const serviceIcons = [
+    <Cloud sx={{ fontSize: 40, color: 'primary.main' }} />,
+    <Security sx={{ fontSize: 40, color: 'secondary.main' }} />,
+    <Speed sx={{ fontSize: 40, color: 'success.main' }} />,
+    <TrendingUp sx={{ fontSize: 40, color: 'warning.main' }} />,
   ];
 
   return (
@@ -150,7 +130,7 @@ const HeroSection: React.FC = () => {
             <Grid item xs={12} md={6}>
               <motion.div variants={itemVariants}>
                 <Chip
-                  label="🚀 #1 IT Solutions Provider"
+                  label={homeLabels.hero.badge}
                   sx={{
                     mb: 3,
                     bgcolor: 'rgba(255, 255, 255, 0.1)',
@@ -173,7 +153,7 @@ const HeroSection: React.FC = () => {
                     textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
                   }}
                 >
-                  Transform Your
+                  {homeLabels.hero.title}
                   <Box
                     component="span"
                     sx={{
@@ -184,7 +164,7 @@ const HeroSection: React.FC = () => {
                       display: 'block',
                     }}
                   >
-                    Digital Future
+                    {homeLabels.hero.titleHighlight}
                   </Box>
                 </Typography>
               </motion.div>
@@ -201,9 +181,7 @@ const HeroSection: React.FC = () => {
                     textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
                   }}
                 >
-                  We deliver cutting-edge IT solutions that drive innovation, enhance security,
-                  and accelerate your business growth in the digital age. Transform your technology
-                  infrastructure with our expert team.
+                  {homeLabels.hero.subtitle}
                 </Typography>
               </motion.div>
 
@@ -226,7 +204,7 @@ const HeroSection: React.FC = () => {
                       },
                     }}
                   >
-                    Get Started
+                    {homeLabels.hero.buttons.primary}
                   </Button>
                   <Button
                     variant="outlined"
@@ -244,7 +222,7 @@ const HeroSection: React.FC = () => {
                       },
                     }}
                   >
-                    Watch Demo
+                    {homeLabels.hero.buttons.secondary}
                   </Button>
                 </Box>
               </motion.div>
@@ -253,7 +231,7 @@ const HeroSection: React.FC = () => {
             <Grid item xs={12} md={6}>
               <motion.div variants={itemVariants}>
                 <Grid container spacing={2}>
-                  {services.map((service, index) => (
+                  {homeLabels.services.map((service, index) => (
                     <Grid item xs={12} sm={6} key={index}>
                       <motion.div
                         whileHover={{ scale: 1.05 }}
@@ -277,7 +255,7 @@ const HeroSection: React.FC = () => {
                           }}
                         >
                           <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', height: '100%' }}>
-                            <Box sx={{ mb: 2 }}>{service.icon}</Box>
+                            <Box sx={{ mb: 2 }}>{serviceIcons[index]}</Box>
                             <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
                               {service.title}
                             </Typography>
@@ -340,7 +318,7 @@ const HeroSection: React.FC = () => {
                 lineHeight: 1.3,
               }}
             >
-              Our expert team empowers enterprises with next-generation IT solutions—leveraging AI-driven cloud infrastructure, advanced cybersecurity, and performance optimization—to drive innovation and business growth.
+              {homeLabels.expandedContent.mainTitle}
             </Typography>
             <Typography
               variant="h6"
@@ -353,155 +331,57 @@ const HeroSection: React.FC = () => {
                 fontSize: { xs: '1rem', md: '1.1rem' },
               }}
             >
-              In today&apos;s fast-paced digital landscape, companies must stay competitive and agile. TechCorp delivers cutting-edge technology and 24/7 support to keep your operations scalable, secure, and ahead of the curve.
+              {homeLabels.expandedContent.subtitle}
             </Typography>
           </motion.div>
 
           {/* Service Categories */}
           <Grid container spacing={4}>
-            {/* AI-Powered Innovation */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Psychology sx={{ fontSize: 40, color: '#64b5f6', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        AI-Powered Innovation
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      We integrate artificial intelligence and automation to boost efficiency and productivity. Gartner reports AI automation can cut operational costs by up to 30% by 2025, and organizations using AI-driven solutions often see up to 40% higher productivity.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      TechCorp&apos;s AI agents handle routine tasks and data analysis, enabling your team to focus on strategic initiatives and innovation.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-
-            {/* Scalable Cloud Architecture */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Cloud sx={{ fontSize: 40, color: '#4caf50', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        Scalable Cloud Architecture
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      Our cloud solutions provide on-demand computing resources that grow with your business. Cloud platforms offer unprecedented scalability, flexibility and cost-effectiveness, eliminating the need for expensive hardware management.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      TechCorp builds multi-cloud and hybrid architectures so you pay only for what you use and can adapt instantly to changing needs.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-
-            {/* 24/7 Proactive Support */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Support sx={{ fontSize: 40, color: '#ff9800', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        24/7 Proactive Support
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      We offer round-the-clock monitoring and managed services to maximize uptime. Continuous oversight and automated alerts ensure potential issues are detected early, minimizing downtime and disruptions.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      Whether it&apos;s a security alert or a network hiccup, our team is ready at any hour to resolve issues quickly, protecting your revenue and reputation.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-
-            {/* Comprehensive Security & Compliance */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Shield sx={{ fontSize: 40, color: '#f44336', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        Comprehensive Security & Compliance
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      TechCorp embeds security into every solution. We use advanced threat detection and regular security updates to protect against cyberattacks and data breaches.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      With TechCorp, you gain standard industry-compliant cybersecurity and constant vigilance so your business stays safe and trusted.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
+            {homeLabels.expandedContent.sections.map((section, index) => {
+              const sectionIcons = [
+                <Psychology sx={{ fontSize: 40, color: '#64b5f6', mr: 2 }} />,
+                <Cloud sx={{ fontSize: 40, color: '#4caf50', mr: 2 }} />,
+                <Support sx={{ fontSize: 40, color: '#ff9800', mr: 2 }} />,
+                <Shield sx={{ fontSize: 40, color: '#f44336', mr: 2 }} />,
+              ];
+              
+              return (
+                <Grid item xs={12} md={6} key={index}>
+                  <motion.div variants={itemVariants}>
+                    <Card
+                      sx={{
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        backdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        color: 'white',
+                        height: '100%',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          background: 'rgba(255, 255, 255, 0.15)',
+                          transform: 'translateY(-5px)',
+                          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ p: 4 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                          {sectionIcons[index]}
+                          <Typography variant="h5" sx={{ fontWeight: 600 }}>
+                            {section.title}
+                          </Typography>
+                        </Box>
+                        <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
+                          {section.description}
+                        </Typography>
+                        <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
+                          {section.note}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              );
+            })}
           </Grid>
 
           {/* Visual Elements Section */}
@@ -540,7 +420,7 @@ const HeroSection: React.FC = () => {
                     fontSize: { xs: '1.8rem', md: '2.2rem' },
                   }}
                 >
-                  Data-Driven Insights & Growth
+                  {homeLabels.expandedContent.insights.title}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -551,14 +431,10 @@ const HeroSection: React.FC = () => {
                     fontSize: '1.1rem',
                   }}
                 >
-                  Our advanced analytics and monitoring systems provide real-time insights into your infrastructure performance, security posture, and business metrics.
+                  {homeLabels.expandedContent.insights.description}
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-                  {[
-                    { label: 'Real-time Monitoring', color: '#4caf50' },
-                    { label: 'Predictive Analytics', color: '#2196f3' },
-                    { label: 'Performance Metrics', color: '#ff9800' },
-                  ].map((item, index) => (
+                  {homeLabels.expandedContent.insights.features.map((item, index) => (
                     <Chip
                       key={index}
                       label={item.label}

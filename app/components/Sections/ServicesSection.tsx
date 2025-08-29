@@ -26,6 +26,7 @@ import {
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { servicesLabels } from '../../labels';
 
 const CounterAnimation: React.FC<{ end: number; duration?: number }> = ({ 
   end, 
@@ -77,61 +78,13 @@ const ServicesSection: React.FC = () => {
     controls.start('visible');
   }, [controls]);
 
-  const services = [
-    {
-      icon: <Cloud sx={{ fontSize: 50, color: 'primary.main' }} />,
-      title: 'Cloud Infrastructure',
-      description: 'Transform your IT infrastructure with our comprehensive cloud solutions. We provide scalable, secure, and cost-effective cloud migration and management services that grow with your business.',
-      features: ['AWS/Azure/GCP Migration', 'Auto-scaling Solutions', 'Disaster Recovery', 'Cost Optimization'],
-      price: 'Starting at $2,500/month',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      benefits: ['99.9% Uptime SLA', '24/7 Monitoring', 'Expert Support', 'Scalable Architecture'],
-    },
-    {
-      icon: <Security sx={{ fontSize: 50, color: 'secondary.main' }} />,
-      title: 'Cybersecurity Services',
-      description: 'Protect your business with enterprise-grade cybersecurity solutions. Our comprehensive security services safeguard your digital assets and ensure regulatory compliance.',
-      features: ['Security Audits', '24/7 Monitoring', 'Compliance Management', 'Incident Response'],
-      price: 'Starting at $1,800/month',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      benefits: ['Zero Breach Guarantee', 'SOC 2 Compliance', 'Real-time Threat Detection', 'Expert Security Team'],
-    },
-    {
-      icon: <Code sx={{ fontSize: 50, color: 'success.main' }} />,
-      title: 'Custom Development',
-      description: 'Build powerful, scalable applications tailored to your unique business requirements. Our expert developers use cutting-edge technologies and industry best practices.',
-      features: ['Web Applications', 'Mobile Apps', 'API Development', 'Legacy Modernization'],
-      price: 'Starting at $15,000/project',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      benefits: ['Agile Development', 'Modern Tech Stack', 'Quality Assurance', 'Ongoing Support'],
-    },
-    {
-      icon: <Analytics sx={{ fontSize: 50, color: 'warning.main' }} />,
-      title: 'Data Analytics & AI',
-      description: 'Unlock the power of your data with advanced analytics and artificial intelligence. Turn raw data into actionable insights that drive business growth and competitive advantage.',
-      features: ['Business Intelligence', 'Predictive Analytics', 'Machine Learning', 'Data Visualization'],
-      price: 'Starting at $3,500/month',
-      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-      benefits: ['Real-time Insights', 'Predictive Models', 'Custom Dashboards', 'Data-driven Decisions'],
-    },
-    {
-      icon: <Speed sx={{ fontSize: 50, color: 'info.main' }} />,
-      title: 'Performance Optimization',
-      description: 'Maximize your system performance and user experience. Our optimization services ensure your applications run at peak efficiency with lightning-fast response times.',
-      features: ['Performance Audits', 'Database Optimization', 'CDN Implementation', 'Load Balancing'],
-      price: 'Starting at $2,000/month',
-      gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-      benefits: ['3x Faster Load Times', 'Improved User Experience', 'Cost Reduction', 'Scalable Performance'],
-    },
-    {
-      icon: <Support sx={{ fontSize: 50, color: 'error.main' }} />,
-      title: '24/7 Technical Support',
-      description: 'Never worry about downtime again. Our dedicated support team provides round-the-clock monitoring, maintenance, and emergency response to keep your systems running smoothly.',
-      features: ['24/7 Monitoring', 'Proactive Maintenance', 'Emergency Response', 'Remote Support'],
-      price: 'Starting at $1,200/month',
-      gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-      benefits: ['Instant Response', 'Expert Technicians', 'Proactive Monitoring', 'Peace of Mind'],
-    },
+  const serviceIcons = [
+    <Cloud sx={{ fontSize: 50, color: 'primary.main' }} />,
+    <Security sx={{ fontSize: 50, color: 'secondary.main' }} />,
+    <Code sx={{ fontSize: 50, color: 'success.main' }} />,
+    <Analytics sx={{ fontSize: 50, color: 'warning.main' }} />,
+    <Speed sx={{ fontSize: 50, color: 'info.main' }} />,
+    <Support sx={{ fontSize: 50, color: 'error.main' }} />,
   ];
 
   const containerVariants = {
@@ -189,22 +142,21 @@ const ServicesSection: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Our Services
+                {servicesLabels.header.title}
               </Typography>
               <Typography
                 variant="h5"
                 color="text.secondary"
                 sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
               >
-                Comprehensive IT solutions designed to accelerate your digital
-                transformation and drive business growth.
+                {servicesLabels.header.subtitle}
               </Typography>
             </Box>
           </motion.div>
 
           {/* Services Grid */}
           <Grid container spacing={4}>
-            {services.map((service, index) => (
+            {servicesLabels.services.map((service, index) => (
               <Grid item xs={12} md={6} lg={4} key={index}>
                 <motion.div
                   variants={itemVariants}
@@ -254,7 +206,7 @@ const ServicesSection: React.FC = () => {
                       display: 'flex', 
                       flexDirection: 'column' 
                     }}>
-                      <Box sx={{ mb: { xs: 2, md: 3 } }}>{service.icon}</Box>
+                      <Box sx={{ mb: { xs: 2, md: 3 } }}>{serviceIcons[index]}</Box>
                       
                       <Typography 
                         variant="h5" 
@@ -380,102 +332,48 @@ const ServicesSection: React.FC = () => {
                 }`,
             }}>
               <Grid container spacing={4}>
-                <Grid item xs={12} md={4}>
-                  <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
-                    <Typography 
-                      variant="h4" 
-                      sx={{ 
-                        fontWeight: 700, 
-                        color: 'primary.main', 
-                        mb: 1,
-                        fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' }
-                      }}
-                    >
-                      <CounterAnimation end={500} duration={2.5} />+
-                    </Typography>
-                    <Typography 
-                      variant="h6" 
-                      sx={{ 
-                        fontWeight: 600, 
-                        mb: 1,
-                        fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
-                      }}
-                    >
-                      Projects Completed
-                    </Typography>
-                    <Typography 
-                      variant="body2" 
-                      color="text.secondary"
-                      sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}
-                    >
-                      Successfully delivered across various industries
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
-                    <Typography 
-                      variant="h4" 
-                      sx={{ 
-                        fontWeight: 700, 
-                        color: 'secondary.main', 
-                        mb: 1,
-                        fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' }
-                      }}
-                    >
-                      <CounterAnimation end={99.9} duration={2.5} />%
-                    </Typography>
-                    <Typography 
-                      variant="h6" 
-                      sx={{ 
-                        fontWeight: 600, 
-                        mb: 1,
-                        fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
-                      }}
-                    >
-                      Uptime Guarantee
-                    </Typography>
-                    <Typography 
-                      variant="body2" 
-                      color="text.secondary"
-                      sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}
-                    >
-                      Reliable infrastructure and monitoring
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
-                    <Typography 
-                      variant="h4" 
-                      sx={{ 
-                        fontWeight: 700, 
-                        color: 'success.main', 
-                        mb: 1,
-                        fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' }
-                      }}
-                    >
-                      24/7
-                    </Typography>
-                    <Typography 
-                      variant="h6" 
-                      sx={{ 
-                        fontWeight: 600, 
-                        mb: 1,
-                        fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
-                      }}
-                    >
-                      Expert Support
-                    </Typography>
-                    <Typography 
-                      variant="body2" 
-                      color="text.secondary"
-                      sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}
-                    >
-                      Always available when you need us
-                    </Typography>
-                  </Box>
-                </Grid>
+                {servicesLabels.stats.map((stat, index) => {
+                  const colors = ['primary.main', 'secondary.main', 'success.main'];
+                  return (
+                    <Grid item xs={12} md={4} key={index}>
+                      <Box textAlign="center" sx={{ p: { xs: 2, md: 3 } }}>
+                        <Typography 
+                          variant="h4" 
+                          sx={{ 
+                            fontWeight: 700, 
+                            color: colors[index], 
+                            mb: 1,
+                            fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' }
+                          }}
+                        >
+                          {typeof stat.value === 'number' ? (
+                            <CounterAnimation end={stat.value} duration={2.5} />
+                          ) : (
+                            stat.value
+                          )}
+                          {stat.suffix}
+                        </Typography>
+                        <Typography 
+                          variant="h6" 
+                          sx={{ 
+                            fontWeight: 600, 
+                            mb: 1,
+                            fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
+                          }}
+                        >
+                          {stat.label}
+                        </Typography>
+                        <Typography 
+                          variant="body2" 
+                          color="text.secondary"
+                          sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}
+                        >
+                          {stat.description}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Box>
           </motion.div>
@@ -508,15 +406,10 @@ const ServicesSection: React.FC = () => {
                   fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.125rem' }
                 }}
               >
-                Our Service Process
+                {servicesLabels.process.title}
               </Typography>
               <Grid container spacing={4}>
-                {[
-                  { step: '01', title: 'Discovery & Analysis', description: 'We analyze your current infrastructure and business requirements' },
-                  { step: '02', title: 'Strategy & Planning', description: 'Develop a comprehensive roadmap tailored to your goals' },
-                  { step: '03', title: 'Implementation', description: 'Execute the plan with minimal disruption to your operations' },
-                  { step: '04', title: 'Monitoring & Support', description: 'Ongoing monitoring and support to ensure optimal performance' },
-                ].map((process, idx) => (
+                {servicesLabels.process.steps.map((process, idx) => (
                   <Grid item xs={12} sm={6} md={3} key={idx}>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -587,7 +480,7 @@ const ServicesSection: React.FC = () => {
                   fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.125rem' }
                 }}
               >
-                Ready to Transform Your Business?
+                {servicesLabels.cta.title}
               </Typography>
               <Typography 
                 variant="h6" 
@@ -597,7 +490,7 @@ const ServicesSection: React.FC = () => {
                   fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' }
                 }}
               >
-                Let&apos;s discuss how our services can help you achieve your goals.
+                {servicesLabels.cta.subtitle}
               </Typography>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -628,7 +521,7 @@ const ServicesSection: React.FC = () => {
                     (e.target as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.3)';
                   }}
                 >
-                  Get Free Consultation
+                  {servicesLabels.cta.buttonText}
                 </button>
               </motion.div>
             </Box>

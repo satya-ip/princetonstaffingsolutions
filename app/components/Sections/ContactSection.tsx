@@ -32,15 +32,16 @@ import { useInView } from 'react-intersection-observer';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { contactLabels } from '../../labels';
 
 const schema = yup.object({
-  firstName: yup.string().required('First name is required'),
-  lastName: yup.string().required('Last name is required'),
-  email: yup.string().email('Invalid email').required('Email is required'),
-  phone: yup.string().required('Phone is required'),
-  company: yup.string().required('Company is required'),
-  service: yup.string().required('Please select a service'),
-  message: yup.string().required('Message is required').min(10, 'Message must be at least 10 characters'),
+  firstName: yup.string().required(contactLabels.form.fields.firstName.required),
+  lastName: yup.string().required(contactLabels.form.fields.lastName.required),
+  email: yup.string().email(contactLabels.form.fields.email.invalid).required(contactLabels.form.fields.email.required),
+  phone: yup.string().required(contactLabels.form.fields.phone.required),
+  company: yup.string().required(contactLabels.form.fields.company.required),
+  service: yup.string().required(contactLabels.form.fields.service.required),
+  message: yup.string().required(contactLabels.form.fields.message.required).min(10, contactLabels.form.fields.message.minLength),
 });
 
 type FormData = {
@@ -91,36 +92,10 @@ const ContactSection: React.FC = () => {
     }, 3000);
   };
 
-  const contactInfo = [
-    {
-      icon: <Email sx={{ fontSize: 40, color: 'primary.main' }} />,
-      title: 'Email Us',
-      value: 'hello@techcorp.com',
-      subtitle: 'We reply within 24 hours',
-    },
-    {
-      icon: <Phone sx={{ fontSize: 40, color: 'secondary.main' }} />,
-      title: 'Call Us',
-      value: '+1 (555) 123-4567',
-      subtitle: 'Mon-Fri 9AM-6PM EST',
-    },
-    {
-      icon: <LocationOn sx={{ fontSize: 40, color: 'success.main' }} />,
-      title: 'Visit Us',
-      value: '123 Tech Street, Innovation District',
-      subtitle: 'San Francisco, CA 94105',
-    },
-  ];
-
-  const services = [
-    'Cloud Infrastructure',
-    'Cybersecurity Services',
-    'Custom Development',
-    'Data Analytics & AI',
-    'Performance Optimization',
-    '24/7 Technical Support',
-    'Digital Transformation',
-    'Other',
+  const contactIcons = [
+    <Email sx={{ fontSize: 40, color: 'primary.main' }} />,
+    <Phone sx={{ fontSize: 40, color: 'secondary.main' }} />,
+    <LocationOn sx={{ fontSize: 40, color: 'success.main' }} />,
   ];
 
   const containerVariants = {
@@ -178,15 +153,14 @@ const ContactSection: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Get In Touch
+                {contactLabels.header.title}
               </Typography>
               <Typography
                 variant="h5"
                 color="text.secondary"
                 sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
               >
-                Ready to transform your business? Let&apos;s discuss how we can help
-                you achieve your goals.
+                {contactLabels.header.subtitle}
               </Typography>
             </Box>
           </motion.div>
@@ -200,7 +174,7 @@ const ContactSection: React.FC = () => {
                 </Typography>
                 
                 <Box sx={{ mb: 4 }}>
-                  {contactInfo.map((info, index) => (
+                  {contactLabels.contactInfo.map((info, index) => (
                     <motion.div
                       key={index}
                       whileHover={{ x: 10 }}
@@ -228,7 +202,7 @@ const ContactSection: React.FC = () => {
                         }}
                       >
                         <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                          <Box sx={{ mt: 0.5 }}>{info.icon}</Box>
+                          <Box sx={{ mt: 0.5 }}>{contactIcons[index]}</Box>
                           <Box>
                             <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
                               {info.title}
@@ -248,15 +222,10 @@ const ContactSection: React.FC = () => {
 
                 <Box>
                   <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-                    Why Choose TechCorp?
+                    {contactLabels.whyChoose.title}
                   </Typography>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                    {[
-                      '15+ Years Experience',
-                      '500+ Satisfied Clients',
-                      '24/7 Support',
-                      '99.9% Uptime Guarantee',
-                    ].map((feature) => (
+                    {contactLabels.whyChoose.features.map((feature) => (
                       <Chip
                         key={feature}
                         icon={<CheckCircle sx={{ fontSize: 16 }} />}
@@ -290,7 +259,7 @@ const ContactSection: React.FC = () => {
                   }}
                 >
                   <Typography variant="h5" sx={{ mb: 4, fontWeight: 600 }}>
-                    Send us a message
+                    {contactLabels.form.title}
                   </Typography>
 
                   <form onSubmit={handleSubmit(onSubmit)}>
@@ -303,7 +272,7 @@ const ContactSection: React.FC = () => {
                             <TextField
                               {...field}
                               fullWidth
-                              label="First Name"
+                              label={contactLabels.form.fields.firstName.label}
                               error={!!errors.firstName}
                               helperText={errors.firstName?.message}
                               sx={{
@@ -327,7 +296,7 @@ const ContactSection: React.FC = () => {
                             <TextField
                               {...field}
                               fullWidth
-                              label="Last Name"
+                              label={contactLabels.form.fields.lastName.label}
                               error={!!errors.lastName}
                               helperText={errors.lastName?.message}
                               sx={{
@@ -351,7 +320,7 @@ const ContactSection: React.FC = () => {
                             <TextField
                               {...field}
                               fullWidth
-                              label="Email"
+                              label={contactLabels.form.fields.email.label}
                               type="email"
                               error={!!errors.email}
                               helperText={errors.email?.message}
@@ -376,7 +345,7 @@ const ContactSection: React.FC = () => {
                             <TextField
                               {...field}
                               fullWidth
-                              label="Phone"
+                              label={contactLabels.form.fields.phone.label}
                               error={!!errors.phone}
                               helperText={errors.phone?.message}
                               sx={{
@@ -400,7 +369,7 @@ const ContactSection: React.FC = () => {
                             <TextField
                               {...field}
                               fullWidth
-                              label="Company"
+                              label={contactLabels.form.fields.company.label}
                               error={!!errors.company}
                               helperText={errors.company?.message}
                               sx={{
@@ -434,9 +403,9 @@ const ContactSection: React.FC = () => {
                                 },
                               }}
                             >
-                              <InputLabel>Service Interested In</InputLabel>
-                              <Select {...field} label="Service Interested In">
-                                {services.map((service) => (
+                              <InputLabel>{contactLabels.form.fields.service.label}</InputLabel>
+                              <Select {...field} label={contactLabels.form.fields.service.label}>
+                                {contactLabels.form.services.map((service) => (
                                   <MenuItem key={service} value={service}>
                                     {service}
                                   </MenuItem>
@@ -455,7 +424,7 @@ const ContactSection: React.FC = () => {
                             <TextField
                               {...field}
                               fullWidth
-                              label="Message"
+                              label={contactLabels.form.fields.message.label}
                               multiline
                               rows={4}
                               error={!!errors.message}
@@ -508,10 +477,10 @@ const ContactSection: React.FC = () => {
                             }}
                           >
                             {submitStatus === 'loading'
-                              ? 'Sending...'
+                              ? contactLabels.form.buttons.sending
                               : submitStatus === 'success'
-                              ? 'Message Sent!'
-                              : 'Send Message'}
+                              ? contactLabels.form.buttons.success
+                              : contactLabels.form.buttons.submit}
                           </Button>
                         </motion.div>
                       </Grid>
@@ -535,7 +504,7 @@ const ContactSection: React.FC = () => {
           variant="filled"
           sx={{ borderRadius: 2 }}
         >
-          Thank you for your message! We&apos;ll get back to you within 24 hours.
+          {contactLabels.successMessage}
         </Alert>
       </Snackbar>
     </Box>
