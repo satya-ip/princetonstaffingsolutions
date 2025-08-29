@@ -1,376 +1,251 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react';
 import {
   Box,
   Container,
   Typography,
-  Button,
   Grid,
-  Card,
-  CardContent,
+  Link,
+  Divider,
   Chip,
-  IconButton,
 } from '@mui/material';
 import {
-  PlayArrow,
-  TrendingUp,
-  Security,
-  Speed,
-  Business,
-  KeyboardArrowDown,
+  Code,
+  Email,
+  Phone,
+  LocationOn,
+  LinkedIn,
+  Twitter,
+  GitHub,
 } from '@mui/icons-material';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { homeLabels } from '../../labels';
+import { motion } from 'framer-motion';
+import { commonLabels } from '../../labels';
 
-const HeroSection: React.FC = () => {
-  const router = useRouter();
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.3 });
-  const [expandedContent, setExpandedContent] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
-  }, [controls, inView]);
-
-  const handleGetStarted = () => {
-    router.push('/contact');
-  };
-
-  const handleWatchDemo = () => {
-    // Demo functionality can be implemented later
-    console.log('Watch demo clicked');
-  };
-
-  const toggleExpandedContent = () => {
-    setExpandedContent(!expandedContent);
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
-  const serviceIcons = [
-    <Business sx={{ fontSize: 40, color: 'primary.main' }} />,
-    <Security sx={{ fontSize: 40, color: 'secondary.main' }} />,
-    <Speed sx={{ fontSize: 40, color: 'success.main' }} />,
-    <TrendingUp sx={{ fontSize: 40, color: 'warning.main' }} />,
+const Footer: React.FC = () => {
+  const socialLinks = [
+    { name: 'LinkedIn', url: '#', icon: <LinkedIn /> },
+    { name: 'Twitter', url: '#', icon: <Twitter /> },
+    { name: 'GitHub', url: '#', icon: <GitHub /> },
+    { name: 'Email', url: '#', icon: <Email /> },
   ];
+
+  const socialIcons = [<LinkedIn />, <Twitter />, <GitHub />, <Email />];
 
   return (
     <Box
+      component="footer"
       sx={{
-        minHeight: '100vh',
         background: (theme) =>
           theme.palette.mode === 'dark'
             ? 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)'
-            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            : 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)',
         color: 'white',
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        overflow: 'hidden',
+        pt: 8,
+        pb: 4,
       }}
     >
-      {/* Animated Background Elements */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          opacity: 0.1,
-          background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-        }}
-      />
-
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
-        >
-          <Grid container spacing={6} alignItems="center">
-            <Grid item xs={12} lg={6}>
-              <motion.div variants={itemVariants}>
-                <Chip
-                  label={homeLabels.hero.badge}
-                  sx={{
-                    mb: 3,
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    color: 'white',
-                    fontWeight: 600,
-                    fontSize: '0.9rem',
-                    px: 2,
-                    py: 1,
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                  }}
-                />
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
+      <Container maxWidth="lg">
+        {/* Main Footer Content */}
+        <Grid container spacing={4} sx={{ mb: 6 }}>
+          {/* Company Info */}
+          <Grid item xs={12} lg={4} md={12}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
+                <Code sx={{ fontSize: 32, color: '#64b5f6' }} />
                 <Typography
-                  variant="h1"
+                  variant="h4"
                   sx={{
-                    mb: 2,
                     fontWeight: 700,
-                    fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
-                    lineHeight: 1.1,
+                    background: 'linear-gradient(45deg, #64b5f6 30%, #f48fb1 90%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  {homeLabels.hero.title}{' '}
-                  <Box
-                    component="span"
-                    sx={{
-                      background: 'linear-gradient(45deg, #64b5f6, #f48fb1)',
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    {homeLabels.hero.titleHighlight}
-                  </Box>
+                  {commonLabels.company.name}
                 </Typography>
-              </motion.div>
+              </Box>
+              
+              <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.7, opacity: 0.9 }}>
+                {commonLabels.footer.description}
+              </Typography>
 
-              <motion.div variants={itemVariants}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    mb: 4,
-                    opacity: 0.9,
-                    lineHeight: 1.6,
-                    fontSize: { xs: '1.1rem', md: '1.25rem' },
-                    maxWidth: '600px',
-                  }}
-                >
-                  {homeLabels.hero.subtitle}
-                </Typography>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    onClick={handleGetStarted}
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      fontWeight: 600,
-                      background: 'rgba(255, 255, 255, 0.2)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)',
-                      '&:hover': {
-                        background: 'rgba(255, 255, 255, 0.3)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
-                      },
-                    }}
-                  >
-                    {homeLabels.hero.buttons.primary}
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    onClick={handleWatchDemo}
-                    startIcon={<PlayArrow />}
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      fontWeight: 600,
-                      borderColor: 'rgba(255, 255, 255, 0.3)',
-                      color: 'white',
-                      backdropFilter: 'blur(10px)',
-                      '&:hover': {
-                        borderColor: 'rgba(255, 255, 255, 0.5)',
-                        background: 'rgba(255, 255, 255, 0.1)',
-                        transform: 'translateY(-2px)',
-                      },
-                    }}
-                  >
-                    {homeLabels.hero.buttons.secondary}
-                  </Button>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 3 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Email sx={{ fontSize: 16, opacity: 0.7 }} />
+                  <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                    {commonLabels.footer.contact.email}
+                  </Typography>
                 </Box>
-              </motion.div>
-            </Grid>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Phone sx={{ fontSize: 16, opacity: 0.7 }} />
+                  <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                    {commonLabels.footer.contact.phone}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <LocationOn sx={{ fontSize: 16, opacity: 0.7 }} />
+                  <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                    {commonLabels.footer.contact.address}
+                  </Typography>
+                </Box>
+              </Box>
 
-            <Grid item xs={12} lg={6}>
-              <motion.div variants={itemVariants}>
-                <Grid container spacing={3}>
-                  {homeLabels.services.map((service, index) => (
-                    <Grid item xs={12} sm={6} key={index}>
-                      <motion.div
-                        whileHover={{ scale: 1.05, y: -5 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Card
-                          sx={{
-                            background: 'rgba(255, 255, 255, 0.1)',
-                            backdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                            color: 'white',
-                            p: 2,
-                            transition: 'all 0.3s ease',
-                            '&:hover': {
-                              background: 'rgba(255, 255, 255, 0.15)',
-                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                            },
-                          }}
-                        >
-                          <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
-                            <Box sx={{ mb: 2 }}>{serviceIcons[index]}</Box>
-                            <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                              {service.title}
-                            </Typography>
-                            <Typography variant="body2" sx={{ mb: 2, opacity: 0.8 }}>
-                              {service.description}
-                            </Typography>
-                            <Chip
-                              label={service.metrics}
-                              size="small"
-                              sx={{
-                                background: 'rgba(100, 181, 246, 0.2)',
-                                color: '#64b5f6',
-                                fontWeight: 600,
-                              }}
-                            />
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    </Grid>
-                  ))}
-                </Grid>
-              </motion.div>
-            </Grid>
+              <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                {commonLabels.footer.certifications.map((cert) => (
+                  <Chip
+                    key={cert}
+                    label={cert}
+                    size="small"
+                    sx={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      color: 'white',
+                      borderColor: 'rgba(255, 255, 255, 0.2)',
+                      fontSize: '0.7rem',
+                    }}
+                    variant="outlined"
+                  />
+                ))}
+              </Box>
+            </motion.div>
           </Grid>
 
-          {/* Expand Content Button */}
-          <motion.div variants={itemVariants}>
-            <Box sx={{ textAlign: 'center', mt: 6 }}>
-              <IconButton
-                onClick={toggleExpandedContent}
-                sx={{
-                  color: 'white',
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    transform: 'translateY(-2px)',
-                  },
-                  transition: 'all 0.3s ease',
-                }}
+          {/* Footer Links Container */}
+          <Grid item xs={12} lg={8} md={12}>
+            <Grid container spacing={4}>
+              {commonLabels.footer.sections.map((section, index) => (
+                <Grid item xs={12} sm={6} md={4} key={section.title}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <motion.div
-                  animate={{ rotate: expandedContent ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
+                <Typography
+                  variant="h6"
+                  sx={{ mb: 3, fontWeight: 600, color: '#64b5f6' }}
                 >
-                  <KeyboardArrowDown />
-                </motion.div>
-              </IconButton>
-            </Box>
-          </motion.div>
-
-          {/* Expanded Content */}
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{
-              height: expandedContent ? 'auto' : 0,
-              opacity: expandedContent ? 1 : 0,
-            }}
-            transition={{ duration: 0.5 }}
-            style={{ overflow: 'hidden' }}
-          >
-            <Box sx={{ mt: 6, pt: 6, borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
-              <Grid container spacing={4}>
-                <Grid item xs={12} md={8}>
-                  <Typography variant="h4" sx={{ mb: 3, fontWeight: 600 }}>
-                    {homeLabels.expandedContent.mainTitle}
-                  </Typography>
-                  <Typography variant="body1" sx={{ mb: 4, opacity: 0.9, lineHeight: 1.7 }}>
-                    {homeLabels.expandedContent.subtitle}
-                  </Typography>
-
-                  {homeLabels.expandedContent.sections.map((section, index) => (
-                    <Box key={index} sx={{ mb: 4 }}>
-                      <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-                        {section.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ mb: 1, opacity: 0.9, lineHeight: 1.6 }}>
-                        {section.description}
-                      </Typography>
-                      <Typography variant="body2" sx={{ opacity: 0.7, fontStyle: 'italic' }}>
-                        {section.note}
-                      </Typography>
-                    </Box>
+                  {section.title}
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+                  {section.links.map((link) => (
+                    <Link
+                      key={link}
+                      href="#"
+                      sx={{
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        textDecoration: 'none',
+                        fontSize: '0.9rem',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          color: '#64b5f6',
+                          transform: 'translateX(5px)',
+                        },
+                      }}
+                    >
+                      {link}
+                    </Link>
                   ))}
+                </Box>
+              </motion.div>
                 </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Grid>
 
-                <Grid item xs={12} md={4}>
-                  <Box
-                    sx={{
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      borderRadius: 3,
-                      p: 3,
-                    }}
-                  >
-                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
-                      {homeLabels.expandedContent.insights.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ mb: 3, opacity: 0.9, lineHeight: 1.6 }}>
-                      {homeLabels.expandedContent.insights.description}
-                    </Typography>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                      {homeLabels.expandedContent.insights.features.map((feature, index) => (
-                        <Chip
-                          key={index}
-                          label={feature.label}
-                          sx={{
-                            backgroundColor: feature.color + '20',
-                            color: feature.color,
-                            fontWeight: 500,
-                            justifyContent: 'flex-start',
-                          }}
-                        />
-                      ))}
-                    </Box>
-                  </Box>
-                </Grid>
-              </Grid>
-            </Box>
-          </motion.div>
-        </motion.div>
+        <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.1)', mb: 4 }} />
+
+        {/* Bottom Footer */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2,
+          }}
+        >
+          <Typography variant="body2" sx={{ opacity: 0.7 }}>
+            © 2025 TechCorp. All rights reserved. Built with passion and cutting-edge technology.
+          </Typography>
+
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            {socialLinks.map((social) => (
+              <motion.div
+                key={social.name}
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link
+                  href={social.url}
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.6)',
+                    transition: 'all 0.3s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    '&:hover': {
+                      color: '#64b5f6',
+                      backgroundColor: 'rgba(100, 181, 246, 0.2)',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 8px 25px rgba(100, 181, 246, 0.3)',
+                    },
+                  }}
+                >
+                  {social.icon}
+                </Link>
+              </motion.div>
+            ))}
+          </Box>
+        </Box>
+
+        {/* Additional Footer Info */}
+        <Box
+          sx={{
+            mt: 4,
+            pt: 3,
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            textAlign: 'center',
+          }}
+        >
+          <Typography variant="body2" sx={{ opacity: 0.6, mb: 2 }}>
+            Trusted by 500+ companies worldwide • 99.9% uptime guarantee • 24/7 support
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, flexWrap: 'wrap' }}>
+            {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Accessibility'].map(
+              (link) => (
+                <Link
+                  key={link}
+                  href="#"
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.6)',
+                    textDecoration: 'none',
+                    fontSize: '0.8rem',
+                    '&:hover': {
+                      color: '#64b5f6',
+                    },
+                  }}
+                >
+                  {link}
+                </Link>
+              )
+            )}
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default HeroSection;
+export default Footer;
