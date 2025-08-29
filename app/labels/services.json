@@ -1,0 +1,106 @@
+{
+  "header": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive IT solutions designed to accelerate your digital transformation and drive business growth."
+  },
+  "services": [
+    {
+      "title": "Cloud Infrastructure",
+      "description": "Transform your IT infrastructure with our comprehensive cloud solutions. We provide scalable, secure, and cost-effective cloud migration and management services that grow with your business.",
+      "features": ["AWS/Azure/GCP Migration", "Auto-scaling Solutions", "Disaster Recovery", "Cost Optimization"],
+      "price": "Starting at $2,500/month",
+      "gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "benefits": ["99.9% Uptime SLA", "24/7 Monitoring", "Expert Support", "Scalable Architecture"]
+    },
+    {
+      "title": "Cybersecurity Services",
+      "description": "Protect your business with enterprise-grade cybersecurity solutions. Our comprehensive security services safeguard your digital assets and ensure regulatory compliance.",
+      "features": ["Security Audits", "24/7 Monitoring", "Compliance Management", "Incident Response"],
+      "price": "Starting at $1,800/month",
+      "gradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "benefits": ["Zero Breach Guarantee", "SOC 2 Compliance", "Real-time Threat Detection", "Expert Security Team"]
+    },
+    {
+      "title": "Custom Development",
+      "description": "Build powerful, scalable applications tailored to your unique business requirements. Our expert developers use cutting-edge technologies and industry best practices.",
+      "features": ["Web Applications", "Mobile Apps", "API Development", "Legacy Modernization"],
+      "price": "Starting at $15,000/project",
+      "gradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "benefits": ["Agile Development", "Modern Tech Stack", "Quality Assurance", "Ongoing Support"]
+    },
+    {
+      "title": "Data Analytics & AI",
+      "description": "Unlock the power of your data with advanced analytics and artificial intelligence. Turn raw data into actionable insights that drive business growth and competitive advantage.",
+      "features": ["Business Intelligence", "Predictive Analytics", "Machine Learning", "Data Visualization"],
+      "price": "Starting at $3,500/month",
+      "gradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "benefits": ["Real-time Insights", "Predictive Models", "Custom Dashboards", "Data-driven Decisions"]
+    },
+    {
+      "title": "Performance Optimization",
+      "description": "Maximize your system performance and user experience. Our optimization services ensure your applications run at peak efficiency with lightning-fast response times.",
+      "features": ["Performance Audits", "Database Optimization", "CDN Implementation", "Load Balancing"],
+      "price": "Starting at $2,000/month",
+      "gradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "benefits": ["3x Faster Load Times", "Improved User Experience", "Cost Reduction", "Scalable Performance"]
+    },
+    {
+      "title": "24/7 Technical Support",
+      "description": "Never worry about downtime again. Our dedicated support team provides round-the-clock monitoring, maintenance, and emergency response to keep your systems running smoothly.",
+      "features": ["24/7 Monitoring", "Proactive Maintenance", "Emergency Response", "Remote Support"],
+      "price": "Starting at $1,200/month",
+      "gradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+      "benefits": ["Instant Response", "Expert Technicians", "Proactive Monitoring", "Peace of Mind"]
+    }
+  ],
+  "stats": [
+    {
+      "value": 500,
+      "suffix": "+",
+      "label": "Projects Completed",
+      "description": "Successfully delivered across various industries"
+    },
+    {
+      "value": 99.9,
+      "suffix": "%",
+      "label": "Uptime Guarantee",
+      "description": "Reliable infrastructure and monitoring"
+    },
+    {
+      "value": "24/7",
+      "suffix": "",
+      "label": "Expert Support",
+      "description": "Always available when you need us"
+    }
+  ],
+  "process": {
+    "title": "Our Service Process",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Discovery & Analysis",
+        "description": "We analyze your current infrastructure and business requirements"
+      },
+      {
+        "step": "02",
+        "title": "Strategy & Planning",
+        "description": "Develop a comprehensive roadmap tailored to your goals"
+      },
+      {
+        "step": "03",
+        "title": "Implementation",
+        "description": "Execute the plan with minimal disruption to your operations"
+      },
+      {
+        "step": "04",
+        "title": "Monitoring & Support",
+        "description": "Ongoing monitoring and support to ensure optimal performance"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Transform Your Business?",
+    "subtitle": "Let's discuss how our services can help you achieve your goals.",
+    "buttonText": "Get Free Consultation"
+  }
+}

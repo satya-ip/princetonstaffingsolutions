@@ -20,11 +20,9 @@ import {
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { aboutLabels } from '../../labels/index';
 
-const CounterAnimation: React.FC<{ end: number; duration?: number }> = ({ 
-  end, 
-  duration = 2 
-}) => {
+const CounterAnimation: React.FC<{ end: number; duration: number }> = ({ end, duration }) => {
   const [count, setCount] = React.useState(0);
   const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: true });
 
@@ -70,48 +68,7 @@ const AboutSection: React.FC = () => {
     controls.start('visible');
   }, [controls]);
 
-  const stats = [
-    { icon: <People />, value: 500, suffix: '+', label: 'Happy Clients' },
-    { icon: <EmojiEvents />, value: 1000, suffix: '+', label: 'Projects Completed' },
-    { icon: <Business />, value: 15, suffix: '+', label: 'Years Experience' },
-    { icon: <Timeline />, value: 99.9, suffix: '%', label: 'Success Rate' },
-  ];
-
-  const team = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Chief Technology Officer',
-      image: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=300',
-      skills: ['Cloud Architecture', 'DevOps', 'AI/ML'],
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Lead Security Engineer',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
-      skills: ['Cybersecurity', 'Penetration Testing', 'Compliance'],
-    },
-    {
-      name: 'Emma Rodriguez',
-      role: 'Senior Full Stack Developer',
-      image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=300',
-      skills: ['React', 'Node.js', 'Mobile Development'],
-    },
-    {
-      name: 'David Kim',
-      role: 'Data Science Director',
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300',
-      skills: ['Big Data', 'Analytics', 'Machine Learning'],
-    },
-  ];
-
-  const skills = [
-    { name: 'Cloud Computing', level: 95 },
-    { name: 'Cybersecurity', level: 92 },
-    { name: 'AI & Machine Learning', level: 88 },
-    { name: 'Mobile Development', level: 90 },
-    { name: 'DevOps & Automation', level: 94 },
-    { name: 'Data Analytics', level: 87 },
-  ];
+  const statIcons = [<People />, <EmojiEvents />, <Business />, <Timeline />];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -168,15 +125,14 @@ const AboutSection: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                About TechCorp
+                {aboutLabels.header.title}
               </Typography>
               <Typography
                 variant="h5"
                 color="text.secondary"
                 sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
               >
-                We are a team of passionate technologists dedicated to transforming
-                businesses through innovative IT solutions.
+                {aboutLabels.header.subtitle}
               </Typography>
             </Box>
           </motion.div>
@@ -184,7 +140,7 @@ const AboutSection: React.FC = () => {
           {/* Stats */}
           <motion.div variants={itemVariants}>
             <Grid container spacing={3} sx={{ mb: 8 }}>
-              {stats.map((stat, index) => (
+              {aboutLabels.stats.map((stat, index) => (
                 <Grid item xs={6} md={3} key={index}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -219,7 +175,7 @@ const AboutSection: React.FC = () => {
                           '& svg': { fontSize: 40 },
                         }}
                       >
-                        {stat.icon}
+                        {statIcons[index]}
                       </Box>
                       <Typography variant="h3" sx={{ fontWeight: 700, mb: 1, minHeight: '1.2em' }}>
                         <CounterAnimation end={stat.value} duration={2.5} />
@@ -240,34 +196,28 @@ const AboutSection: React.FC = () => {
             <Grid container spacing={6} sx={{ mb: 8 }}>
               <Grid item xs={12} md={6}>
                 <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>
-                  Our Expertise
+                  {aboutLabels.expertise.title}
                 </Typography>
                 <Typography
                   variant="body1"
                   color="text.secondary"
                   sx={{ mb: 4, lineHeight: 1.7 }}
                 >
-                  With over 15 years of experience in the technology industry, we&apos;ve
-                  mastered a comprehensive range of cutting-edge technologies and
-                  methodologies. Our expertise spans across cloud computing,
-                  cybersecurity, artificial intelligence, and modern software
-                  development practices.
+                  {aboutLabels.expertise.description}
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {['AWS Certified', 'Microsoft Partner', 'Google Cloud Expert', 'ISO 27001'].map(
-                    (cert) => (
-                      <Chip
-                        key={cert}
-                        label={cert}
-                        variant="outlined"
-                        sx={{ fontWeight: 500 }}
-                      />
-                    )
-                  )}
+                  {aboutLabels.expertise.certifications.map((cert) => (
+                    <Chip
+                      key={cert}
+                      label={cert}
+                      variant="outlined"
+                      sx={{ fontWeight: 500 }}
+                    />
+                  ))}
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>
-                {skills.map((skill, index) => (
+                {aboutLabels.skills.map((skill, index) => (
                   <Box key={skill.name} sx={{ mb: 3 }}>
                     <Box
                       sx={{
@@ -318,10 +268,10 @@ const AboutSection: React.FC = () => {
               textAlign="center"
               sx={{ mb: 6, fontWeight: 600 }}
             >
-              Meet Our Expert Team
+              {aboutLabels.team.title}
             </Typography>
             <Grid container spacing={4}>
-              {team.map((member, index) => (
+              {aboutLabels.team.members.map((member, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
                   <motion.div
                     whileHover={{ y: -10 }}

@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { Code, Brightness4, Brightness7, Menu } from '@mui/icons-material';
 import { useTheme } from '../../contexts/ThemeContext';
+import { commonLabels } from '../../labels/index';
 
 const Header: React.FC = () => {
   const muiTheme = useMuiTheme();
@@ -39,13 +40,6 @@ const Header: React.FC = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Services', path: '/services' },
-    { label: 'Case Studies', path: '/case-studies' },
-    { label: 'Contact', path: '/contact' },
-  ];
 
   return (
     <>
@@ -79,12 +73,12 @@ const Header: React.FC = () => {
               fontSize: { xs: '1.3rem', md: '1.5rem' },
             }}
           >
-            TechCorp
+            {commonLabels.company.name}
           </Typography>
         </Box>
 
         <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-          {navItems.map((item) => (
+          {commonLabels.navigation.map((item) => (
             <Button
               key={item.path}
               onClick={() => handleNavigation(item.path)}
@@ -195,12 +189,12 @@ const Header: React.FC = () => {
               fontSize: '1.5rem',
             }}
           >
-            TechCorp
+            {commonLabels.company.name}
           </Typography>
         </Box>
         
         <List>
-          {navItems.map((item) => (
+          {commonLabels.navigation.map((item) => (
             <ListItem key={item.path} disablePadding sx={{ mb: 1 }}>
               <ListItemButton
                 onClick={() => handleNavigation(item.path)}

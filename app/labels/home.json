@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "badge": "🚀 #1 IT Solutions Provider",
+    "title": "Transform Your",
+    "titleHighlight": "Digital Future",
+    "subtitle": "We deliver cutting-edge IT solutions that drive innovation, enhance security, and accelerate your business growth in the digital age. Transform your technology infrastructure with our expert team.",
+    "buttons": {
+      "primary": "Get Started",
+      "secondary": "Watch Demo"
+    }
+  },
+  "services": [
+    {
+      "title": "Cloud Infrastructure",
+      "description": "Scalable cloud solutions for modern enterprises",
+      "metrics": "99.9% Uptime",
+      "image": "/images/cloud-infrastructure.jpg"
+    },
+    {
+      "title": "Cybersecurity",
+      "description": "Advanced security protocols and monitoring",
+      "metrics": "Zero Breaches",
+      "image": "/images/cybersecurity.jpg"
+    },
+    {
+      "title": "Performance Optimization",
+      "description": "Lightning-fast applications and systems",
+      "metrics": "3x Faster",
+      "image": "/images/performance-optimization.jpg"
+    },
+    {
+      "title": "Digital Growth",
+      "description": "Strategic technology consulting",
+      "metrics": "250% ROI",
+      "image": "/images/digital-growth.jpg"
+    }
+  ],
+  "expandedContent": {
+    "mainTitle": "Our expert team empowers enterprises with next-generation IT solutions—leveraging AI-driven cloud infrastructure, advanced cybersecurity, and performance optimization—to drive innovation and business growth.",
+    "subtitle": "In today's fast-paced digital landscape, companies must stay competitive and agile. TechCorp delivers cutting-edge technology and 24/7 support to keep your operations scalable, secure, and ahead of the curve.",
+    "sections": [
+      {
+        "title": "AI-Powered Innovation",
+        "image": "/images/ai-innovation.jpg",
+        "description": "We integrate artificial intelligence and automation to boost efficiency and productivity. Gartner reports AI automation can cut operational costs by up to 30% by 2025, and organizations using AI-driven solutions often see up to 40% higher productivity.",
+        "note": "TechCorp's AI agents handle routine tasks and data analysis, enabling your team to focus on strategic initiatives and innovation."
+      },
+      {
+        "title": "Scalable Cloud Architecture",
+        "image": "/images/cloud-architecture.jpg",
+        "description": "Our cloud solutions provide on-demand computing resources that grow with your business. Cloud platforms offer unprecedented scalability, flexibility and cost-effectiveness, eliminating the need for expensive hardware management.",
+        "note": "TechCorp builds multi-cloud and hybrid architectures so you pay only for what you use and can adapt instantly to changing needs."
+      },
+      {
+        "title": "24/7 Proactive Support",
+        "image": "/images/proactive-support.jpg",
+        "description": "We offer round-the-clock monitoring and managed services to maximize uptime. Continuous oversight and automated alerts ensure potential issues are detected early, minimizing downtime and disruptions.",
+        "note": "Whether it's a security alert or a network hiccup, our team is ready at any hour to resolve issues quickly, protecting your revenue and reputation."
+      },
+      {
+        "title": "Comprehensive Security & Compliance",
+        "image": "/images/security-compliance.jpg",
+        "description": "TechCorp embeds security into every solution. We use advanced threat detection and regular security updates to protect against cyberattacks and data breaches.",
+        "note": "With TechCorp, you gain standard industry-compliant cybersecurity and constant vigilance so your business stays safe and trusted."
+      }
+    ],
+    "insights": {
+      "title": "Data-Driven Insights & Growth",
+      "image": "/images/data-insights.jpg",
+      "description": "Our advanced analytics and monitoring systems provide real-time insights into your infrastructure performance, security posture, and business metrics.",
+      "features": [
+        { "label": "Real-time Monitoring", "color": "#4caf50" },
+        { "label": "Predictive Analytics", "color": "#2196f3" },
+        { "label": "Performance Metrics", "color": "#ff9800" }
+      ]
+    }
+  }
+}

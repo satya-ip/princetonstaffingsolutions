@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
   Box,
   Container,
@@ -13,26 +14,22 @@ import {
   Chip,
 } from '@mui/material';
 import {
-  Cloud,
+  PlayArrow,
+  TrendingUp,
   Security,
   Speed,
-  TrendingUp,
-  ArrowForward,
-  PlayArrow,
-  Psychology,
-  Support,
-  Shield,
-  Analytics,
+  Cloud,
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
+import { homeLabels } from '../../labels/index';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
 
 const HeroSection: React.FC = () => {
   const router = useRouter();
+  const muiTheme = useMuiTheme();
   const controls = useAnimation();
-  const [ref, inView] = useInView();
-  const [particleCount, setParticleCount] = useState(0);
+  const [ref, inView] = useInView({ threshold: 0.2 });
 
   useEffect(() => {
     if (inView) {
@@ -41,263 +38,376 @@ const HeroSection: React.FC = () => {
   }, [controls, inView]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setParticleCount((prev) => (prev + 1) % 50);
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
+    controls.start('visible');
+  }, [controls]);
+
+  const serviceIcons = [
+    <Cloud sx={{ fontSize: 40, color: '#64b5f6' }} />,
+    <Security sx={{ fontSize: 40, color: '#f48fb1' }} />,
+    <Speed sx={{ fontSize: 40, color: '#81c784' }} />,
+    <TrendingUp sx={{ fontSize: 40, color: '#ffb74d' }} />,
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        duration: 0.8,
+        staggerChildren: 0.1,
+        duration: 0.6,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        // ease removed for TS compatibility with Variants typing
-      },
+      transition: { duration: 0.6 },
     },
   };
 
-  const services = [
-    {
-      icon: <Cloud sx={{ fontSize: 40, color: 'primary.main' }} />,
-      title: 'Cloud Infrastructure',
-      description: 'Scalable cloud solutions for modern enterprises',
-      metrics: '99.9% Uptime',
-    },
-    {
-      icon: <Security sx={{ fontSize: 40, color: 'secondary.main' }} />,
-      title: 'Cybersecurity',
-      description: 'Advanced security protocols and monitoring',
-      metrics: 'Zero Breaches',
-    },
-    {
-      icon: <Speed sx={{ fontSize: 40, color: 'success.main' }} />,
-      title: 'Performance Optimization',
-      description: 'Lightning-fast applications and systems',
-      metrics: '3x Faster',
-    },
-    {
-      icon: <TrendingUp sx={{ fontSize: 40, color: 'warning.main' }} />,
-      title: 'Digital Growth',
-      description: 'Strategic technology consulting',
-      metrics: '250% ROI',
-    },
-  ];
+  const handleGetStarted = () => {
+    router.push('/contact');
+  };
+
+  const handleWatchDemo = () => {
+    const servicesSection = document.getElementById('services-preview');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <>
+    <Box
+      ref={ref}
+      sx={{
+        minHeight: '100vh',
+        background: (theme) =>
+          theme.palette.mode === 'dark'
+            ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        color: (theme) =>
+          theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
+        pt: 10,
+        pb: 8,
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background Animation */}
       <Box
-        id="home"
-        ref={ref}
         sx={{
-          minHeight: '100vh',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.1,
           background: (theme) =>
             theme.palette.mode === 'dark'
-              ? 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)'
-              : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          position: 'relative',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'center',
-          pt: 8,
+              ? 'radial-gradient(circle at 20% 80%, #64b5f6 0%, transparent 50%), radial-gradient(circle at 80% 20%, #f48fb1 0%, transparent 50%)'
+              : 'radial-gradient(circle at 20% 80%, #64b5f6 0%, transparent 50%), radial-gradient(circle at 80% 20%, #f48fb1 0%, transparent 50%)',
         }}
-      >
-      {/* Animated Background Particles */}
-      {Array.from({ length: 20 }).map((_, i) => (
-        <motion.div
-          key={i}
-          style={{
-            position: 'absolute',
-            width: Math.random() * 4 + 2,
-            height: Math.random() * 4 + 2,
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '50%',
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.8, 0.2],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-        />
-      ))}
+      />
 
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <motion.div
           initial="hidden"
           animate={controls}
           variants={containerVariants}
         >
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
+          {/* Main Hero Section - Two Column Layout */}
+          <Grid container spacing={6} alignItems="center" sx={{ mb: 8 }}>
+            {/* Left Column - Hero Text */}
+            <Grid item xs={12} lg={6}>
               <motion.div variants={itemVariants}>
-                <Chip
-                  label="🚀 #1 IT Solutions Provider"
-                  sx={{
-                    mb: 3,
-                    bgcolor: 'rgba(255, 255, 255, 0.1)',
-                    color: 'white',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                  }}
-                />
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <Typography
-                  variant="h1"
-                  sx={{
-                    color: 'white',
-                    mb: 3,
-                    fontSize: { xs: '2.2rem', sm: '2.8rem', md: '3.5rem', lg: '4rem' },
-                    fontWeight: 700,
-                    lineHeight: 1.1,
-                    textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-                  }}
-                >
-                  Transform Your
-                  <Box
-                    component="span"
-                    sx={{
-                      background: 'linear-gradient(45deg, #64b5f6, #f48fb1)',
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      display: 'block',
-                    }}
+                <Box textAlign={{ xs: 'center', lg: 'left' }}>
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6 }}
                   >
-                    Digital Future
-                  </Box>
-                </Typography>
-              </motion.div>
+                    <Chip
+                      label={homeLabels.hero.badge}
+                      sx={{
+                        mb: 3,
+                        px: 2,
+                        py: 1,
+                        fontSize: '1rem',
+                        fontWeight: 600,
+                        background: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? 'rgba(100, 181, 246, 0.2)'
+                            : 'rgba(255, 255, 255, 0.2)',
+                        color: 'white',
+                        border: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? '1px solid rgba(100, 181, 246, 0.3)'
+                            : '1px solid rgba(255, 255, 255, 0.3)',
+                        backdropFilter: 'blur(10px)',
+                      }}
+                    />
+                  </motion.div>
 
-              <motion.div variants={itemVariants}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: 'rgba(255, 255, 255, 0.8)',
-                    mb: 4,
-                    fontWeight: 400,
-                    lineHeight: 1.6,
-                    fontSize: { xs: '1.1rem', md: '1.25rem' },
-                    textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
-                  }}
-                >
-                  We deliver cutting-edge IT solutions that drive innovation, enhance security,
-                  and accelerate your business growth in the digital age. Transform your technology
-                  infrastructure with our expert team.
-                </Typography>
-              </motion.div>
+                  <motion.div
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    <Typography
+                      variant="h1"
+                      sx={{
+                        mb: 2,
+                        fontWeight: 700,
+                        fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {homeLabels.hero.title}{' '}
+                      <Box
+                        component="span"
+                        sx={{
+                          background: 'linear-gradient(45deg, #64b5f6, #f48fb1)',
+                          backgroundClip: 'text',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                        }}
+                      >
+                        {homeLabels.hero.titleHighlight}
+                      </Box>
+                    </Typography>
+                  </motion.div>
 
-              <motion.div variants={itemVariants}>
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    endIcon={<ArrowForward />}
-                    onClick={() => router.push('/contact')}
-                    sx={{
-                      background: 'linear-gradient(45deg, #1976d2, #dc004e)',
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      '&:hover': {
-                        background: 'linear-gradient(45deg, #1565c0, #9a0036)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 10px 30px rgba(25, 118, 210, 0.3)',
-                      },
-                    }}
+                  <motion.div
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
                   >
-                    Get Started
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    startIcon={<PlayArrow />}
-                    onClick={() => router.push('/about')}
-                    sx={{
-                      color: 'white',
-                      borderColor: 'rgba(255, 255, 255, 0.3)',
-                      backdropFilter: 'blur(10px)',
-                      '&:hover': {
-                        borderColor: 'white',
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                        transform: 'translateY(-2px)',
-                      },
-                    }}
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        mb: 4,
+                        opacity: 0.9,
+                        maxWidth: 600,
+                        mx: { xs: 'auto', lg: 0 },
+                        lineHeight: 1.6,
+                        fontSize: { xs: '1.1rem', sm: '1.25rem' },
+                      }}
+                    >
+                      {homeLabels.hero.subtitle}
+                    </Typography>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
                   >
-                    Watch Demo
-                  </Button>
+                    <Box sx={{ display: 'flex', gap: 2, justifyContent: { xs: 'center', lg: 'flex-start' }, flexWrap: 'wrap' }}>
+                      <Button
+                        variant="contained"
+                        size="large"
+                        onClick={handleGetStarted}
+                        sx={{
+                          px: 4,
+                          py: 1.5,
+                          fontSize: '1.1rem',
+                          fontWeight: 600,
+                          background: 'linear-gradient(45deg, #1976d2, #42a5f5)',
+                          '&:hover': {
+                            background: 'linear-gradient(45deg, #1565c0, #1e88e5)',
+                            transform: 'translateY(-2px)',
+                            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+                          },
+                        }}
+                      >
+                        {homeLabels.hero.buttons.primary}
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        startIcon={<PlayArrow />}
+                        onClick={handleWatchDemo}
+                        sx={{
+                          px: 4,
+                          py: 1.5,
+                          fontSize: '1.1rem',
+                          fontWeight: 600,
+                          color: 'white',
+                          borderColor: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'rgba(100, 181, 246, 0.3)'
+                              : 'rgba(255, 255, 255, 0.3)',
+                          background: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'rgba(100, 181, 246, 0.1)'
+                              : 'rgba(255, 255, 255, 0.1)',
+                          '&:hover': {
+                            borderColor: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(100, 181, 246, 0.5)'
+                                : 'rgba(255, 255, 255, 0.5)',
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(100, 181, 246, 0.2)'
+                                : 'rgba(255, 255, 255, 0.2)',
+                            transform: 'translateY(-2px)',
+                          },
+                        }}
+                      >
+                        {homeLabels.hero.buttons.secondary}
+                      </Button>
+                    </Box>
+                  </motion.div>
                 </Box>
               </motion.div>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            {/* Right Column - Services Preview (2x2 Grid) */}
+            <Grid item xs={12} lg={6}>
               <motion.div variants={itemVariants}>
-                <Grid container spacing={2}>
-                  {services.map((service, index) => (
+                <Grid container spacing={3}>
+                  {homeLabels.services.map((service, index) => (
                     <Grid item xs={12} sm={6} key={index}>
                       <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ y: -10, scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                       >
                         <Card
                           sx={{
-                            background: 'rgba(255, 255, 255, 0.1)',
+                            height: 280,
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(255, 255, 255, 0.05)'
+                                : 'rgba(255, 255, 255, 0.1)',
                             backdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            border: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? '1px solid rgba(255, 255, 255, 0.1)'
+                                : '1px solid rgba(255, 255, 255, 0.2)',
                             color: 'white',
-                            height: '280px',
-                            display: 'flex',
-                            flexDirection: 'column',
+                            cursor: 'pointer',
                             transition: 'all 0.3s ease',
+                            position: 'relative',
+                            overflow: 'hidden',
                             '&:hover': {
-                              background: 'rgba(255, 255, 255, 0.15)',
-                              transform: 'translateY(-5px)',
-                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
+                              background: (theme) =>
+                                theme.palette.mode === 'dark'
+                                  ? 'rgba(255, 255, 255, 0.08)'
+                                  : 'rgba(255, 255, 255, 0.15)',
+                              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
+                              transform: 'translateY(-8px)',
                             },
                           }}
                         >
-                          <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', height: '100%' }}>
-                            <Box sx={{ mb: 2 }}>{service.icon}</Box>
-                            <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                              {service.title}
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              sx={{ mb: 2, opacity: 0.8, lineHeight: 1.5, flexGrow: 1 }}
-                            >
-                              {service.description}
-                            </Typography>
-                            <Chip
-                              label={service.metrics}
-                              size="small"
-                              sx={{
-                                bgcolor: 'rgba(100, 181, 246, 0.2)',
-                                color: '#64b5f6',
-                                fontWeight: 600,
-                                alignSelf: 'flex-start',
-                                mt: 'auto',
+                          {/* Background Image */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              zIndex: 1,
+                            }}
+                          >
+                            <Image
+                              src={service.image}
+                              alt={service.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 400px"
+                              style={{ 
+                                objectFit: 'cover',
                               }}
+                              priority={index < 2}
                             />
+                          </Box>
+                          
+                          {/* Gradient Overlay */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              background: (theme) =>
+                                theme.palette.mode === 'dark'
+                                  ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
+                                  : 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                              zIndex: 2,
+                            }}
+                          />
+                          
+                          <CardContent sx={{ 
+                            p: 3,
+                            position: 'relative',
+                            zIndex: 3,
+                            textAlign: 'center', 
+                            height: '100%', 
+                            display: 'flex', 
+                            flexDirection: 'column', 
+                            justifyContent: 'space-between',
+                            minHeight: 280
+                          }}>
+                            <Box>
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                              >
+                                <Box sx={{ 
+                                  mb: 2,
+                                  '& svg': {
+                                    filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
+                                  }
+                                }}>{serviceIcons[index]}</Box>
+                              </motion.div>
+                              <Typography variant="h6" sx={{ 
+                                mb: 1, 
+                                fontWeight: 700, 
+                                fontSize: '1.2rem', 
+                                minHeight: '1.5em',
+                                textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                              }}>
+                                {service.title}
+                              </Typography>
+                              <Typography variant="body2" sx={{ 
+                                mb: 2, 
+                                opacity: 0.95, 
+                                fontSize: '0.9rem', 
+                                minHeight: '3em', 
+                                lineHeight: 1.5,
+                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                                fontWeight: 500,
+                              }}>
+                                {service.description}
+                              </Typography>
+                            </Box>
+                            <motion.div
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <Chip
+                                label={service.metrics}
+                                size="small"
+                                sx={{
+                                  background: 'transparent',
+                                  color: 'white',
+                                  fontWeight: 700,
+                                  fontSize: '0.85rem',
+                                  mt: 'auto',
+                                  border: '2px solid rgba(255, 255, 255, 0.8)',
+                                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                                }}
+                              />
+                            </motion.div>
                           </CardContent>
                         </Card>
                       </motion.div>
@@ -307,278 +417,249 @@ const HeroSection: React.FC = () => {
               </motion.div>
             </Grid>
           </Grid>
-        </motion.div>
-      </Container>
-    </Box>
 
-    {/* Expanded Hero Content Section */}
-    <Box
-      sx={{
-        background: (theme) =>
-          theme.palette.mode === 'dark'
-            ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
-            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        py: 8,
-      }}
-    >
-      <Container maxWidth="lg">
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
-        >
-          {/* Main Description */}
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="h4"
-              sx={{
-                color: 'white',
-                mb: 4,
-                textAlign: 'center',
-                fontWeight: 600,
-                fontSize: { xs: '1.8rem', md: '2.2rem' },
-                lineHeight: 1.3,
-              }}
-            >
-              Our expert team empowers enterprises with next-generation IT solutions—leveraging AI-driven cloud infrastructure, advanced cybersecurity, and performance optimization—to drive innovation and business growth.
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                color: 'rgba(255, 255, 255, 0.8)',
-                mb: 6,
-                textAlign: 'center',
-                fontWeight: 400,
-                lineHeight: 1.6,
-                fontSize: { xs: '1rem', md: '1.1rem' },
-              }}
-            >
-              In today&apos;s fast-paced digital landscape, companies must stay competitive and agile. TechCorp delivers cutting-edge technology and 24/7 support to keep your operations scalable, secure, and ahead of the curve.
-            </Typography>
-          </motion.div>
-
-          {/* Service Categories */}
-          <Grid container spacing={4}>
-            {/* AI-Powered Innovation */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Psychology sx={{ fontSize: 40, color: '#64b5f6', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        AI-Powered Innovation
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      We integrate artificial intelligence and automation to boost efficiency and productivity. Gartner reports AI automation can cut operational costs by up to 30% by 2025, and organizations using AI-driven solutions often see up to 40% higher productivity.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      TechCorp&apos;s AI agents handle routine tasks and data analysis, enabling your team to focus on strategic initiatives and innovation.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-
-            {/* Scalable Cloud Architecture */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Cloud sx={{ fontSize: 40, color: '#4caf50', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        Scalable Cloud Architecture
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      Our cloud solutions provide on-demand computing resources that grow with your business. Cloud platforms offer unprecedented scalability, flexibility and cost-effectiveness, eliminating the need for expensive hardware management.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      TechCorp builds multi-cloud and hybrid architectures so you pay only for what you use and can adapt instantly to changing needs.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-
-            {/* 24/7 Proactive Support */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Support sx={{ fontSize: 40, color: '#ff9800', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        24/7 Proactive Support
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      We offer round-the-clock monitoring and managed services to maximize uptime. Continuous oversight and automated alerts ensure potential issues are detected early, minimizing downtime and disruptions.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      Whether it&apos;s a security alert or a network hiccup, our team is ready at any hour to resolve issues quickly, protecting your revenue and reputation.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-
-            {/* Comprehensive Security & Compliance */}
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
-                <Card
-                  sx={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'white',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Shield sx={{ fontSize: 40, color: '#f44336', mr: 2 }} />
-                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                        Comprehensive Security & Compliance
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6, opacity: 0.9 }}>
-                      TechCorp embeds security into every solution. We use advanced threat detection and regular security updates to protect against cyberattacks and data breaches.
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.8, fontStyle: 'italic' }}>
-                      With TechCorp, you gain standard industry-compliant cybersecurity and constant vigilance so your business stays safe and trusted.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          </Grid>
-
-          {/* Visual Elements Section */}
-          <Box sx={{ mt: 8 }}>
+          {/* Expanded Content Section */}
+          {homeLabels.expandedContent && (
             <motion.div variants={itemVariants}>
-            <Grid container spacing={4} alignItems="center">
-              <Grid item xs={12} md={6}>
-                <Box sx={{ position: 'relative', height: 400, borderRadius: 3, overflow: 'hidden' }}>
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'linear-gradient(135deg, rgba(100, 181, 246, 0.2), rgba(244, 143, 177, 0.2))',
-                      borderRadius: 3,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                    }}
-                  >
-                    <Analytics sx={{ fontSize: 120, color: 'rgba(255, 255, 255, 0.3)' }} />
-                  </Box>
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  mt: 8,
+                  p: { xs: 4, md: 6 },
+                  borderRadius: 4,
+                  background: (theme) =>
+                    theme.palette.mode === 'dark'
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(20px)',
+                  border: (theme) =>
+                    theme.palette.mode === 'dark'
+                      ? '1px solid rgba(255, 255, 255, 0.1)'
+                      : '1px solid rgba(255, 255, 255, 0.2)',
+                  textAlign: 'center',
+                }}
+              >
                 <Typography
-                  variant="h4"
+                  variant="h3"
                   sx={{
-                    color: 'white',
                     mb: 3,
                     fontWeight: 600,
-                    fontSize: { xs: '1.8rem', md: '2.2rem' },
+                    fontSize: { xs: '1.75rem', sm: '2.125rem' },
                   }}
                 >
-                  Data-Driven Insights & Growth
+                  {homeLabels.expandedContent.mainTitle}
                 </Typography>
+                
                 <Typography
-                  variant="body1"
+                  variant="h6"
                   sx={{
-                    color: 'rgba(255, 255, 255, 0.8)',
-                    mb: 3,
-                    lineHeight: 1.7,
-                    fontSize: '1.1rem',
+                    mb: 4,
+                    opacity: 0.9,
+                    maxWidth: 800,
+                    mx: 'auto',
+                    lineHeight: 1.6,
                   }}
                 >
-                  Our advanced analytics and monitoring systems provide real-time insights into your infrastructure performance, security posture, and business metrics.
+                  {homeLabels.expandedContent.subtitle}
                 </Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-                  {[
-                    { label: 'Real-time Monitoring', color: '#4caf50' },
-                    { label: 'Predictive Analytics', color: '#2196f3' },
-                    { label: 'Performance Metrics', color: '#ff9800' },
-                  ].map((item, index) => (
-                    <Chip
-                      key={index}
-                      label={item.label}
-                      sx={{
-                        bgcolor: `${item.color}20`,
-                        color: item.color,
-                        border: `1px solid ${item.color}40`,
-                        fontWeight: 500,
-                      }}
-                    />
+
+                <Grid container spacing={4}>
+                  {homeLabels.expandedContent.sections.map((section, index) => (
+                    <Grid item xs={12} md={6} key={index}>
+                      <motion.div
+                        whileHover={{ 
+                          y: -8, 
+                          scale: 1.02,
+                          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)' 
+                        }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Card
+                          sx={{
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(255, 255, 255, 0.05)'
+                                : 'rgba(255, 255, 255, 0.1)',
+                            backdropFilter: 'blur(20px)',
+                            border: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? '1px solid rgba(255, 255, 255, 0.08)'
+                                : '1px solid rgba(255, 255, 255, 0.2)',
+                            color: 'white',
+                            height: '100%',
+                            p: 0,
+                            overflow: 'hidden',
+                            position: 'relative',
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                              '& .section-image': {
+                               transform: 'scale(1)',
+                              },
+                            },
+                          }}
+                        >
+                          {/* Background Image */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              height: '200px',
+                              zIndex: 1,
+                            }}
+                          >
+                            <Image
+                              src={section.image}
+                              alt={section.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 400px"
+                              style={{ 
+                                objectFit: 'cover',
+                              }}
+                              className="section-image"
+                            />
+                          </Box>
+                          
+                          {/* Gradient Overlay */}
+                          <Box
+                            className="section-overlay"
+                            sx={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              height: '200px',
+                              background: (theme) =>
+                                theme.palette.mode === 'dark'
+                                  ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
+                                  : 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                              zIndex: 2,
+                              transition: 'background 0.3s ease',
+                            }}
+                          />
+                          
+                          <CardContent sx={{ 
+                            p: 3,
+                            position: 'relative',
+                            zIndex: 3,
+                            pt: '220px', // Space for image
+                            minHeight: '500px',
+                          }}>
+                            <Typography variant="h5" sx={{ 
+                              mb: 2, 
+                              fontWeight: 600,
+                              textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                            }}>
+                              {section.title}
+                            </Typography>
+                            <Typography variant="body1" sx={{ 
+                              mb: 2, 
+                              lineHeight: 1.7,
+                              textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                            }}>
+                              {section.description}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                        sx={{
+                                opacity: 0.9,
+                                fontStyle: 'italic',
+                                pl: 2,
+                                borderLeft: (theme) =>
+                                  theme.palette.mode === 'dark'
+                                    ? '3px solid rgba(100, 181, 246, 0.5)'
+                                    : '3px solid rgba(255, 255, 255, 0.3)',
+                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                        }}
+                            >
+                              {section.note}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    </Grid>
                   ))}
-                                 </Box>
-               </Grid>
-             </Grid>
+                </Grid>
+
+                {/* Insights Section */}
+                {homeLabels.expandedContent.insights && (
+                  <Box sx={{ mt: 6 }}>
+                    <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
+                      {homeLabels.expandedContent.insights.title}
+                    </Typography>
+                    
+                    {/* Image Block - Between Title and Description */}
+                    {homeLabels.expandedContent.insights.image && (
+                      <Box
+                        sx={{
+                          position: 'relative',
+                          width: '100%',
+                          height: 300,
+                          mb: 4,
+                          borderRadius: 3,
+                          overflow: 'hidden',
+                          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
+                        }}
+                      >
+                        <Image
+                          src={homeLabels.expandedContent.insights.image}
+                          alt="Data Analytics Dashboard"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 1200px"
+                          style={{ objectFit: 'cover' }}
+                          priority
+                        />
+                        {/* Gradient Overlay */}
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))'
+                                : 'linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1))',
+                            zIndex: 2,
+                          }}
+                        />
+                      </Box>
+                    )}
+                    
+                    <Typography variant="body1" sx={{ mb: 4, opacity: 0.9 }}>
+                      {homeLabels.expandedContent.insights.description}
+                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+                      {homeLabels.expandedContent.insights.features.map((feature, index) => (
+                        <Chip
+                          key={index}
+                          label={feature.label}
+                          sx={{
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? `${feature.color}CC` // Add transparency in dark mode
+                                : feature.color,
+                            color: 'white',
+                            fontWeight: 600,
+                            px: 2,
+                            py: 1,
+                            border: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? `1px solid ${feature.color}66`
+                                : 'none',
+                          }}
+                        />
+                      ))}
+                    </Box>
+                  </Box>
+                )}
+              </Box>
             </motion.div>
-          </Box>
+          )}
         </motion.div>
       </Container>
     </Box>
-    </>
   );
 };
 

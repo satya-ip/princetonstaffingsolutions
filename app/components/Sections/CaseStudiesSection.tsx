@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import NextImage from 'next/image';
 import {
   Box,
   Container,
@@ -31,7 +32,7 @@ import {
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useCaseStudies } from '../../contexts/CaseStudiesContext';
-import Image from 'next/image';
+import { caseStudiesLabels } from '../../labels/index';
 
 const CaseStudiesSection: React.FC = () => {
   const { 
@@ -119,15 +120,14 @@ const CaseStudiesSection: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Case Studies
+                {caseStudiesLabels.header.title}
               </Typography>
               <Typography
                 variant="h5"
                 color="text.secondary"
                 sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
               >
-                Discover how we&apos;ve helped businesses transform their digital
-                landscape and achieve remarkable results.
+                {caseStudiesLabels.header.subtitle}
               </Typography>
             </Box>
           </motion.div>
@@ -252,10 +252,10 @@ const CaseStudiesSection: React.FC = () => {
                   {loading ? (
                     <>
                       <CircularProgress size={20} sx={{ mr: 1 }} />
-                      Loading...
+                      {caseStudiesLabels.loadMore.loadingText}
                     </>
                   ) : (
-                    'Load More Case Studies'
+                    caseStudiesLabels.loadMore.buttonText
                   )}
                 </Button>
               </Box>
@@ -302,7 +302,7 @@ const CaseStudiesSection: React.FC = () => {
             
             <DialogContent>
               <Box sx={{ mb: 3, position: 'relative', width: '100%', height: 300 }}>
-                <Image
+                <NextImage
                   src={selectedStudy.image}
                   alt={selectedStudy.title}
                   fill
@@ -367,7 +367,7 @@ const CaseStudiesSection: React.FC = () => {
                   },
                 }}
               >
-                View Live Project
+                {caseStudiesLabels.modal.viewProjectText}
               </Button>
             </DialogActions>
           </>
