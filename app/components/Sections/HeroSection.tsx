@@ -453,9 +453,6 @@ const HeroSection: React.FC = () => {
                               '& .section-image': {
                                 transform: 'scale(1.1)',
                               },
-                              '& .section-overlay': {
-                                background: 'linear-gradient(135deg, rgba(100, 181, 246, 0.9), rgba(244, 143, 177, 0.9))',
-                              },
                             },
                           }}
                         >
