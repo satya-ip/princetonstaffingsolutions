@@ -249,27 +249,34 @@ const HeroSection: React.FC = () => {
                       >
                         <Card
                           sx={{
-                            height: '100%',
+                            height: 240,
                             background: 'rgba(255, 255, 255, 0.1)',
                             backdropFilter: 'blur(20px)',
                             border: '1px solid rgba(255, 255, 255, 0.2)',
                             color: 'white',
                             cursor: 'pointer',
                             transition: 'all 0.3s ease',
-                            minHeight: 200,
                             '&:hover': {
                               background: 'rgba(255, 255, 255, 0.15)',
                               boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
                             },
                           }}
                         >
-                          <CardContent sx={{ p: 3, textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                          <CardContent sx={{ 
+                            p: 3, 
+                            textAlign: 'center', 
+                            height: '100%', 
+                            display: 'flex', 
+                            flexDirection: 'column', 
+                            justifyContent: 'space-between',
+                            minHeight: 240
+                          }}>
                             <Box>
                               <Box sx={{ mb: 2 }}>{serviceIcons[index]}</Box>
-                              <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, fontSize: '1.1rem' }}>
+                              <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, fontSize: '1.1rem', minHeight: '1.5em' }}>
                                 {service.title}
                               </Typography>
-                              <Typography variant="body2" sx={{ mb: 2, opacity: 0.8, fontSize: '0.9rem' }}>
+                              <Typography variant="body2" sx={{ mb: 2, opacity: 0.8, fontSize: '0.9rem', minHeight: '3em', lineHeight: 1.4 }}>
                                 {service.description}
                               </Typography>
                             </Box>
@@ -281,6 +288,7 @@ const HeroSection: React.FC = () => {
                                 color: '#64b5f6',
                                 fontWeight: 600,
                                 fontSize: '0.8rem',
+                                mt: 'auto'
                               }}
                             />
                           </CardContent>
