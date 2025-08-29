@@ -66,6 +66,7 @@
     ],
     "insights": {
       "title": "Data-Driven Insights & Growth",
+      "image": "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600",
       "description": "Our advanced analytics and monitoring systems provide real-time insights into your infrastructure performance, security posture, and business metrics.",
       "features": [
         { "label": "Real-time Monitoring", "color": "#4caf50" },

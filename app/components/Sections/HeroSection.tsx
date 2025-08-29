@@ -584,46 +584,49 @@ const HeroSection: React.FC = () => {
                 {/* Insights Section */}
                 {homeLabels.expandedContent.insights && (
                   <Box sx={{ mt: 6 }}>
-                   {/* Image Block */}
-                   <Box
-                     sx={{
-                       position: 'relative',
-                       width: '100%',
-                       height: 300,
-                       mb: 4,
-                       borderRadius: 3,
-                       overflow: 'hidden',
-                       boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
-                     }}
-                   >
-                     <Image
-                       src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600"
-                       alt="Data Analytics Dashboard"
-                       fill
-                       sizes="(max-width: 768px) 100vw, 1200px"
-                       style={{ objectFit: 'cover' }}
-                       priority
-                     />
-                     {/* Gradient Overlay */}
-                     <Box
-                       sx={{
-                         position: 'absolute',
-                         top: 0,
-                         left: 0,
-                         right: 0,
-                         bottom: 0,
-                         background: (theme) =>
-                           theme.palette.mode === 'dark'
-                             ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))'
-                             : 'linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1))',
-                         zIndex: 2,
-                       }}
-                     />
-                   </Box>
-
                     <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
                       {homeLabels.expandedContent.insights.title}
                     </Typography>
+                    
+                    {/* Image Block - Between Title and Description */}
+                    {homeLabels.expandedContent.insights.image && (
+                      <Box
+                        sx={{
+                          position: 'relative',
+                          width: '100%',
+                          height: 300,
+                          mb: 4,
+                          borderRadius: 3,
+                          overflow: 'hidden',
+                          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
+                        }}
+                      >
+                        <Image
+                          src={homeLabels.expandedContent.insights.image}
+                          alt="Data Analytics Dashboard"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 1200px"
+                          style={{ objectFit: 'cover' }}
+                          priority
+                        />
+                        {/* Gradient Overlay */}
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))'
+                                : 'linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1))',
+                            zIndex: 2,
+                          }}
+                        />
+                      </Box>
+                    )}
+                    
                     <Typography variant="body1" sx={{ mb: 4, opacity: 0.9 }}>
                       {homeLabels.expandedContent.insights.description}
                     </Typography>
