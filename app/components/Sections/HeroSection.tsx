@@ -23,6 +23,13 @@ import { motion } from 'framer-motion';
 import { commonLabels } from '../../labels';
 
 const Footer: React.FC = () => {
+  const socialLinks = [
+    { name: 'LinkedIn', url: '#', icon: <LinkedIn /> },
+    { name: 'Twitter', url: '#', icon: <Twitter /> },
+    { name: 'GitHub', url: '#', icon: <GitHub /> },
+    { name: 'Email', url: '#', icon: <Email /> },
+  ];
+
   const socialIcons = [<LinkedIn />, <Twitter />, <GitHub />, <Email />];
 
   return (
@@ -112,7 +119,7 @@ const Footer: React.FC = () => {
           {/* Footer Links Container */}
           <Grid item xs={12} lg={8} md={12}>
             <Grid container spacing={4}>
-              {footerSections.map((section, index) => (
+              {commonLabels.footer.sections.map((section, index) => (
                 <Grid item xs={12} sm={6} md={4} key={section.title}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
