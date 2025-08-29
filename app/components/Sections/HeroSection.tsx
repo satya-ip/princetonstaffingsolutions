@@ -23,9 +23,11 @@ import {
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { homeLabels } from '../../labels';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
 
 const HeroSection: React.FC = () => {
   const router = useRouter();
+  const muiTheme = useMuiTheme();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2 });
 
@@ -82,8 +84,12 @@ const HeroSection: React.FC = () => {
       ref={ref}
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white',
+        background: (theme) =>
+          theme.palette.mode === 'dark'
+            ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        color: (theme) =>
+          theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
         pt: 10,
         pb: 8,
         position: 'relative',
@@ -99,7 +105,10 @@ const HeroSection: React.FC = () => {
           right: 0,
           bottom: 0,
           opacity: 0.1,
-          background: 'radial-gradient(circle at 20% 80%, #64b5f6 0%, transparent 50%), radial-gradient(circle at 80% 20%, #f48fb1 0%, transparent 50%)',
+          background: (theme) =>
+            theme.palette.mode === 'dark'
+              ? 'radial-gradient(circle at 20% 80%, #64b5f6 0%, transparent 50%), radial-gradient(circle at 80% 20%, #f48fb1 0%, transparent 50%)'
+              : 'radial-gradient(circle at 20% 80%, #64b5f6 0%, transparent 50%), radial-gradient(circle at 80% 20%, #f48fb1 0%, transparent 50%)',
         }}
       />
 
@@ -128,9 +137,15 @@ const HeroSection: React.FC = () => {
                         py: 1,
                         fontSize: '1rem',
                         fontWeight: 600,
-                        background: 'rgba(255, 255, 255, 0.2)',
+                        background: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? 'rgba(100, 181, 246, 0.2)'
+                            : 'rgba(255, 255, 255, 0.2)',
                         color: 'white',
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        border: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? '1px solid rgba(100, 181, 246, 0.3)'
+                            : '1px solid rgba(255, 255, 255, 0.3)',
                         backdropFilter: 'blur(10px)',
                       }}
                     />
@@ -200,9 +215,15 @@ const HeroSection: React.FC = () => {
                           py: 1.5,
                           fontSize: '1.1rem',
                           fontWeight: 600,
-                          background: 'linear-gradient(45deg, #ff6b6b, #ee5a24)',
+                          background: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'linear-gradient(45deg, #64b5f6, #42a5f5)'
+                              : 'linear-gradient(45deg, #ff6b6b, #ee5a24)',
                           '&:hover': {
-                            background: 'linear-gradient(45deg, #ff5252, #d63031)',
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'linear-gradient(45deg, #42a5f5, #1e88e5)'
+                                : 'linear-gradient(45deg, #ff5252, #d63031)',
                             transform: 'translateY(-2px)',
                             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
                           },
@@ -221,11 +242,23 @@ const HeroSection: React.FC = () => {
                           fontSize: '1.1rem',
                           fontWeight: 600,
                           color: 'white',
-                          borderColor: 'rgba(255, 255, 255, 0.3)',
-                          background: 'rgba(255, 255, 255, 0.1)',
+                          borderColor: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'rgba(100, 181, 246, 0.3)'
+                              : 'rgba(255, 255, 255, 0.3)',
+                          background: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'rgba(100, 181, 246, 0.1)'
+                              : 'rgba(255, 255, 255, 0.1)',
                           '&:hover': {
-                            borderColor: 'rgba(255, 255, 255, 0.5)',
-                            background: 'rgba(255, 255, 255, 0.2)',
+                            borderColor: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(100, 181, 246, 0.5)'
+                                : 'rgba(255, 255, 255, 0.5)',
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(100, 181, 246, 0.2)'
+                                : 'rgba(255, 255, 255, 0.2)',
                             transform: 'translateY(-2px)',
                           },
                         }}
@@ -255,16 +288,25 @@ const HeroSection: React.FC = () => {
                         <Card
                           sx={{
                             height: 280,
-                            background: 'rgba(255, 255, 255, 0.1)',
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(255, 255, 255, 0.05)'
+                                : 'rgba(255, 255, 255, 0.1)',
                             backdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            border: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? '1px solid rgba(255, 255, 255, 0.1)'
+                                : '1px solid rgba(255, 255, 255, 0.2)',
                             color: 'white',
                             cursor: 'pointer',
                             transition: 'all 0.3s ease',
                             position: 'relative',
                             overflow: 'hidden',
                             '&:hover': {
-                              background: 'rgba(255, 255, 255, 0.15)',
+                              background: (theme) =>
+                                theme.palette.mode === 'dark'
+                                  ? 'rgba(255, 255, 255, 0.08)'
+                                  : 'rgba(255, 255, 255, 0.15)',
                               boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
                               transform: 'translateY(-8px)',
                             },
@@ -301,7 +343,10 @@ const HeroSection: React.FC = () => {
                               left: 0,
                               right: 0,
                               bottom: 0,
-                              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                              background: (theme) =>
+                                theme.palette.mode === 'dark'
+                                  ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
+                                  : 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
                               zIndex: 2,
                             }}
                           />
@@ -388,9 +433,15 @@ const HeroSection: React.FC = () => {
                   mt: 8,
                   p: { xs: 4, md: 6 },
                   borderRadius: 4,
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: (theme) =>
+                    theme.palette.mode === 'dark'
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(255, 255, 255, 0.1)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  border: (theme) =>
+                    theme.palette.mode === 'dark'
+                      ? '1px solid rgba(255, 255, 255, 0.1)'
+                      : '1px solid rgba(255, 255, 255, 0.2)',
                   textAlign: 'center',
                 }}
               >
@@ -431,9 +482,15 @@ const HeroSection: React.FC = () => {
                       >
                         <Card
                           sx={{
-                            background: 'rgba(255, 255, 255, 0.1)',
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(255, 255, 255, 0.05)'
+                                : 'rgba(255, 255, 255, 0.1)',
                             backdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            border: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? '1px solid rgba(255, 255, 255, 0.08)'
+                                : '1px solid rgba(255, 255, 255, 0.2)',
                             color: 'white',
                             height: '100%',
                             p: 0,
@@ -479,7 +536,10 @@ const HeroSection: React.FC = () => {
                               left: 0,
                               right: 0,
                               height: '200px',
-                              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                              background: (theme) =>
+                                theme.palette.mode === 'dark'
+                                  ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
+                                  : 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
                               zIndex: 2,
                               transition: 'background 0.3s ease',
                             }}
@@ -512,7 +572,10 @@ const HeroSection: React.FC = () => {
                                 opacity: 0.9,
                                 fontStyle: 'italic',
                                 pl: 2,
-                                borderLeft: '3px solid rgba(255, 255, 255, 0.3)',
+                                borderLeft: (theme) =>
+                                  theme.palette.mode === 'dark'
+                                    ? '3px solid rgba(100, 181, 246, 0.5)'
+                                    : '3px solid rgba(255, 255, 255, 0.3)',
                                 textShadow: '0 1px 2px rgba(0,0,0,0.5)',
                         }}
                             >
@@ -540,11 +603,18 @@ const HeroSection: React.FC = () => {
                           key={index}
                           label={feature.label}
                           sx={{
-                            background: feature.color,
+                            background: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? `${feature.color}CC` // Add transparency in dark mode
+                                : feature.color,
                             color: 'white',
                             fontWeight: 600,
                             px: 2,
                             py: 1,
+                            border: (theme) =>
+                              theme.palette.mode === 'dark'
+                                ? `1px solid ${feature.color}66`
+                                : 'none',
                           }}
                         />
                       ))}
