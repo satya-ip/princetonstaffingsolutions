@@ -24,7 +24,6 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { homeLabels } from '../../labels/index';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
-import HeroScrollAnimation from '../Animations/HeroScrollAnimation';
 
 const HeroSection: React.FC = () => {
   const router = useRouter();
@@ -81,24 +80,22 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <HeroScrollAnimation>
-      <Box
-        ref={ref}
-        sx={{
-          minHeight: '100vh',
-          background: (theme) =>
-            theme.palette.mode === 'dark'
-              ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
-              : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
-          pt: 10,
-          pb: 8,
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-        data-hero="background"
-      >
+    <Box
+      ref={ref}
+      sx={{
+        minHeight: '100vh',
+        background: (theme) =>
+          theme.palette.mode === 'dark'
+            ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        color: (theme) =>
+          theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
+        pt: 10,
+        pb: 8,
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
         {/* Background Animation */}
         <Box
           sx={{
@@ -134,7 +131,6 @@ const HeroSection: React.FC = () => {
                     >
                       <Chip
                         label={homeLabels.hero.badge}
-                        data-hero="badge"
                         sx={{
                           mb: 3,
                           px: 2,
@@ -162,7 +158,6 @@ const HeroSection: React.FC = () => {
                     >
                       <Typography
                         variant="h1"
-                        data-hero="title"
                         sx={{
                           mb: 2,
                           fontWeight: 700,
@@ -192,7 +187,6 @@ const HeroSection: React.FC = () => {
                     >
                       <Typography
                         variant="h5"
-                        data-hero="subtitle"
                         sx={{
                           mb: 4,
                           opacity: 0.9,
@@ -212,7 +206,6 @@ const HeroSection: React.FC = () => {
                       transition={{ duration: 0.8, delay: 0.6 }}
                     >
                       <Box 
-                        data-hero="buttons"
                         sx={{ display: 'flex', gap: 2, justifyContent: { xs: 'center', lg: 'flex-start' }, flexWrap: 'wrap' }}
                       >
                         <Button
@@ -289,7 +282,6 @@ const HeroSection: React.FC = () => {
                           viewport={{ once: true }}
                         >
                           <Card
-                            data-hero="service-card"
                             sx={{
                               height: 280,
                               background: (theme) =>
@@ -669,8 +661,7 @@ const HeroSection: React.FC = () => {
             )}
           </motion.div>
         </Container>
-      </Box>
-    </HeroScrollAnimation>
+    </Box>
   );
 };
 
