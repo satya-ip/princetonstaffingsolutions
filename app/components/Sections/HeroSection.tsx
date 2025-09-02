@@ -286,13 +286,13 @@ const HeroSection: React.FC = () => {
                               height: 280,
                               background: (theme) =>
                                 theme.palette.mode === 'dark'
-                                  ? 'rgba(255, 255, 255, 0.05)'
-                                  : 'rgba(255, 255, 255, 0.1)',
-                              backdropFilter: 'blur(20px)',
+                                  ? 'rgba(255, 255, 255, 0.08)'
+                                  : 'rgba(255, 255, 255, 0.15)',
+                              backdropFilter: 'blur(8px)',
                               border: (theme) =>
                                 theme.palette.mode === 'dark'
-                                  ? '1px solid rgba(255, 255, 255, 0.1)'
-                                  : '1px solid rgba(255, 255, 255, 0.2)',
+                                  ? '1px solid rgba(255, 255, 255, 0.15)'
+                                  : '1px solid rgba(255, 255, 255, 0.25)',
                               color: 'white',
                               cursor: 'pointer',
                               transition: 'all 0.3s ease',
@@ -301,10 +301,16 @@ const HeroSection: React.FC = () => {
                               '&:hover': {
                                 background: (theme) =>
                                   theme.palette.mode === 'dark'
-                                    ? 'rgba(255, 255, 255, 0.08)'
-                                    : 'rgba(255, 255, 255, 0.15)',
+                                    ? 'rgba(255, 255, 255, 0.12)'
+                                    : 'rgba(255, 255, 255, 0.2)',
                                 boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
                                 transform: 'translateY(-8px)',
+                                '& .card-overlay': {
+                                  background: (theme) =>
+                                    theme.palette.mode === 'dark'
+                                      ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2))'
+                                      : 'linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1))',
+                                },
                               },
                             }}
                           >
@@ -333,6 +339,7 @@ const HeroSection: React.FC = () => {
                             
                             {/* Gradient Overlay */}
                             <Box
+                              className="card-overlay"
                               sx={{
                                 position: 'absolute',
                                 top: 0,
@@ -341,8 +348,8 @@ const HeroSection: React.FC = () => {
                                 bottom: 0,
                                 background: (theme) =>
                                   theme.palette.mode === 'dark'
-                                    ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
-                                    : 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                                    ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3))'
+                                    : 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))',
                                 zIndex: 2,
                               }}
                             />
@@ -533,9 +540,10 @@ const HeroSection: React.FC = () => {
                                 height: '200px',
                                 background: (theme) =>
                                   theme.palette.mode === 'dark'
-                                    ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
-                                    : 'linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))',
+                                    ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3))'
+                                    : 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))',
                                 zIndex: 2,
+                                transition: 'background 0.3s ease',
                                 transition: 'background 0.3s ease',
                               }}
                             />
