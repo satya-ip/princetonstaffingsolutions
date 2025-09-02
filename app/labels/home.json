@@ -74,5 +74,165 @@
         { "label": "Performance Metrics", "color": "#ff9800" }
       ]
     }
+  },
+  "techMarquee": {
+    "title": "Powered by Industry-Leading Technologies",
+    "technologies": [
+      {
+        "name": "React",
+        "image": "/images/home/technologies/react.png",
+        "category": "Frontend"
+      },
+      {
+        "name": "Angular",
+        "image": "/images/home/technologies/angular.png",
+        "category": "Frontend"
+      },
+      {
+        "name": "Vue.js",
+        "image": "/images/home/technologies/vue.png",
+        "category": "Frontend"
+      },
+      {
+        "name": "Next.js",
+        "image": "/images/home/technologies/nextjs.png",
+        "category": "Frontend"
+      },
+      {
+        "name": "Material UI",
+        "image": "/images/home/technologies/mui.png",
+        "category": "UI Framework"
+      },
+      {
+        "name": "TailwindCSS",
+        "image": "/images/home/technologies/tailwind.png",
+        "category": "CSS Framework"
+      },
+      {
+        "name": "Node.js",
+        "image": "/images/home/technologies/nodejs.png",
+        "category": "Backend"
+      },
+      {
+        "name": "Express.js",
+        "image": "/images/home/technologies/express.png",
+        "category": "Backend"
+      },
+      {
+        "name": "Django",
+        "image": "/images/home/technologies/django.png",
+        "category": "Backend"
+      },
+      {
+        "name": "Spring Boot",
+        "image": "/images/home/technologies/spring.png",
+        "category": "Backend"
+      },
+      {
+        "name": ".NET Core",
+        "image": "/images/home/technologies/dotnet.png",
+        "category": "Backend"
+      },
+      {
+        "name": "MySQL",
+        "image": "/images/home/technologies/mysql.png",
+        "category": "Database"
+      },
+      {
+        "name": "PostgreSQL",
+        "image": "/images/home/technologies/postgresql.png",
+        "category": "Database"
+      },
+      {
+        "name": "MongoDB",
+        "image": "/images/home/technologies/mongodb.png",
+        "category": "Database"
+      },
+      {
+        "name": "Redis",
+        "image": "/images/home/technologies/redis.png",
+        "category": "Database"
+      },
+      {
+        "name": "Firebase",
+        "image": "/images/home/technologies/firebase.png",
+        "category": "Backend Service"
+      },
+      {
+        "name": "AWS",
+        "image": "/images/home/technologies/aws.png",
+        "category": "Cloud"
+      },
+      {
+        "name": "Microsoft Azure",
+        "image": "/images/home/technologies/azure.png",
+        "category": "Cloud"
+      },
+      {
+        "name": "Google Cloud",
+        "image": "/images/home/technologies/gcp.png",
+        "category": "Cloud"
+      },
+      {
+        "name": "Docker",
+        "image": "/images/home/technologies/docker.png",
+        "category": "DevOps"
+      },
+      {
+        "name": "Kubernetes",
+        "image": "/images/home/technologies/kubernetes.png",
+        "category": "DevOps"
+      },
+      {
+        "name": "GitHub",
+        "image": "/images/home/technologies/github.png",
+        "category": "Version Control"
+      },
+      {
+        "name": "GitLab",
+        "image": "/images/home/technologies/gitlab.png",
+        "category": "Version Control"
+      },
+      {
+        "name": "TensorFlow",
+        "image": "/images/home/technologies/tensorflow.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "PyTorch",
+        "image": "/images/home/technologies/pytorch.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "OpenAI",
+        "image": "/images/home/technologies/openai.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "Hugging Face",
+        "image": "/images/home/technologies/huggingface.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "React Native",
+        "image": "/images/home/technologies/react-native.png",
+        "category": "Mobile"
+      },
+      {
+        "name": "Flutter",
+        "image": "/images/home/technologies/flutter.png",
+        "category": "Mobile"
+      },
+      {
+        "name": "Swift",
+        "image": "/images/home/technologies/swift.png",
+        "category": "Mobile"
+      },
+      {
+        "name": "Kotlin",
+        "image": "/images/home/technologies/kotlin.png",
+        "category": "Mobile"
+      }
+    ]
   }
 }
