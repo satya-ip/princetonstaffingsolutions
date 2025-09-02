@@ -14,25 +14,25 @@
       "title": "Cloud Infrastructure",
       "description": "Scalable cloud solutions for modern enterprises",
       "metrics": "99.9% Uptime",
-      "image": "/images/cloud-infrastructure.jpg"
+      "image": "/images/home/cloud-infrastructure.jpg"
     },
     {
       "title": "Cybersecurity",
       "description": "Advanced security protocols and monitoring",
       "metrics": "Zero Breaches",
-      "image": "/images/cybersecurity.jpg"
+      "image": "/images/home/cybersecurity.jpg"
     },
     {
       "title": "Performance Optimization",
       "description": "Lightning-fast applications and systems",
       "metrics": "3x Faster",
-      "image": "/images/performance-optimization.jpg"
+      "image": "/images/home/performance-optimization.jpg"
     },
     {
       "title": "Digital Growth",
       "description": "Strategic technology consulting",
       "metrics": "250% ROI",
-      "image": "/images/digital-growth.jpg"
+      "image": "/images/home/digital-growth.jpg"
     }
   ],
   "expandedContent": {
@@ -41,32 +41,32 @@
     "sections": [
       {
         "title": "AI-Powered Innovation",
-        "image": "/images/ai-innovation.jpg",
+        "image": "/images/home/ai-innovation.jpg",
         "description": "We integrate artificial intelligence and automation to boost efficiency and productivity. Gartner reports AI automation can cut operational costs by up to 30% by 2025, and organizations using AI-driven solutions often see up to 40% higher productivity.",
         "note": "TechCorp's AI agents handle routine tasks and data analysis, enabling your team to focus on strategic initiatives and innovation."
       },
       {
         "title": "Scalable Cloud Architecture",
-        "image": "/images/cloud-architecture.jpg",
+        "image": "/images/home/cloud-architecture.jpg",
         "description": "Our cloud solutions provide on-demand computing resources that grow with your business. Cloud platforms offer unprecedented scalability, flexibility and cost-effectiveness, eliminating the need for expensive hardware management.",
         "note": "TechCorp builds multi-cloud and hybrid architectures so you pay only for what you use and can adapt instantly to changing needs."
       },
       {
         "title": "24/7 Proactive Support",
-        "image": "/images/proactive-support.jpg",
+        "image": "/images/home/proactive-support.jpg",
         "description": "We offer round-the-clock monitoring and managed services to maximize uptime. Continuous oversight and automated alerts ensure potential issues are detected early, minimizing downtime and disruptions.",
         "note": "Whether it's a security alert or a network hiccup, our team is ready at any hour to resolve issues quickly, protecting your revenue and reputation."
       },
       {
         "title": "Comprehensive Security & Compliance",
-        "image": "/images/security-compliance.jpg",
+        "image": "/images/home/security-compliance.jpg",
         "description": "TechCorp embeds security into every solution. We use advanced threat detection and regular security updates to protect against cyberattacks and data breaches.",
         "note": "With TechCorp, you gain standard industry-compliant cybersecurity and constant vigilance so your business stays safe and trusted."
       }
     ],
     "insights": {
       "title": "Data-Driven Insights & Growth",
-      "image": "/images/data-insights.jpg",
+      "image": "/images/home/data-insights.jpg",
       "description": "Our advanced analytics and monitoring systems provide real-time insights into your infrastructure performance, security posture, and business metrics.",
       "features": [
         { "label": "Real-time Monitoring", "color": "#4caf50" },
