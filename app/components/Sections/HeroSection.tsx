@@ -665,21 +665,26 @@ const HeroSection: React.FC = () => {
       {/* Technology Marquee Section */}
       <Box
         sx={{
-          width: '100%',
-          py: 6,
+          mt: 8,
+          py: 8,
           background: (theme) =>
             theme.palette.mode === 'dark'
-              ? 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
-              : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)',
-          borderTop: (theme) =>
+              ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
+              : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          borderRadius: 4,
+          border: (theme) =>
             theme.palette.mode === 'dark'
-              ? '1px solid rgba(255, 255, 255, 0.1)'
-              : '1px solid rgba(0, 0, 0, 0.1)',
+              ? '2px solid rgba(100, 181, 246, 0.3)'
+              : '2px solid rgba(255, 255, 255, 0.3)',
+          boxShadow: (theme) =>
+            theme.palette.mode === 'dark'
+              ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+              : '0 8px 32px rgba(0, 0, 0, 0.1)',
           overflow: 'hidden',
           position: 'relative',
+          mx: 2,
         }}
       >
-        <Container maxWidth="lg">
           {/* Section Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -693,8 +698,8 @@ const HeroSection: React.FC = () => {
               sx={{
                 mb: 4,
                 fontWeight: 600,
-                color: (theme) =>
-                  theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
+                color: 'white',
+                textShadow: '0 2px 4px rgba(0,0,0,0.5)',
               }}
             >
               {homeLabels.techMarquee.title}
@@ -718,8 +723,8 @@ const HeroSection: React.FC = () => {
                 width: '80px',
                 background: (theme) =>
                   theme.palette.mode === 'dark'
-                    ? 'linear-gradient(to right, #1a1a1a, transparent)'
-                    : 'linear-gradient(to right, #f8fafc, transparent)',
+                    ? 'linear-gradient(to right, #1a1a2e, transparent)'
+                    : 'linear-gradient(to right, #667eea, transparent)',
                 zIndex: 2,
                 pointerEvents: 'none',
               },
@@ -732,8 +737,8 @@ const HeroSection: React.FC = () => {
                 width: '80px',
                 background: (theme) =>
                   theme.palette.mode === 'dark'
-                    ? 'linear-gradient(to left, #1a1a1a, transparent)'
-                    : 'linear-gradient(to left, #f8fafc, transparent)',
+                    ? 'linear-gradient(to left, #1a1a2e, transparent)'
+                    : 'linear-gradient(to left, #667eea, transparent)',
                 zIndex: 2,
                 pointerEvents: 'none',
               },
@@ -788,12 +793,12 @@ const HeroSection: React.FC = () => {
                       borderRadius: '16px',
                       background: (theme) =>
                         theme.palette.mode === 'dark'
-                          ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))'
-                          : 'linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02))',
+                          ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1))'
+                          : 'linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1))',
                       border: (theme) =>
                         theme.palette.mode === 'dark'
-                          ? '1px solid rgba(255, 255, 255, 0.1)'
-                          : '1px solid rgba(0, 0, 0, 0.1)',
+                          ? '1px solid rgba(255, 255, 255, 0.2)'
+                          : '1px solid rgba(255, 255, 255, 0.3)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -804,8 +809,8 @@ const HeroSection: React.FC = () => {
                       '&:hover': {
                         background: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? 'linear-gradient(135deg, rgba(100, 181, 246, 0.2), rgba(244, 143, 177, 0.2))'
-                            : 'linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(220, 0, 78, 0.1))',
+                            ? 'linear-gradient(135deg, rgba(100, 181, 246, 0.3), rgba(244, 143, 177, 0.3))'
+                            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.3))',
                         borderColor: (theme) =>
                           theme.palette.mode === 'dark'
                             ? 'rgba(100, 181, 246, 0.3)'
@@ -835,8 +840,8 @@ const HeroSection: React.FC = () => {
                     sx={{
                       color: (theme) =>
                         theme.palette.mode === 'dark'
-                          ? 'rgba(255, 255, 255, 0.8)'
-                          : 'rgba(0, 0, 0, 0.7)',
+                          ? 'rgba(255, 255, 255, 0.9)'
+                          : 'rgba(255, 255, 255, 0.9)',
                       fontWeight: 500,
                       fontSize: '0.75rem',
                       textAlign: 'center',
@@ -844,8 +849,8 @@ const HeroSection: React.FC = () => {
                       '&:hover': {
                         color: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? '#64b5f6'
-                            : '#1976d2',
+                            ? '#ffffff'
+                            : '#ffffff',
                       },
                     }}
                   >
@@ -855,7 +860,6 @@ const HeroSection: React.FC = () => {
               ))}
             </motion.div>
           </Box>
-        </Container>
       </Box>
     </Box>
   );
