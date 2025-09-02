@@ -74,7 +74,6 @@
         { "label": "Performance Metrics", "color": "#ff9800" }
       ]
     }
-  }
   },
   "techMarquee": {
     "title": "Powered by Industry-Leading Technologies",
@@ -235,4 +234,5 @@
         "category": "Mobile"
       }
     ]
+  }
 }
