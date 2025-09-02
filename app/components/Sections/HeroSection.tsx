@@ -734,11 +734,11 @@ const HeroSection: React.FC = () => {
                 right: 0,
                 top: 0,
                 bottom: 0,
-                width: '80px',
+                width: '60px',
                 background: (theme) =>
                   theme.palette.mode === 'dark'
-                    ? 'linear-gradient(to left, #1a1a2e, transparent)'
-                    : 'linear-gradient(to left, #667eea, transparent)',
+                    ? 'linear-gradient(to left, rgba(26, 26, 46, 0.9), transparent)'
+                    : 'linear-gradient(to left, rgba(102, 126, 234, 0.9), transparent)',
                 zIndex: 2,
                 pointerEvents: 'none',
               },
@@ -809,16 +809,16 @@ const HeroSection: React.FC = () => {
                       '&:hover': {
                         background: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? 'linear-gradient(135deg, rgba(100, 181, 246, 0.3), rgba(244, 143, 177, 0.3))'
-                            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.3))',
+                            ? 'linear-gradient(135deg, rgba(100, 181, 246, 0.25), rgba(244, 143, 177, 0.25))'
+                            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2))',
                         borderColor: (theme) =>
                           theme.palette.mode === 'dark'
                             ? 'rgba(100, 181, 246, 0.3)'
                             : 'rgba(25, 118, 210, 0.3)',
                         boxShadow: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? '0 8px 32px rgba(100, 181, 246, 0.2)'
-                            : '0 8px 32px rgba(25, 118, 210, 0.15)',
+                            ? '0 6px 20px rgba(100, 181, 246, 0.15)'
+                            : '0 6px 20px rgba(25, 118, 210, 0.1)',
                       },
                     }}
                   >
