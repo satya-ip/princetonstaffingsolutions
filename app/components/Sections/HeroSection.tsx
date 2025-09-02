@@ -674,12 +674,8 @@ const HeroSection: React.FC = () => {
           borderRadius: 4,
           border: (theme) =>
             theme.palette.mode === 'dark'
-              ? '2px solid rgba(100, 181, 246, 0.3)'
-              : '2px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: (theme) =>
-            theme.palette.mode === 'dark'
-              ? '0 8px 32px rgba(0, 0, 0, 0.3)'
-              : '0 8px 32px rgba(0, 0, 0, 0.1)',
+              ? '1px solid rgba(255, 255, 255, 0.1)'
+              : '1px solid rgba(255, 255, 255, 0.2)',
           overflow: 'hidden',
           position: 'relative',
           mx: 2,
