@@ -24,6 +24,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { homeLabels } from '../../labels/index';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
+import TechMarquee from './TechMarquee';
 
 const HeroSection: React.FC = () => {
   const router = useRouter();
@@ -661,6 +662,9 @@ const HeroSection: React.FC = () => {
             )}
           </motion.div>
         </Container>
+      
+      {/* Technology Marquee Banner */}
+      <TechMarquee />
     </Box>
   );
 };
