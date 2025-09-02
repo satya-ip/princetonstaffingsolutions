@@ -734,11 +734,11 @@ const HeroSection: React.FC = () => {
                 right: 0,
                 top: 0,
                 bottom: 0,
-                width: '60px',
+                width: '40px',
                 background: (theme) =>
                   theme.palette.mode === 'dark'
-                    ? 'linear-gradient(to left, rgba(26, 26, 46, 0.9), transparent)'
-                    : 'linear-gradient(to left, rgba(102, 126, 234, 0.9), transparent)',
+                    ? 'linear-gradient(to left, #1a1a2e, rgba(26, 26, 46, 0.8), transparent)'
+                    : 'linear-gradient(to left, #667eea, rgba(102, 126, 234, 0.8), transparent)',
                 zIndex: 2,
                 pointerEvents: 'none',
               },
