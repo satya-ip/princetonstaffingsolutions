@@ -24,7 +24,6 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { homeLabels } from '../../labels/index';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
-import TechMarquee from './TechMarquee';
 
 const HeroSection: React.FC = () => {
   const router = useRouter();
@@ -663,8 +662,201 @@ const HeroSection: React.FC = () => {
           </motion.div>
         </Container>
       
-      {/* Technology Marquee Banner */}
-      <TechMarquee />
+      {/* Technology Marquee Section */}
+      <Box
+        sx={{
+          width: '100%',
+          py: 6,
+          background: (theme) =>
+            theme.palette.mode === 'dark'
+              ? 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
+              : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)',
+          borderTop: (theme) =>
+            theme.palette.mode === 'dark'
+              ? '1px solid rgba(255, 255, 255, 0.1)'
+              : '1px solid rgba(0, 0, 0, 0.1)',
+          overflow: 'hidden',
+          position: 'relative',
+        }}
+      >
+        <Container maxWidth="lg">
+          {/* Section Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Typography
+              variant="h4"
+              textAlign="center"
+              sx={{
+                mb: 4,
+                fontWeight: 600,
+                color: (theme) =>
+                  theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
+              }}
+            >
+              {homeLabels.techMarquee.title}
+            </Typography>
+          </motion.div>
+
+          {/* Technologies Grid */}
+          <Box
+            sx={{
+              position: 'relative',
+              height: '120px',
+              display: 'flex',
+              alignItems: 'center',
+              overflow: 'hidden',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                bottom: 0,
+                width: '80px',
+                background: (theme) =>
+                  theme.palette.mode === 'dark'
+                    ? 'linear-gradient(to right, #1a1a1a, transparent)'
+                    : 'linear-gradient(to right, #f8fafc, transparent)',
+                zIndex: 2,
+                pointerEvents: 'none',
+              },
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                right: 0,
+                top: 0,
+                bottom: 0,
+                width: '80px',
+                background: (theme) =>
+                  theme.palette.mode === 'dark'
+                    ? 'linear-gradient(to left, #1a1a1a, transparent)'
+                    : 'linear-gradient(to left, #f8fafc, transparent)',
+                zIndex: 2,
+                pointerEvents: 'none',
+              },
+            }}
+          >
+            {/* Scrolling Content */}
+            <motion.div
+              animate={{
+                x: [0, -50 * homeLabels.techMarquee.technologies.length],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                  duration: 40,
+                  ease: 'linear',
+                },
+              }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '40px',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {/* Duplicate array for seamless loop */}
+              {[...homeLabels.techMarquee.technologies, ...homeLabels.techMarquee.technologies].map((tech, index) => (
+                <motion.div
+                  key={`${tech.name}-${index}`}
+                  whileHover={{
+                    scale: 1.1,
+                    y: -5,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: 'easeOut',
+                  }}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '12px',
+                    minWidth: '100px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {/* Tech Logo */}
+                  <Box
+                    sx={{
+                      width: 64,
+                      height: 64,
+                      borderRadius: '16px',
+                      background: (theme) =>
+                        theme.palette.mode === 'dark'
+                          ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))'
+                          : 'linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02))',
+                      border: (theme) =>
+                        theme.palette.mode === 'dark'
+                          ? '1px solid rgba(255, 255, 255, 0.1)'
+                          : '1px solid rgba(0, 0, 0, 0.1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backdropFilter: 'blur(10px)',
+                      transition: 'all 0.3s ease',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      '&:hover': {
+                        background: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? 'linear-gradient(135deg, rgba(100, 181, 246, 0.2), rgba(244, 143, 177, 0.2))'
+                            : 'linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(220, 0, 78, 0.1))',
+                        borderColor: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? 'rgba(100, 181, 246, 0.3)'
+                            : 'rgba(25, 118, 210, 0.3)',
+                        boxShadow: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? '0 8px 32px rgba(100, 181, 246, 0.2)'
+                            : '0 8px 32px rgba(25, 118, 210, 0.15)',
+                      },
+                    }}
+                  >
+                    <Image
+                      src={tech.image}
+                      alt={tech.name}
+                      width={40}
+                      height={40}
+                      style={{
+                        objectFit: 'contain',
+                        filter: muiTheme.palette.mode === 'dark' ? 'brightness(1.2)' : 'none',
+                      }}
+                    />
+                  </Box>
+
+                  {/* Tech Name */}
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: (theme) =>
+                        theme.palette.mode === 'dark'
+                          ? 'rgba(255, 255, 255, 0.8)'
+                          : 'rgba(0, 0, 0, 0.7)',
+                      fontWeight: 500,
+                      fontSize: '0.75rem',
+                      textAlign: 'center',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        color: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? '#64b5f6'
+                            : '#1976d2',
+                      },
+                    }}
+                  >
+                    {tech.name}
+                  </Typography>
+                </motion.div>
+              ))}
+            </motion.div>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 };
