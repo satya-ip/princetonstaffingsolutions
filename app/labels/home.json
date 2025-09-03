@@ -80,12 +80,12 @@
     "technologies": [
       {
         "name": "React",
-        "image": "/images/home/technologies/react.png",
+        "image": "/images/home/technologies/react.jpg",
         "category": "Frontend"
       },
       {
         "name": "Angular",
-        "image": "/images/home/technologies/angular.png",
+        "image": "/images/home/technologies/angular.jpg",
         "category": "Frontend"
       },
       {
@@ -95,7 +95,7 @@
       },
       {
         "name": "Next.js",
-        "image": "/images/home/technologies/nextjs.png",
+        "image": "/images/home/technologies/nextjs.jpg",
         "category": "Frontend"
       },
       {
