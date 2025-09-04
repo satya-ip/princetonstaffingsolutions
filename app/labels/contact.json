@@ -1,0 +1,83 @@
+{
+  "header": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to transform your business? Let's discuss how we can help you achieve your goals."
+  },
+  "contactInfo": [
+    {
+      "title": "Email Us",
+      "value": "hello@techcorp.com",
+      "subtitle": "We reply within 24 hours"
+    },
+    {
+      "title": "Call Us",
+      "value": "+1 (555) 123-4567",
+      "subtitle": "Mon-Fri 9AM-6PM EST"
+    },
+    {
+      "title": "Visit Us",
+      "value": "123 Tech Street, Innovation District",
+      "subtitle": "San Francisco, CA 94105"
+    }
+  ],
+  "form": {
+    "title": "Send us a message",
+    "fields": {
+      "firstName": {
+        "label": "First Name",
+        "required": "First name is required"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "required": "Last name is required"
+      },
+      "email": {
+        "label": "Email",
+        "required": "Email is required",
+        "invalid": "Invalid email"
+      },
+      "phone": {
+        "label": "Phone",
+        "required": "Phone is required"
+      },
+      "company": {
+        "label": "Company",
+        "required": "Company is required"
+      },
+      "service": {
+        "label": "Service Interested In",
+        "required": "Please select a service"
+      },
+      "message": {
+        "label": "Message",
+        "required": "Message is required",
+        "minLength": "Message must be at least 10 characters"
+      }
+    },
+    "services": [
+      "Cloud Infrastructure",
+      "Cybersecurity Services",
+      "Custom Development",
+      "Data Analytics & AI",
+      "Performance Optimization",
+      "24/7 Technical Support",
+      "Digital Transformation",
+      "Other"
+    ],
+    "buttons": {
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message Sent!"
+    }
+  },
+  "whyChoose": {
+    "title": "Why Choose TechCorp?",
+    "features": [
+      "15+ Years Experience",
+      "500+ Satisfied Clients",
+      "24/7 Support",
+      "99.9% Uptime Guarantee"
+    ]
+  },
+  "successMessage": "Thank you for your message! We'll get back to you within 24 hours."
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import NextImage from 'next/image';
 import {
   Box,
   Container,
@@ -30,19 +31,19 @@ import {
 } from '@mui/icons-material';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import {
-  loadMoreCaseStudies,
-  setSelectedStudy,
-  clearSelectedStudy,
-} from '../../store/slices/caseStudiesSlice';
-import Image from 'next/image';
+import { useCaseStudies } from '../../contexts/CaseStudiesContext';
+import { caseStudiesLabels } from '../../labels/index';
 
 const CaseStudiesSection: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { studies, loading, selectedStudy, hasMore, page } = useAppSelector(
-    (state) => state.caseStudies
-  );
+  const { 
+    studies, 
+    loading, 
+    selectedStudy, 
+    hasMore, 
+    loadMoreCaseStudies, 
+    setSelectedStudy, 
+    clearSelectedStudy 
+  } = useCaseStudies();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2 });
 
@@ -52,22 +53,16 @@ const CaseStudiesSection: React.FC = () => {
     }
   }, [controls, inView]);
 
-  useEffect(() => {
-    if (studies.length === 0) {
-      dispatch(loadMoreCaseStudies(1));
-    }
-  }, [dispatch, studies.length]);
-
   const handleLoadMore = () => {
-    dispatch(loadMoreCaseStudies(page));
+    loadMoreCaseStudies();
   };
 
   const handleStudyClick = (study: any) => {
-    dispatch(setSelectedStudy(study));
+    setSelectedStudy(study);
   };
 
   const handleCloseModal = () => {
-    dispatch(clearSelectedStudy());
+    clearSelectedStudy();
   };
 
   const containerVariants = {
@@ -125,15 +120,14 @@ const CaseStudiesSection: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Case Studies
+                {caseStudiesLabels.header.title}
               </Typography>
               <Typography
                 variant="h5"
                 color="text.secondary"
                 sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
               >
-                Discover how we&apos;ve helped businesses transform their digital
-                landscape and achieve remarkable results.
+                {caseStudiesLabels.header.subtitle}
               </Typography>
             </Box>
           </motion.div>
@@ -258,10 +252,10 @@ const CaseStudiesSection: React.FC = () => {
                   {loading ? (
                     <>
                       <CircularProgress size={20} sx={{ mr: 1 }} />
-                      Loading...
+                      {caseStudiesLabels.loadMore.loadingText}
                     </>
                   ) : (
-                    'Load More Case Studies'
+                    caseStudiesLabels.loadMore.buttonText
                   )}
                 </Button>
               </Box>
@@ -308,7 +302,7 @@ const CaseStudiesSection: React.FC = () => {
             
             <DialogContent>
               <Box sx={{ mb: 3, position: 'relative', width: '100%', height: 300 }}>
-                <Image
+                <NextImage
                   src={selectedStudy.image}
                   alt={selectedStudy.title}
                   fill
@@ -373,7 +367,7 @@ const CaseStudiesSection: React.FC = () => {
                   },
                 }}
               >
-                View Live Project
+                {caseStudiesLabels.modal.viewProjectText}
               </Button>
             </DialogActions>
           </>

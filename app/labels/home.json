@@ -1,0 +1,238 @@
+{
+  "hero": {
+    "badge": "🚀 #1 IT Solutions Provider",
+    "title": "Transform Your",
+    "titleHighlight": "Digital Future",
+    "subtitle": "We deliver cutting-edge IT solutions that drive innovation, enhance security, and accelerate your business growth in the digital age. Transform your technology infrastructure with our expert team.",
+    "buttons": {
+      "primary": "Get Started",
+      "secondary": "Watch Demo"
+    }
+  },
+  "services": [
+    {
+      "title": "Cloud Infrastructure",
+      "description": "Scalable cloud solutions for modern enterprises",
+      "metrics": "99.9% Uptime",
+      "image": "/images/home/cloud-infrastructure.jpg"
+    },
+    {
+      "title": "Cybersecurity",
+      "description": "Advanced security protocols and monitoring",
+      "metrics": "Zero Breaches",
+      "image": "/images/home/cybersecurity.jpg"
+    },
+    {
+      "title": "Performance Optimization",
+      "description": "Lightning-fast applications and systems",
+      "metrics": "3x Faster",
+      "image": "/images/home/performance-optimization.jpg"
+    },
+    {
+      "title": "Digital Growth",
+      "description": "Strategic technology consulting",
+      "metrics": "250% ROI",
+      "image": "/images/home/digital-growth.jpg"
+    }
+  ],
+  "expandedContent": {
+    "mainTitle": "Our expert team empowers enterprises with next-generation IT solutions—leveraging AI-driven cloud infrastructure, advanced cybersecurity, and performance optimization—to drive innovation and business growth.",
+    "subtitle": "In today's fast-paced digital landscape, companies must stay competitive and agile. TechCorp delivers cutting-edge technology and 24/7 support to keep your operations scalable, secure, and ahead of the curve.",
+    "sections": [
+      {
+        "title": "AI-Powered Innovation",
+        "image": "/images/home/ai-innovation.jpg",
+        "description": "We integrate artificial intelligence and automation to boost efficiency and productivity. Gartner reports AI automation can cut operational costs by up to 30% by 2025, and organizations using AI-driven solutions often see up to 40% higher productivity.",
+        "note": "TechCorp's AI agents handle routine tasks and data analysis, enabling your team to focus on strategic initiatives and innovation."
+      },
+      {
+        "title": "Scalable Cloud Architecture",
+        "image": "/images/home/cloud-architecture.jpg",
+        "description": "Our cloud solutions provide on-demand computing resources that grow with your business. Cloud platforms offer unprecedented scalability, flexibility and cost-effectiveness, eliminating the need for expensive hardware management.",
+        "note": "TechCorp builds multi-cloud and hybrid architectures so you pay only for what you use and can adapt instantly to changing needs."
+      },
+      {
+        "title": "24/7 Proactive Support",
+        "image": "/images/home/proactive-support.jpg",
+        "description": "We offer round-the-clock monitoring and managed services to maximize uptime. Continuous oversight and automated alerts ensure potential issues are detected early, minimizing downtime and disruptions.",
+        "note": "Whether it's a security alert or a network hiccup, our team is ready at any hour to resolve issues quickly, protecting your revenue and reputation."
+      },
+      {
+        "title": "Comprehensive Security & Compliance",
+        "image": "/images/home/security-compliance.jpg",
+        "description": "TechCorp embeds security into every solution. We use advanced threat detection and regular security updates to protect against cyberattacks and data breaches.",
+        "note": "With TechCorp, you gain standard industry-compliant cybersecurity and constant vigilance so your business stays safe and trusted."
+      }
+    ],
+    "insights": {
+      "title": "Data-Driven Insights & Growth",
+      "image": "/images/home/data-insights.jpg",
+      "description": "Our advanced analytics and monitoring systems provide real-time insights into your infrastructure performance, security posture, and business metrics.",
+      "features": [
+        { "label": "Real-time Monitoring", "color": "#4caf50" },
+        { "label": "Predictive Analytics", "color": "#2196f3" },
+        { "label": "Performance Metrics", "color": "#ff9800" }
+      ]
+    }
+  },
+  "techMarquee": {
+    "title": "Powered by Industry-Leading Technologies",
+    "technologies": [
+      {
+        "name": "React",
+        "image": "/images/home/technologies/react.jpg",
+        "category": "Frontend"
+      },
+      {
+        "name": "Angular",
+        "image": "/images/home/technologies/angular.jpg",
+        "category": "Frontend"
+      },
+      {
+        "name": "Vue.js",
+        "image": "/images/home/technologies/vue.png",
+        "category": "Frontend"
+      },
+      {
+        "name": "Next.js",
+        "image": "/images/home/technologies/nextjs.jpg",
+        "category": "Frontend"
+      },
+      {
+        "name": "Material UI",
+        "image": "/images/home/technologies/mui.png",
+        "category": "UI Framework"
+      },
+      {
+        "name": "TailwindCSS",
+        "image": "/images/home/technologies/tailwind.png",
+        "category": "CSS Framework"
+      },
+      {
+        "name": "Node.js",
+        "image": "/images/home/technologies/nodejs.png",
+        "category": "Backend"
+      },
+      {
+        "name": "Express.js",
+        "image": "/images/home/technologies/express.png",
+        "category": "Backend"
+      },
+      {
+        "name": "Django",
+        "image": "/images/home/technologies/django.png",
+        "category": "Backend"
+      },
+      {
+        "name": "Spring Boot",
+        "image": "/images/home/technologies/spring.png",
+        "category": "Backend"
+      },
+      {
+        "name": ".NET Core",
+        "image": "/images/home/technologies/dotnet.png",
+        "category": "Backend"
+      },
+      {
+        "name": "MySQL",
+        "image": "/images/home/technologies/mysql.png",
+        "category": "Database"
+      },
+      {
+        "name": "PostgreSQL",
+        "image": "/images/home/technologies/postgresql.png",
+        "category": "Database"
+      },
+      {
+        "name": "MongoDB",
+        "image": "/images/home/technologies/mongodb.png",
+        "category": "Database"
+      },
+      {
+        "name": "Redis",
+        "image": "/images/home/technologies/redis.png",
+        "category": "Database"
+      },
+      {
+        "name": "Firebase",
+        "image": "/images/home/technologies/firebase.png",
+        "category": "Backend Service"
+      },
+      {
+        "name": "AWS",
+        "image": "/images/home/technologies/aws.png",
+        "category": "Cloud"
+      },
+      {
+        "name": "Microsoft Azure",
+        "image": "/images/home/technologies/azure.png",
+        "category": "Cloud"
+      },
+      {
+        "name": "Google Cloud",
+        "image": "/images/home/technologies/gcp.png",
+        "category": "Cloud"
+      },
+      {
+        "name": "Docker",
+        "image": "/images/home/technologies/docker.png",
+        "category": "DevOps"
+      },
+      {
+        "name": "Kubernetes",
+        "image": "/images/home/technologies/kubernetes.png",
+        "category": "DevOps"
+      },
+      {
+        "name": "GitHub",
+        "image": "/images/home/technologies/github.png",
+        "category": "Version Control"
+      },
+      {
+        "name": "GitLab",
+        "image": "/images/home/technologies/gitlab.png",
+        "category": "Version Control"
+      },
+      {
+        "name": "TensorFlow",
+        "image": "/images/home/technologies/tensorflow.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "PyTorch",
+        "image": "/images/home/technologies/pytorch.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "OpenAI",
+        "image": "/images/home/technologies/openai.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "Hugging Face",
+        "image": "/images/home/technologies/huggingface.png",
+        "category": "AI/ML"
+      },
+      {
+        "name": "React Native",
+        "image": "/images/home/technologies/react-native.png",
+        "category": "Mobile"
+      },
+      {
+        "name": "Flutter",
+        "image": "/images/home/technologies/flutter.png",
+        "category": "Mobile"
+      },
+      {
+        "name": "Swift",
+        "image": "/images/home/technologies/swift.png",
+        "category": "Mobile"
+      },
+      {
+        "name": "Kotlin",
+        "image": "/images/home/technologies/kotlin.png",
+        "category": "Mobile"
+      }
+    ]
+  }
+}

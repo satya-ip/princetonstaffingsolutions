@@ -20,49 +20,14 @@ import {
   GitHub,
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import { commonLabels } from '../../labels/index';
 
 const Footer: React.FC = () => {
-  const footerSections = [
-    {
-      title: 'Services',
-      links: [
-        'Cloud Infrastructure',
-        'Cybersecurity',
-        'Custom Development',
-        'Data Analytics',
-        'Performance Optimization',
-        '24/7 Support',
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        'About Us',
-        'Our Team',
-        'Careers',
-        'Case Studies',
-        'Blog',
-        'Contact',
-      ],
-    },
-    {
-      title: 'Resources',
-      links: [
-        'Documentation',
-        'API Reference',
-        'Community',
-        'Support Center',
-        'Status Page',
-        'Security',
-      ],
-    },
-  ];
-
   const socialLinks = [
-    { icon: <LinkedIn />, url: '#', name: 'LinkedIn' },
-    { icon: <Twitter />, url: '#', name: 'Twitter' },
-    { icon: <GitHub />, url: '#', name: 'GitHub' },
-    { icon: <Email />, url: 'mailto:hello@techcorp.com', name: 'Email' },
+    { icon: <LinkedIn />, url: commonLabels.footer.socialLinks.find(s => s.name === 'LinkedIn')?.url || '#', name: 'LinkedIn' },
+    { icon: <Twitter />, url: commonLabels.footer.socialLinks.find(s => s.name === 'Twitter')?.url || '#', name: 'Twitter' },
+    { icon: <GitHub />, url: commonLabels.footer.socialLinks.find(s => s.name === 'GitHub')?.url || '#', name: 'GitHub' },
+    { icon: <Email />, url: commonLabels.footer.socialLinks.find(s => s.name === 'Email')?.url || 'mailto:hello@techcorp.com', name: 'Email' },
   ];
 
   return (
@@ -82,7 +47,7 @@ const Footer: React.FC = () => {
         {/* Main Footer Content */}
         <Grid container spacing={4} sx={{ mb: 6 }}>
           {/* Company Info */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} lg={4} md={12}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -101,43 +66,37 @@ const Footer: React.FC = () => {
                     WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  TechCorp
+                  {commonLabels.company.name}
                 </Typography>
               </Box>
               
               <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.7, opacity: 0.9 }}>
-                Transforming businesses through innovative IT solutions. 
-                We deliver cutting-edge technology services that drive growth 
-                and enhance operational efficiency.
+                {commonLabels.footer.description}
               </Typography>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 3 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Email sx={{ fontSize: 16, opacity: 0.7 }} />
                   <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                    hello@techcorp.com
+                    {commonLabels.footer.contact.email}
                   </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Phone sx={{ fontSize: 16, opacity: 0.7 }} />
                   <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                    +1 (555) 123-4567
+                    {commonLabels.footer.contact.phone}
                   </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <LocationOn sx={{ fontSize: 16, opacity: 0.7 }} />
                   <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                    San Francisco, CA
+                    {commonLabels.footer.contact.address}
                   </Typography>
                 </Box>
               </Box>
 
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                {[
-                  'AWS Certified',
-                  'ISO 27001',
-                  'SOC 2 Compliant',
-                ].map((cert) => (
+                {commonLabels.footer.certifications.map((cert) => (
                   <Chip
                     key={cert}
                     label={cert}
@@ -155,9 +114,11 @@ const Footer: React.FC = () => {
             </motion.div>
           </Grid>
 
-          {/* Footer Links */}
-          {footerSections.map((section, index) => (
-            <Grid item xs={12} sm={6} md={2.67} key={section.title}>
+          {/* Footer Links Container */}
+          <Grid item xs={12} lg={8} md={12}>
+            <Grid container spacing={4}>
+              {commonLabels.footer.sections.map((section, index) => (
+                <Grid item xs={12} sm={6} md={4} key={section.title}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -191,8 +152,10 @@ const Footer: React.FC = () => {
                   ))}
                 </Box>
               </motion.div>
+                </Grid>
+              ))}
             </Grid>
-          ))}
+          </Grid>
         </Grid>
 
         <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.1)', mb: 4 }} />
@@ -208,7 +171,7 @@ const Footer: React.FC = () => {
           }}
         >
           <Typography variant="body2" sx={{ opacity: 0.7 }}>
-            © 2025 TechCorp. All rights reserved. Built with passion and cutting-edge technology.
+            {commonLabels.footer.copyright}
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 2 }}>
@@ -255,11 +218,10 @@ const Footer: React.FC = () => {
           }}
         >
           <Typography variant="body2" sx={{ opacity: 0.6, mb: 2 }}>
-            Trusted by 500+ companies worldwide • 99.9% uptime guarantee • 24/7 support
+            {commonLabels.footer.additionalInfo}
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, flexWrap: 'wrap' }}>
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Accessibility'].map(
-              (link) => (
+            {commonLabels.footer.legalLinks.map((link) => (
                 <Link
                   key={link}
                   href="#"
@@ -274,8 +236,7 @@ const Footer: React.FC = () => {
                 >
                   {link}
                 </Link>
-              )
-            )}
+            ))}
           </Box>
         </Box>
       </Container>

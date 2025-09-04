@@ -1,0 +1,48 @@
+{
+  "header": {
+    "title": "Case Studies",
+    "subtitle": "Discover how we've helped businesses transform their digital landscape and achieve remarkable results."
+  },
+  "studies": [
+    {
+      "id": "1",
+      "title": "Enterprise Cloud Migration",
+      "description": "Seamlessly migrated a Fortune 500 company to cloud infrastructure, reducing costs by 40% and improving performance.",
+      "image": "/images/caseStudies/enterprise-cloud-migration.jpg",
+      "technologies": ["AWS", "Docker", "Kubernetes", "Terraform"],
+      "category": "Cloud Infrastructure",
+      "client": "Global Manufacturing Corp",
+      "duration": "8 months",
+      "results": ["40% cost reduction", "99.9% uptime achieved", "3x faster deployment cycles"]
+    },
+    {
+      "id": "2",
+      "title": "AI-Powered Analytics Platform",
+      "description": "Developed a cutting-edge analytics platform using machine learning to provide real-time business insights.",
+      "image": "/images/caseStudies/ai-analytics-platform.jpg",
+      "technologies": ["Python", "TensorFlow", "React", "PostgreSQL"],
+      "category": "Artificial Intelligence",
+      "client": "Tech Startup Inc",
+      "duration": "6 months",
+      "results": ["250% increase in data processing speed", "Real-time insights", "Predictive accuracy of 94%"]
+    },
+    {
+      "id": "3",
+      "title": "Digital Transformation Suite",
+      "description": "Complete digital overhaul including mobile app, web platform, and Full backend systems integration.",
+      "image": "/images/caseStudies/digital-transformation.jpg",
+      "technologies": ["React Native", "Node.js", "MongoDB", "GraphQL"],
+      "category": "Digital Transformation",
+      "client": "Retail Chain Ltd",
+      "duration": "12 months",
+      "results": ["300% increase in mobile engagement", "50% faster checkout process", "99.5% customer satisfaction"]
+    }
+  ],
+  "loadMore": {
+    "buttonText": "Load More Case Studies",
+    "loadingText": "Loading..."
+  },
+  "modal": {
+    "viewProjectText": "View Live Project"
+  }
+}

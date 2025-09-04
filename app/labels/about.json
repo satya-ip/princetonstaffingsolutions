@@ -1,0 +1,70 @@
+{
+  "header": {
+    "title": "About TechCorp",
+    "subtitle": "We are a team of passionate technologists dedicated to transforming businesses through innovative IT solutions."
+  },
+  "stats": [
+    {
+      "value": 500,
+      "suffix": "+",
+      "label": "Happy Clients"
+    },
+    {
+      "value": 1000,
+      "suffix": "+",
+      "label": "Projects Completed"
+    },
+    {
+      "value": 15,
+      "suffix": "+",
+      "label": "Years Experience"
+    },
+    {
+      "value": 99.9,
+      "suffix": "%",
+      "label": "Success Rate"
+    }
+  ],
+  "expertise": {
+    "title": "Our Expertise",
+    "description": "With over 15 years of experience in the technology industry, we've mastered a comprehensive range of cutting-edge technologies and methodologies. Our expertise spans across cloud computing, cybersecurity, artificial intelligence, and modern software development practices.",
+    "certifications": ["AWS Certified", "Microsoft Partner", "Google Cloud Expert", "ISO 27001"]
+  },
+  "skills": [
+    { "name": "Cloud Computing", "level": 95 },
+    { "name": "Cybersecurity", "level": 92 },
+    { "name": "AI & Machine Learning", "level": 88 },
+    { "name": "Mobile Development", "level": 90 },
+    { "name": "DevOps & Automation", "level": 94 },
+    { "name": "Data Analytics", "level": 87 }
+  ],
+  "team": {
+    "title": "Meet Our Expert Team",
+    "members": [
+      {
+        "name": "Sarah Johnson",
+        "role": "Chief Technology Officer",
+        "image": "/images/about/sarah-johnson.jpg",
+        "skills": ["Cloud Architecture", "DevOps", "AI/ML"]
+      },
+      {
+        "name": "Michael Chen",
+        "role": "Lead Security Engineer",
+        "image": "/images/about/michael-chen.jpg",
+        "skills": ["Cybersecurity", "Penetration Testing", "Compliance"]
+      },
+      {
+        "name": "Emma Rodriguez",
+        "role": "Senior Full Stack Developer",
+        "image": "/images/about/emma-rodriguez.jpg",
+        "skills": ["React", "Node.js", "Mobile Development"]
+      },
+      {
+        "name": "David Kim",
+        "role": "Data Science Director",
+        "image": "/images/about/david-kim.jpg",
+        "skills": ["Big Data", "Analytics", "Machine Learning"]
+      }
+    ]
+  }
+}
